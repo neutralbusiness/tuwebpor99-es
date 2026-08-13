@@ -1,0 +1,38 @@
+# TuWebPor99
+
+> Empresa de diseño web y marketing digital en Barcelona. Creamos webs profesionales para negocios locales, autónomos y particulares por 99€ + IVA, con logotipo, hosting en Cloudflare, dominio .ES un año, correo corporativo, SSL, 50 artículos SEO y optimización para Google, Bing y asistentes de IA. Entrega en menos de 3 días o devolvemos el dinero. Más de 150.000 webs creadas en España, LATAM y Europa. Mantenimiento: 4,90€ + IVA/mes (cargo anual vía Stripe).
+
+Contacto: info@tuwebpor99.es · +34 618 79 43 22 (WhatsApp disponible).
+
+## Páginas principales
+
+- [Inicio](https://www.tuwebpor99.es/): oferta, qué incluye, proceso y portfolio
+- [Qué incluye](https://www.tuwebpor99.es/que-incluye/): detalle completo del pack de 99€ + IVA
+- [Cómo funciona](https://www.tuwebpor99.es/como-funciona/): proceso en 4 pasos, pagos y garantía
+- [Portfolio](https://www.tuwebpor99.es/portfolio/): webs creadas, por sectores
+- [Sobre nosotros](https://www.tuwebpor99.es/sobre-nosotros/): quiénes somos
+- [Preguntas frecuentes](https://www.tuwebpor99.es/preguntas-frecuentes/): dudas habituales
+- [Blog](https://www.tuwebpor99.es/blog/): consejos de diseño web, SEO y marketing
+- [Contacto](https://www.tuwebpor99.es/contacto/): formulario y datos de contacto
+
+## Landings por sector y ciudad
+
+- [Precios](https://www.tuwebpor99.es/precios/): cuánto cuesta una página web en 2026
+- [Wix vs WordPress vs TuWebPor99](https://www.tuwebpor99.es/comparativa-wix-wordpress/): comparativa honesta
+- [Diseño web para talleres](https://www.tuwebpor99.es/diseno-web-talleres/)
+- [Diseño web para cerrajeros](https://www.tuwebpor99.es/diseno-web-cerrajeros/)
+- [Diseño web para reformas](https://www.tuwebpor99.es/diseno-web-reformas/)
+- [Diseño web para clínicas y estética](https://www.tuwebpor99.es/diseno-web-clinicas-estetica/)
+- [Diseño web para restaurantes](https://www.tuwebpor99.es/diseno-web-restaurantes/)
+- [Web para bodas](https://www.tuwebpor99.es/web-para-bodas/)
+- [Currículum online](https://www.tuwebpor99.es/curriculum-online/)
+- [Tiendas online](https://www.tuwebpor99.es/diseno-web-tienda-online/)
+- [Diseño web Barcelona](https://www.tuwebpor99.es/diseno-web-barcelona/) · [Badalona](https://www.tuwebpor99.es/diseno-web-badalona/) · [Madrid](https://www.tuwebpor99.es/diseno-web-madrid/)
+
+## English
+
+- [Home](https://www.tuwebpor99.es/en/) and mirrored pages under /en/ for all of the above
+
+## Sitemap
+
+- [sitemap_index.xml](https://www.tuwebpor99.es/sitemap_index.xml)

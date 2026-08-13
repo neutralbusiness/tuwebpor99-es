@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#0d9488">
+<title>Blog — Diseño web, SEO y marketing digital | TuWebPor99</title>
+<meta name="description" content="Consejos prácticos de diseño web, SEO y marketing digital para negocios locales, autónomos y marcas personales.">
+<link rel="canonical" href="https://www.tuwebpor99.es/blog/">
+<link rel="alternate" hreflang="es" href="https://www.tuwebpor99.es/blog/">
+<link rel="alternate" hreflang="en" href="https://www.tuwebpor99.es/en/blog/">
+<link rel="alternate" hreflang="x-default" href="https://www.tuwebpor99.es/blog/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700&family=Barlow+Condensed:wght@600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/styles.css">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Blog","@id":"https://www.tuwebpor99.es/blog/#blog","url":"https://www.tuwebpor99.es/blog/","name":"Blog de TuWebPor99","description":"Consejos de diseño web, SEO y marketing digital para negocios locales y autónomos.","publisher":{"@id":"https://www.tuwebpor99.es/#org"},"inLanguage":"es"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Inicio","item":"https://www.tuwebpor99.es/"},{"@type":"ListItem","position":2,"name":"Blog","item":"https://www.tuwebpor99.es/blog/"}]}]}</script>
+<style>
+.blog-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:2rem}
+.blog-card{border:1px solid var(--line);border-radius:10px;overflow:hidden;background:#fff;transition:transform .15s,box-shadow .15s}
+.blog-card:hover{transform:translateY(-4px);box-shadow:0 16px 40px rgba(17,24,39,.1)}
+.blog-card a{display:block;color:inherit}
+.blog-card img{aspect-ratio:16/9;object-fit:cover;width:100%}
+.blog-card__body{padding:18px 20px}
+.blog-card__category{font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--accent-dark)}
+.blog-card__title{font-size:22px;line-height:1.15;margin:6px 0 8px;text-transform:none;letter-spacing:0}
+.blog-card__excerpt{font-size:15px;color:var(--muted)}
+.blog-card__meta{display:flex;gap:14px;margin-top:12px;font-size:13.5px;color:var(--muted)}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+.sk-card{border:1px solid var(--line);border-radius:10px;overflow:hidden}
+.sk-img{aspect-ratio:16/9;background:#e5e7eb;animation:pulse 1.5s ease-in-out infinite}
+.sk-line{height:14px;background:#e5e7eb;border-radius:4px;margin:14px 20px;animation:pulse 1.5s ease-in-out infinite}
+.sk-line.short{width:45%}
+.blog-empty{padding:48px 0;color:var(--muted);font-size:18px}
+@media(max-width:960px){.blog-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:640px){.blog-grid{grid-template-columns:1fr}}
+</style>
+<link rel="icon" type="image/svg+xml" href="../favicon.svg">
+</head>
+<body>
+<div class="topbar">🔥 <strong>Oferta de lanzamiento:</strong> web completa + hosting + dominio por <strong>99€ + IVA</strong> — entrega en menos de 3 días</div>
+
+<header class="nav">
+  <div class="wrap nav-in">
+    <a class="logo" href="../">TuWeb<em>Por99</em><span class="eur">€</span></a>
+    <nav class="menu" id="menu">
+      <a href="../que-incluye/">Qué incluye</a>
+      <a href="../precios/">Precios</a>
+      <a href="../portfolio/">Nuestras webs</a>
+      <a href="../como-funciona/">Cómo funciona</a>
+      <a href="../sobre-nosotros/">Sobre nosotros</a>
+      <a href="../blog/">Blog</a>
+      <a href="../preguntas-frecuentes/">FAQ</a>
+    </nav>
+    <div class="nav-cta">
+      <div class="lang"><span class="on">ES</span><a href="../en/blog/" hreflang="en">EN</a></div>
+      <a class="btn btn-ghost" href="tel:+34618794322">618 79 43 22</a>
+      <a class="btn btn-primary" href="../contacto/">Quiero mi web</a>
+      <button id="nav-toggle" aria-label="Abrir menú" onclick="document.getElementById('menu').classList.toggle('open')">☰</button>
+    </div>
+  </div>
+</header>
+<div class="page-hero"><div class="wrap"><p class="crumb"><a href="../">Inicio</a> › Blog</p><h1>Blog</h1><p class="lead">Consejos de diseño web, SEO y marketing digital para que tu negocio venda más en internet.</p></div></div>
+<section style="padding-top:48px"><div class="wrap"><div id="blog-posts-grid" class="blog-grid"><div class="sk-card" aria-hidden="true"><div class="sk-img"></div><div class="sk-line short"></div><div class="sk-line"></div><div class="sk-line"></div><div style="height:10px"></div></div><div class="sk-card" aria-hidden="true"><div class="sk-img"></div><div class="sk-line short"></div><div class="sk-line"></div><div class="sk-line"></div><div style="height:10px"></div></div><div class="sk-card" aria-hidden="true"><div class="sk-img"></div><div class="sk-line short"></div><div class="sk-line"></div><div class="sk-line"></div><div style="height:10px"></div></div></div><noscript><p class="blog-empty">Para ver los artículos, activa JavaScript en tu navegador o escríbenos a info@tuwebpor99.es.</p></noscript></div></section><script>
+(function(){
+  var grid=document.getElementById("blog-posts-grid");
+  if(!grid)return;
+  function empty(){grid.innerHTML='<p class="blog-empty">Próximamente publicaremos artículos sobre diseño web, SEO y marketing digital. ¡Vuelve pronto!</p>';}
+  fetch("/blog/posts.json").then(function(r){
+    if(r.status!==200)throw new Error("no posts");
+    return r.json();
+  }).then(function(posts){
+    if(!Array.isArray(posts)||posts.length===0){empty();return;}
+    var fmt=new Intl.DateTimeFormat("es-ES",{day:"numeric",month:"long",year:"numeric"});
+    grid.innerHTML=posts.map(function(p){
+      var d=fmt.format(new Date(p.publishDate));
+      return '<article class="blog-card">'+
+        '<a href="../blog/'+p.slug+'/">'+
+        '<img src="'+p.image+'" alt="'+p.title+'" width="800" height="450" loading="lazy">'+
+        '<div class="blog-card__body">'+
+        '<span class="blog-card__category">'+p.category+'</span>'+
+        '<h2 class="blog-card__title">'+p.title+'</h2>'+
+        '<p class="blog-card__excerpt">'+p.excerpt+'</p>'+
+        '<div class="blog-card__meta">'+
+        '<time datetime="'+p.publishDate+'">'+d+'</time>'+
+        '<span>'+p.readTime+' min lectura</span>'+
+        '</div></div></a></article>';
+    }).join("");
+  }).catch(empty);
+})();
+</script>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <a class="logo" href="../">TuWeb<em>Por99</em><span class="eur">€</span></a>
+        <p>Empresa de diseño web y marketing digital en Barcelona. Más de 150.000 webs creadas en España, LATAM y Europa.</p>
+      </div>
+      <div>
+        <h4>Servicios</h4>
+        <ul>
+          <li><a href="../que-incluye/">Qué incluye</a></li>
+          <li><a href="../precios/">Precios</a></li>
+          <li><a href="../como-funciona/">Cómo funciona</a></li>
+          <li><a href="../portfolio/">Nuestras webs</a></li>
+          <li><a href="../preguntas-frecuentes/">Preguntas frecuentes</a></li>
+          <li><a href="../comparativa-wix-wordpress/">Wix vs WordPress</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Especialidades</h4>
+        <ul>
+          <li><a href="../diseno-web-talleres/">Webs para talleres</a></li>
+          <li><a href="../diseno-web-cerrajeros/">Webs para cerrajeros</a></li>
+          <li><a href="../diseno-web-reformas/">Webs para reformas</a></li>
+          <li><a href="../diseno-web-clinicas-estetica/">Clínicas y estética</a></li>
+          <li><a href="../diseno-web-restaurantes/">Restaurantes</a></li>
+          <li><a href="../web-para-bodas/">Webs para bodas</a></li>
+          <li><a href="../curriculum-online/">Currículum online</a></li>
+          <li><a href="../diseno-web-tienda-online/">Tiendas online</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Empresa</h4>
+        <ul>
+          <li><a href="../sobre-nosotros/">Sobre nosotros</a></li>
+          <li><a href="../blog/">Blog</a></li>
+          <li><a href="../contacto/">Contacto</a></li>
+          <li><a href="../diseno-web-barcelona/">Diseño web Barcelona</a></li>
+          <li><a href="../diseno-web-badalona/">Diseño web Badalona</a></li>
+          <li><a href="../diseno-web-madrid/">Diseño web Madrid</a></li>
+          <li><a href="../sitemap_index.xml">Mapa del sitio</a></li>
+          <li><a href="../llms.txt">llms.txt</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contacto</h4>
+        <ul class="foot-contact">
+          <li>📍 Barcelona, España</li>
+          <li>📞 <a href="tel:+34618794322">618 79 43 22</a></li>
+          <li>✉️ <a href="mailto:info@tuwebpor99.es">info@tuwebpor99.es</a></li>
+          <li>💬 <a href="https://wa.me/34618794322" target="_blank" rel="noopener">WhatsApp</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 TuWebPor99 · Diseño web y marketing digital en Barcelona</span>
+      <nav>
+        <a href="../aviso-legal/">Aviso legal</a>
+        <a href="../politica-privacidad/">Privacidad</a>
+        <a href="../politica-cookies/">Cookies</a>
+      </nav>
+    </div>
+  </div>
+</footer>
+<script>(function(){if(/tuwebpor99\.es$/.test(location.hostname))return;document.querySelectorAll('a[href$="/"]').forEach(function(a){var h=a.getAttribute("href");if(!/^(https?:|mailto:|tel:)/.test(h))a.setAttribute("href",h+"index.html");});})();</script>
+</body>
+</html>
