@@ -1,4 +1,23 @@
 User-agent: *
 Allow: /
 
+# Rastreadores de IA: acceso permitido (AEO)
+User-agent: GPTBot
+Allow: /
+User-agent: OAI-SearchBot
+Allow: /
+User-agent: ChatGPT-User
+Allow: /
+User-agent: ClaudeBot
+Allow: /
+User-agent: Claude-User
+Allow: /
+User-agent: anthropic-ai
+Allow: /
+User-agent: PerplexityBot
+Allow: /
+User-agent: Perplexity-User
+Allow: /
+
+
 Sitemap: https://www.tuwebpor99.es/sitemap_index.xml
