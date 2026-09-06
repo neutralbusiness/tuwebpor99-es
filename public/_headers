@@ -1,0 +1,13 @@
+# Cabeceras de Cloudflare — seguridad y cache.
+# Lo leen tanto Pages como los Workers que sirven activos estaticos.
+
+/*
+  X-Content-Type-Options: nosniff
+  X-Frame-Options: SAMEORIGIN
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: accelerometer=(), camera=(), geolocation=(), gyroscope=(), microphone=(), payment=(), usb=()
+  Strict-Transport-Security: max-age=63072000; includeSubDomains; preload
+  Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://panel.neutralb.es https://www.googletagmanager.com https://*.googletagmanager.com https://www.google-analytics.com https://*.google-analytics.com https://www.google.com https://www.gstatic.com https://cdn.tailwindcss.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' data: https://fonts.gstatic.com; img-src 'self' data: blob: https:; connect-src 'self' https://panel.neutralb.es https://www.google.com https://www.gstatic.com https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com https://stats.g.doubleclick.net; frame-src https://www.google.com https://*.googletagmanager.com https://td.doubleclick.net https://www.youtube-nocookie.com https://www.youtube.com; form-action 'self' https://panel.neutralb.es; base-uri 'self'; object-src 'none'; frame-ancestors 'self'; upgrade-insecure-requests
+
+/img/*
+  Cache-Control: public, max-age=31536000, immutable
