@@ -208,3 +208,16 @@ footer{background:#fff;border-top:1px solid var(--line);padding:64px 0 0;font-si
 @media(max-width:960px){.foot-grid{grid-template-columns:1fr 1fr}}
 
 @media (max-width:600px){.wrap{padding:0 18px}}
+
+
+/* nb-ancho-pantalla */
+/* Ancho de pantalla: el contenedor deja de tener tope fijo y el margen pasa a
+   ser un carril proporcional (96px a 1920, 72 a 1440, 64 a 1280). El texto no
+   se estira: el titular se queda en medida de lectura. Por debajo de 1280 no
+   cambia nada. */
+@media(min-width:1280px){
+.wrap{max-width:none;width:auto;padding-inline:clamp(1rem,5vw,6rem);margin-inline:auto}
+h1{max-width:961px}
+.wrap p{max-width:72ch}
+.ccard h1,.ccard p,.cta-final h1,.cta-final p,.pf-more h1,.pf-more p,.proc-note h1,.proc-note p,.stat h1,.stat p,.topbar h1,.topbar p{margin-inline:auto}
+}
