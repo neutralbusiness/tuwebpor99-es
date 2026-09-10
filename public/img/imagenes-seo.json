@@ -4,12 +4,20 @@
   "negocio": "Tuwebpor99",
   "imagenes": [
     {
-      "archivo": "/img/hero.webp",
-      "alt": "Hero - Tuwebpor99 en España",
-      "titulo": "Hero · Tuwebpor99",
-      "palabras": "Hero, España, Consultoría / Servicios PYME, Tuwebpor99",
+      "archivo": "/img/seo-resultados.webp",
+      "alt": "Seo Resultados - Tuwebpor99 en España",
+      "titulo": "Seo Resultados · Tuwebpor99",
+      "palabras": "Seo Resultados, España, Consultoría / Servicios PYME, Tuwebpor99",
       "ancho": 1200,
       "alto": 800
+    },
+    {
+      "archivo": "/img/pf-taller-madrid.webp",
+      "alt": "Pf Taller Madrid - Tuwebpor99 en España",
+      "titulo": "Pf Taller Madrid · Tuwebpor99",
+      "palabras": "Pf Taller Madrid, España, Consultoría / Servicios PYME, Tuwebpor99",
+      "ancho": 800,
+      "alto": 500
     }
   ]
 }
