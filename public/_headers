@@ -10,4 +10,4 @@
   Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://panel.neutralb.es https://www.googletagmanager.com https://*.googletagmanager.com https://www.google-analytics.com https://*.google-analytics.com https://www.google.com https://www.gstatic.com https://cdn.tailwindcss.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' data: https://fonts.gstatic.com; img-src 'self' data: blob: https:; media-src 'self' data: blob: https:; connect-src 'self' https://panel.neutralb.es https://www.google.com https://www.gstatic.com https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com https://stats.g.doubleclick.net; frame-src https: ; child-src https: ; form-action 'self' https://panel.neutralb.es; base-uri 'self'; object-src 'none'; frame-ancestors 'self'; upgrade-insecure-requests
 
 /img/*
-  Cache-Control: public, max-age=31536000, immutable
+  Cache-Control: public, max-age=300, s-maxage=31536000, stale-while-revalidate=86400
