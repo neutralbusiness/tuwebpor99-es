@@ -1,0 +1,15 @@
+{
+  "generadoPor": "Panel Neutral B",
+  "dominio": "tuwebpor99.es",
+  "negocio": "Tuwebpor99",
+  "imagenes": [
+    {
+      "archivo": "/img/hero.webp",
+      "alt": "Hero - Tuwebpor99 en España",
+      "titulo": "Hero · Tuwebpor99",
+      "palabras": "Hero, España, Consultoría / Servicios PYME, Tuwebpor99",
+      "ancho": 1200,
+      "alto": 800
+    }
+  ]
+}
