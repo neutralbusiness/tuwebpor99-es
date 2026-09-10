@@ -140,4 +140,10 @@
     <loc>https://www.tuwebpor99.es/diseno-web-madrid/</loc>
     <lastmod>2026-08-14</lastmod>
   </url>
+  <url>
+    <loc>https://www.tuwebpor99.es/contratacion/</loc>
+    <lastmod>2026-09-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
 </urlset>
