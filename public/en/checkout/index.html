@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#0d9488">
+<title>Order your website | TuWebPor99</title>
+<meta name="description" content="Order your professional website for €99 + VAT or your online shop for €270 + VAT. One-off payment, delivered in under 3 days and €29 + VAT a year from the second year.">
+<link rel="canonical" href="https://www.tuwebpor99.es/en/checkout/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Order your website | TuWebPor99">
+<meta property="og:description" content="Order your professional website for €99 + VAT or your online shop for €270 + VAT. One-off payment and delivery in under 3 days.">
+<meta property="og:url" content="https://www.tuwebpor99.es/en/checkout/">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://www.tuwebpor99.es/img/og-home.webp">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://www.tuwebpor99.es/img/og-home.webp">
+<link rel="alternate" hreflang="es" href="https://www.tuwebpor99.es/contratacion/">
+<link rel="alternate" hreflang="en" href="https://www.tuwebpor99.es/en/checkout/">
+<link rel="alternate" hreflang="x-default" href="https://www.tuwebpor99.es/contratacion/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700&family=Barlow+Condensed:wght@600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../css/styles.css">
+<link rel="icon" type="image/svg+xml" href="../../favicon.svg"><link rel="icon" href="../../favicon.ico" sizes="32x32"><link rel="apple-touch-icon" href="../../apple-touch-icon.png">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebPage","@id":"https://www.tuwebpor99.es/en/checkout/","url":"https://www.tuwebpor99.es/en/checkout/","name":"Order your website","inLanguage":"en","isPartOf":{"@id":"https://www.tuwebpor99.es/#web"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://www.tuwebpor99.es/en/"},{"@type":"ListItem","position":2,"name":"Order","item":"https://www.tuwebpor99.es/en/checkout/"}]}]}</script>
+<script>
+window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}
+(function(){
+  // En la UE el consentimiento se pide antes de medir: todo denegado de salida.
+  // Si el visitante ya aceptó en el aviso de cookies, se restaura su elección
+  // aquí para no perder la medición al cambiar de página.
+  var c={ad_storage:"denied",ad_user_data:"denied",ad_personalization:"denied",analytics_storage:"denied",wait_for_update:500};
+  try{var g=JSON.parse(localStorage.getItem("nb_consent")||"null");
+    if(g&&g.analytics){c.analytics_storage="granted"}
+    if(g&&g.ads){c.ad_storage="granted";c.ad_user_data="granted";c.ad_personalization="granted"}
+  }catch(e){}
+  gtag("consent","default",c);
+})();
+</script>
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-T54WPRS2');</script>
+<script defer src="https://panel.neutralb.es/consent.js"></script>
+<script defer src="https://panel.neutralb.es/track.js"></script>
+<style>
+/* Dos productos, uno al lado del otro. Por debajo de 900 px se apilan y la
+   tienda queda debajo, que es el orden en el que se decide. */
+.planes{display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:start}
+@media(max-width:900px){.planes{grid-template-columns:1fr}}
+.plan{border:1px solid var(--line);border-radius:16px;background:#fff;padding:30px;display:flex;flex-direction:column;height:100%}
+.plan--destacado{border-color:var(--accent);box-shadow:0 18px 44px rgba(13,148,136,.12)}
+/* Los modificadores van con doble clase a proposito: `.plan p` pesa mas que
+   una clase suelta y se comia el tamano del precio. */
+.plan .plan__eyebrow{font-family:'Barlow Condensed',sans-serif;font-weight:700;text-transform:uppercase;letter-spacing:.12em;font-size:.82rem;color:var(--accent-ink);margin:0}
+.plan .plan__nombre{font-family:'Barlow Condensed',sans-serif;font-size:2.1rem;font-weight:800;text-transform:uppercase;line-height:1.05;margin:.35rem 0 .1rem;color:var(--ink)}
+.plan .plan__precio{font-family:'Barlow Condensed',sans-serif;font-size:clamp(3.2rem,7vw,4.4rem);font-weight:800;color:var(--accent);line-height:.95;letter-spacing:-.01em;margin:1rem 0 .35rem;max-width:none}
+.plan .plan__precio small{display:block;font-family:'Barlow',sans-serif;font-size:1.02rem;font-weight:700;color:var(--ink);text-transform:uppercase;letter-spacing:.08em;margin-top:.5rem}
+.plan .plan__recurrente{font-size:.92rem;color:var(--muted);margin:0 0 1.1rem;padding-bottom:1.1rem;border-bottom:1px solid var(--line)}
+.plan p{color:var(--body);font-size:1rem}
+.plan p+p{margin-top:.9rem}
+/* La captura de una web real entregada: lo que se compra, visto antes de leer. */
+.plan__foto{margin:0 0 1.4rem;border-radius:12px;overflow:hidden;border:1px solid var(--line);background:var(--tint)}
+.plan__foto img{display:block;width:100%;height:auto}
+.plan__cta{margin-top:auto;padding-top:1.6rem}
+.plan__cta .btn{width:100%;justify-content:center}
+.plan .plan__nota{font-size:.85rem;color:var(--muted);margin-top:.7rem;text-align:center;max-width:none}
+.panel-cliente{border:1px solid var(--line);border-radius:16px;background:var(--tint);padding:26px 28px;margin-top:34px}
+.panel-cliente h2{font-size:1.35rem;margin:0 0 .5rem}
+.panel-cliente p{color:var(--body);margin:0 0 1rem;max-width:70ch}
+</style>
+</head>
+<body>
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-T54WPRS2" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+<div class="topbar">🔥 <strong>Launch offer:</strong> complete website + hosting + domain for <strong>€99 + VAT</strong> — delivered in under 3 days</div>
+
+<header class="nav">
+  <div class="wrap nav-in">
+    <a class="logo" href="../../en/">TuWeb<em>Por99</em><span class="eur">€</span></a>
+    <nav class="menu" id="menu">
+      <a href="../../en/whats-included/">What's included</a><a href="../../en/checkout/">Order</a>
+      <a href="../../en/portfolio/">Our work</a>
+      <a href="../../en/how-it-works/">How it works</a>
+      <a href="../../en/about-us/">About us</a>
+      <a href="../../en/blog/">Blog</a>
+      <a href="../../en/faq/">FAQ</a>
+    </nav>
+    <div class="nav-cta">
+      <div class="lang"><a href="../../contratacion/" hreflang="es">ES</a><span class="on">EN</span></div>
+      <a class="btn btn-ghost" href="tel:+34618794322">618 79 43 22</a>
+      <a class="btn btn-primary" href="../../en/checkout/">Get my website</a>
+      <button id="nav-toggle" aria-label="Open menu" onclick="document.getElementById('menu').classList.toggle('open')">☰</button>
+    </div>
+  </div>
+</header>
+<div class="page-hero"><div class="wrap">
+<p class="crumb"><a href="../../en/">Home</a> › Order</p>
+<h1>Order your website</h1>
+<p class="lead">Two ways to start. You pay, you tell us about your business, and in under 3 days it is live.</p>
+</div></div>
+
+<section><div class="wrap">
+<div class="planes">
+
+  <article class="plan plan--destacado">
+    <p class="plan__eyebrow">What almost everyone orders</p>
+    <h2 class="plan__nombre">Professional website</h2>
+    <p class="plan__precio">€99 <small>+ VAT · one-off payment</small></p>
+    <p class="plan__recurrente">First year of domain, hosting and maintenance included. From the second year, €29 + VAT a year.</p>
+    <figure class="plan__foto">
+      <img src="../../img/pf-climayluz.webp" width="800" height="500" loading="lazy" decoding="async" alt="climayluz.es, a professional website delivered with this pack">
+    </figure>
+
+    <p>A design made for you —your own or inspired by the references you send us— with your logo and your brand style guide included. Adapted to the millimetre to phone, tablet and desktop, and scoring above 90 on PageSpeed so it loads instantly.</p>
+    <p>It includes the domain, the hosting, the SSL certificate and unlimited business email addresses on your own domain. And real search visibility, not the basic kind: full SEO with GEO, AEO and LLM optimisation, plus 10 professional SEO articles, so people find you on Google and Bing and in the artificial intelligences they already use to search.</p>
+    <p>The pack closes with the contact form, the direct WhatsApp button, the links to your social profiles and the legal texts with cookie banner and privacy page.</p>
+
+    <div class="plan__cta">
+      <a class="btn btn-primary" href="https://buy.stripe.com/9B628rfo61MOge51HYe3e01" target="_blank" rel="noopener">Order for €99 + VAT</a>
+      <p class="plan__nota">Secure card payment through <a href="https://stripe.com" target="_blank" rel="noopener">Stripe</a>.</p>
+    </div>
+  </article>
+
+  <article class="plan">
+    <p class="plan__eyebrow">To sell online</p>
+    <h2 class="plan__nombre">Online shop</h2>
+    <p class="plan__precio">€270 <small>+ VAT · setup</small></p>
+    <p class="plan__recurrente">Plus €29 + VAT a year for domain, hosting and maintenance.</p>
+    <figure class="plan__foto">
+      <img src="../../img/pf-tienda-hogar.webp" width="800" height="500" loading="lazy" decoding="async" alt="tienda-hogar.es, an online shop delivered with this pack">
+    </figure>
+
+    <p>Your online shop, ready to sell.</p>
+    <p>Everything in the professional website —design made for you, logo and brand style guide, domain, hosting, business email, SSL, fully responsive design, advanced SEO with GEO, AEO and LLM optimisation, 10 articles, WhatsApp, form, social links and legal texts— plus the complete e-commerce engine.</p>
+    <p>We build your catalogue with product pages and categories, the cart and the whole checkout. We leave the payment gateway configured and working so you can take card payments from day one. And we set up shipping rates and stock control, so you always know what you have left.</p>
+
+    <div class="plan__cta">
+      <a class="btn btn-primary" href="https://buy.stripe.com/28E00j3Fo0IKfa13Q6e3e02" target="_blank" rel="noopener">Order for €270 + VAT</a>
+      <p class="plan__nota">Secure card payment through <a href="https://stripe.com" target="_blank" rel="noopener">Stripe</a>.</p>
+    </div>
+  </article>
+
+</div>
+
+<div class="panel-cliente">
+  <h2>Already a client?</h2>
+  <p>Your personal area holds your invoices, the payments you have made and your saved payment methods. You can download any invoice and change your card whenever you want.</p>
+  <a class="btn btn-ghost" href="https://billing.stripe.com/p/login/fZu8wP7VEfDEfa15Yee3e00" target="_blank" rel="noopener">Go to my client area</a>
+</div>
+</div></section>
+
+<section class="cta-final"><div class="wrap">
+<h2>Any questions before you pay?</h2>
+<p>Write to us and we will tell you shortly whether your case fits, with no commitment.</p>
+<p class="sub">WhatsApp <a href="https://wa.me/34618794322" target="_blank" rel="noopener">+34 618 79 43 22</a> · <a href="mailto:info@tuwebpor99.es">info@tuwebpor99.es</a></p>
+</div></section>
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <a class="logo" href="../../en/">TuWeb<em>Por99</em><span class="eur">€</span></a>
+        <p>Web design and digital marketing company based in Barcelona. We work with businesses across Spain, Latin America and Europe.</p>
+      </div>
+      <div>
+        <h4>Services</h4>
+        <ul>
+          <li><a href="../../en/whats-included/">What's included</a><a href="../../en/checkout/">Order</a></li>
+          <li><a href="../../en/how-it-works/">How it works</a></li>
+          <li><a href="../../en/portfolio/">Our work</a></li>
+          <li><a href="../../en/faq/">FAQ</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Company</h4>
+        <ul>
+          <li><a href="../../en/about-us/">About us</a></li>
+          <li><a href="../../en/blog/">Blog</a></li>
+          <li><a href="../../en/contact/">Contact</a></li>
+          <li><a href="../../sitemap_index.xml">Sitemap</a></li>
+          <li><a href="../../llms.txt">llms.txt</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <ul class="foot-contact">
+          <li>📍 Barcelona, Spain</li>
+          <li>📞 <a href="tel:+34618794322">+34 618 79 43 22</a></li>
+          <li>✉️ <a href="mailto:info@tuwebpor99.es">info@tuwebpor99.es</a></li>
+          <li>💬 <a href="https://wa.me/34618794322" target="_blank" rel="noopener">WhatsApp</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 TuWebPor99 · Web design and digital marketing in Barcelona</span>
+      <nav>
+        <a href="../../en/legal-notice/">Legal notice</a>
+        <a href="../../en/privacy-policy/">Privacy</a>
+        <a href="../../en/cookie-policy/">Cookies</a>
+      </nav>
+    </div>
+  </div>
+</footer>
+<script>(function(){if(/tuwebpor99\.es$/.test(location.hostname))return;document.querySelectorAll('a[href$="/"]').forEach(function(a){var h=a.getAttribute("href");if(!/^(https?:|mailto:|tel:)/.test(h))a.setAttribute("href",h+"index.html");});})();</script>
+</body>
+</html>
