@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#0d9488">
+<title>Tu solicitud | TuWebPor99</title>
+<meta name="description" content="Cuéntanos cómo quieres tu web, revisa las condiciones y paga. Puedes dejarlo a medias y retomarlo con tu enlace.">
+<meta name="robots" content="noindex,nofollow">
+<link rel="canonical" href="https://www.tuwebpor99.es/contratacion/solicitud/">
+<link rel="icon" type="image/svg+xml" href="../../favicon.svg"><link rel="icon" href="../../favicon.ico" sizes="32x32"><link rel="apple-touch-icon" href="../../apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700&family=Barlow+Condensed:wght@600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../css/styles.css">
+<style>
+/* ── Embudo de contratación ───────────────────────────────────────────────
+   Cabecera mínima a propósito: aquí el visitante ya ha decidido, y el menú
+   completo solo le da sitios a los que irse. */
+.sol-head{border-bottom:1px solid var(--line);background:#fff;position:sticky;top:0;z-index:60}
+.sol-head-in{display:flex;align-items:center;justify-content:space-between;gap:20px;height:68px}
+.sol-head .logo{font-size:26px}
+.sol-head .tel{font-weight:600;font-size:15px;color:var(--ink)}
+.sol-wrap{max-width:980px;margin:0 auto;padding:0 20px}
+.sol-main{padding:34px 0 90px}
+
+/* Pasos */
+.pasos{display:flex;gap:6px;margin:0 0 26px;list-style:none;flex-wrap:wrap}
+.pasos li{flex:1 1 120px;font-family:'Barlow Condensed',sans-serif;font-weight:700;text-transform:uppercase;
+  letter-spacing:.04em;font-size:14px;color:var(--muted);border-top:4px solid var(--line);padding-top:9px}
+.pasos li.on{color:var(--accent-ink);border-top-color:var(--accent)}
+.pasos li.ok{color:var(--accent-dark);border-top-color:var(--accent-dark)}
+.pasos li span{display:block;font-family:'Barlow',sans-serif;font-weight:600;font-size:12px;letter-spacing:0;text-transform:none;color:var(--muted)}
+
+/* Tarjeta de paso */
+.paso{display:none;background:#fff;border:1px solid var(--line);border-radius:14px;padding:clamp(20px,3vw,34px)}
+.paso.on{display:block}
+.paso h1{font-size:clamp(30px,4vw,42px);font-weight:800;margin-bottom:8px}
+.paso h1+p.sub{font-size:18px;color:var(--muted);margin-bottom:26px;max-width:60ch}
+.grupo{border:0;margin:0 0 26px;padding:0}
+.grupo>legend{font-family:'Barlow Condensed',sans-serif;font-weight:700;text-transform:uppercase;letter-spacing:.06em;
+  font-size:17px;color:var(--accent-ink);border-bottom:1px solid var(--tint2);width:100%;padding-bottom:7px;margin-bottom:16px}
+.campos{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.campo{display:flex;flex-direction:column;gap:6px}
+.campo.ancho{grid-column:1/-1}
+.campo label{font-weight:600;font-size:15px;color:var(--ink)}
+.campo .ayuda{font-size:13.5px;color:var(--muted);line-height:1.45}
+.campo input[type=text],.campo input[type=email],.campo input[type=tel],.campo input[type=url],.campo input[type=number],
+.campo select,.campo textarea{font:inherit;font-size:16px;color:var(--ink);background:#fff;border:1px solid var(--line);
+  border-radius:8px;padding:11px 13px;width:100%}
+.campo textarea{min-height:104px;resize:vertical;line-height:1.55}
+.campo input:focus,.campo select:focus,.campo textarea:focus{outline:2px solid var(--accent);outline-offset:1px;border-color:var(--accent)}
+.campo.mal input,.campo.mal select,.campo.mal textarea{border-color:#dc2626}
+.campo .error{color:#b91c1c;font-size:13.5px;font-weight:600;display:none}
+.campo.mal .error{display:block}
+.req::after{content:" *";color:#dc2626}
+.opciones{display:flex;flex-direction:column;gap:9px}
+.opcion{display:flex;gap:10px;align-items:flex-start;border:1px solid var(--line);border-radius:8px;padding:11px 13px;cursor:pointer}
+.opcion:hover{border-color:var(--accent)}
+.opcion input{margin-top:3px;flex:0 0 auto;width:18px;height:18px;accent-color:var(--accent)}
+.opcion b{display:block;font-size:15.5px;color:var(--ink)}
+.opcion small{color:var(--muted);font-size:13.5px}
+.opciones.fila{flex-direction:row;flex-wrap:wrap}
+.opciones.fila .opcion{flex:1 1 180px}
+
+/* Aviso de lo que hacemos nosotros */
+.nosotros{background:var(--tint);border:1px solid var(--tint2);border-radius:10px;padding:16px 18px;margin-bottom:24px}
+.nosotros h3{font-size:18px;margin-bottom:8px}
+.nosotros ul{margin:0;padding-left:20px;font-size:14.5px;color:var(--body)}
+.nosotros li{margin-bottom:4px}
+
+/* Contrato */
+.contrato{max-height:46vh;overflow:auto;border:1px solid var(--line);border-radius:10px;padding:20px 22px;background:#fcfcfc;margin-bottom:20px}
+.contrato h3{font-size:19px;margin:18px 0 7px}
+.contrato h3:first-child{margin-top:0}
+.contrato p{font-size:15px;margin-bottom:9px;max-width:none}
+.aceptos{display:flex;flex-direction:column;gap:11px;margin-bottom:8px}
+.acepto{display:flex;gap:11px;align-items:flex-start;font-size:15px}
+.acepto input{margin-top:3px;width:19px;height:19px;flex:0 0 auto;accent-color:var(--accent)}
+
+/* Resumen y pago */
+.resumen{border:1px solid var(--line);border-radius:10px;overflow:hidden;margin-bottom:22px}
+.resumen div{display:flex;justify-content:space-between;gap:16px;padding:13px 18px;border-bottom:1px solid var(--line);font-size:15.5px}
+.resumen div:last-child{border-bottom:0;background:var(--tint);font-weight:700;font-size:19px}
+.resumen b{font-family:'Barlow Condensed',sans-serif;font-size:20px}
+
+/* Barra inferior */
+.barra{display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap;margin-top:8px}
+.barra .btn{font-size:19px}
+.guardado{font-size:14px;color:var(--muted);min-height:20px}
+.guardado.ok{color:var(--accent-dark);font-weight:600}
+
+/* Enlace para retomar */
+.retomar{margin-top:26px;background:#fff;border:1px dashed var(--accent);border-radius:12px;padding:16px 18px}
+.retomar h3{font-size:17px;margin-bottom:6px}
+.retomar p{font-size:14.5px;color:var(--muted);margin-bottom:10px;max-width:none}
+.retomar-fila{display:flex;gap:8px;flex-wrap:wrap}
+.retomar input{flex:1 1 260px;font:inherit;font-size:14px;border:1px solid var(--line);border-radius:8px;padding:9px 11px;color:var(--muted)}
+.retomar button{font-family:'Barlow Condensed',sans-serif;font-weight:700;text-transform:uppercase;font-size:16px;
+  letter-spacing:.04em;background:var(--ink);color:#fff;border:0;border-radius:8px;padding:9px 18px;cursor:pointer}
+
+/* Estados */
+.aviso{border-radius:10px;padding:14px 16px;font-size:15.5px;margin-bottom:20px;display:none}
+.aviso.ver{display:block}
+.aviso.malo{background:#fef2f2;border:1px solid #fecaca;color:#991b1b}
+.aviso.bueno{background:var(--tint);border:1px solid var(--tint2);color:var(--accent-ink)}
+.cargando{text-align:center;padding:70px 20px;color:var(--muted)}
+.hecho{text-align:center;padding:30px 10px}
+.hecho .tic{font-size:56px;line-height:1}
+.hecho h1{font-size:clamp(30px,4vw,44px);font-weight:800;margin:10px 0 12px}
+.hecho p{font-size:18px;max-width:52ch;margin:0 auto 12px}
+.oculto{display:none !important}
+@media(max-width:720px){
+  .campos{grid-template-columns:1fr}
+  .pasos li span{display:none}
+  .sol-head .tel{display:none}
+}
+</style>
+</head>
+<body>
+
+<header class="sol-head">
+  <div class="sol-wrap sol-head-in">
+    <a class="logo" href="../../">TuWeb<em>Por99</em><span class="eur">€</span></a>
+    <a class="tel" href="tel:+34618794322">¿Dudas? 618 79 43 22</a>
+  </div>
+</header>
+
+<main class="sol-main">
+<div class="sol-wrap">
+
+  <div id="cargando" class="cargando">Preparando tu solicitud…</div>
+
+  <div id="app" class="oculto">
+    <ol class="pasos" id="pasos">
+      <li data-p="1">1. Tu web <span>Qué necesitas</span></li>
+      <li data-p="2">2. Tus datos <span>Contacto y facturación</span></li>
+      <li data-p="3">3. El contenido <span>Lo que hace falta</span></li>
+      <li data-p="4">4. Condiciones <span>Contrato y RGPD</span></li>
+      <li data-p="5">5. Pago <span>Con tarjeta</span></li>
+    </ol>
+
+    <div id="aviso" class="aviso malo"></div>
+
+    <!-- ── Paso 1 ─────────────────────────────────────────────────── -->
+    <section class="paso" data-paso="1">
+      <h1>Cuéntanos qué web quieres</h1>
+      <p class="sub">Cinco minutos ahora nos ahorran una semana de correos después. Puedes dejarlo a medias: guardamos todo y te damos un enlace para volver.</p>
+
+      <fieldset class="grupo">
+        <legend>Qué contratas</legend>
+        <div class="opciones fila" id="producto-ops"></div>
+      </fieldset>
+
+      <fieldset class="grupo">
+        <legend>Identidad básica</legend>
+        <div class="campos">
+          <div class="campo">
+            <label class="req" for="f-nombre">Nombre comercial</label>
+            <input type="text" id="f-nombre" data-k="web.nombreComercial" required maxlength="120" autocomplete="organization">
+            <span class="ayuda">El nombre con el que te conocen tus clientes.</span>
+            <span class="error">Necesitamos el nombre del negocio.</span>
+          </div>
+          <div class="campo">
+            <label for="f-ano">Año de fundación</label>
+            <input type="text" id="f-ano" data-k="web.anoFundacion" maxlength="4" inputmode="numeric" placeholder="2018">
+            <span class="ayuda">Si el negocio es nuevo, déjalo en blanco.</span>
+          </div>
+          <div class="campo ancho">
+            <label class="req" for="f-tipo">¿A qué se dedica? En una o dos frases</label>
+            <textarea id="f-tipo" data-k="web.tipoNegocio" required maxlength="600" placeholder="Despacho de abogados en Badalona. Asesoramiento a particulares y empresas en derecho laboral, civil y mercantil."></textarea>
+            <span class="ayuda">Con esto redactamos la descripción larga y las páginas de cada servicio.</span>
+            <span class="error">Cuéntanos en una frase a qué te dedicas.</span>
+          </div>
+          <div class="campo">
+            <label for="f-gerente">Nombre del gerente o responsable</label>
+            <input type="text" id="f-gerente" data-k="web.gerenteNombre" maxlength="120">
+            <span class="ayuda">Aparecerá como cara visible del negocio.</span>
+          </div>
+          <div class="campo">
+            <label for="f-anos-exp">Años de experiencia en el oficio</label>
+            <input type="text" id="f-anos-exp" data-k="web.anosExperiencia" maxlength="40" placeholder="Más de 20">
+            <span class="ayuda">Solo si es cierto y lo puedes sostener.</span>
+          </div>
+        </div>
+      </fieldset>
+
+      <fieldset class="grupo">
+        <legend>Dominio</legend>
+        <div class="campos">
+          <div class="campo ancho">
+            <div class="opciones fila">
+              <label class="opcion"><input type="radio" name="dom" value="nuevo" data-k="web.dominioEstado" checked><span><b>Quiero uno nuevo</b><small>Lo registramos y lo pagamos el primer año</small></span></label>
+              <label class="opcion"><input type="radio" name="dom" value="tengo" data-k="web.dominioEstado"><span><b>Ya tengo dominio</b><small>Lo apuntamos a nuestro alojamiento</small></span></label>
+            </div>
+          </div>
+          <div class="campo ancho">
+            <label class="req" for="f-dominio">Dominio que quieres</label>
+            <input type="text" id="f-dominio" data-k="web.dominio" required maxlength="120" placeholder="miNegocio.es" autocomplete="off">
+            <span class="ayuda">Si aún no está libre te proponemos alternativas antes de registrar nada.</span>
+            <span class="error">Dinos qué dominio quieres, aunque sea una idea.</span>
+          </div>
+          <div class="campo ancho">
+            <label>Idiomas de la web</label>
+            <div class="opciones fila">
+              <label class="opcion"><input type="checkbox" value="es" data-k="web.idiomas" checked><span><b>Castellano</b></span></label>
+              <label class="opcion"><input type="checkbox" value="ca" data-k="web.idiomas"><span><b>Catalán</b></span></label>
+              <label class="opcion"><input type="checkbox" value="en" data-k="web.idiomas"><span><b>Inglés</b></span></label>
+              <label class="opcion"><input type="checkbox" value="otros" data-k="web.idiomas"><span><b>Otro</b><small>Dínoslo en las notas</small></span></label>
+            </div>
+          </div>
+          <div class="campo ancho">
+            <label for="f-refs">Webs que te gustan</label>
+            <textarea id="f-refs" data-k="web.referencias" maxlength="1200" placeholder="https://... y qué te gusta de cada una"></textarea>
+            <span class="ayuda">No copiamos nada, pero saber qué te gusta acelera el diseño.</span>
+          </div>
+        </div>
+      </fieldset>
+
+      <div class="barra">
+        <span class="guardado" id="guardado1"></span>
+        <button type="button" class="btn btn-primary" data-siguiente="2">Continuar</button>
+      </div>
+    </section>
+
+    <!-- ── Paso 2 ─────────────────────────────────────────────────── -->
+    <section class="paso" data-paso="2">
+      <h1>Tus datos</h1>
+      <p class="sub">Los necesitamos para el contrato y la factura. No se usan para nada más y no se ceden a nadie.</p>
+
+      <fieldset class="grupo">
+        <legend>Persona de contacto</legend>
+        <div class="campos">
+          <div class="campo">
+            <label class="req" for="c-nombre">Nombre</label>
+            <input type="text" id="c-nombre" data-k="contacto.nombre" required maxlength="80" autocomplete="given-name">
+            <span class="error">Falta tu nombre.</span>
+          </div>
+          <div class="campo">
+            <label class="req" for="c-apellidos">Apellidos</label>
+            <input type="text" id="c-apellidos" data-k="contacto.apellidos" required maxlength="120" autocomplete="family-name">
+            <span class="error">Faltan tus apellidos.</span>
+          </div>
+          <div class="campo">
+            <label class="req" for="c-email">Correo electrónico</label>
+            <input type="email" id="c-email" data-k="contacto.email" required maxlength="160" autocomplete="email">
+            <span class="ayuda">Aquí te mandamos el enlace para retomar y la factura.</span>
+            <span class="error">Revisa el correo: no parece válido.</span>
+          </div>
+          <div class="campo">
+            <label class="req" for="c-tel">Teléfono</label>
+            <input type="tel" id="c-tel" data-k="contacto.telefono" required maxlength="30" autocomplete="tel">
+            <span class="error">Falta un teléfono de contacto.</span>
+          </div>
+          <div class="campo ancho">
+            <label class="req" for="c-dni">DNI, NIE o NIF de quien contrata</label>
+            <input type="text" id="c-dni" data-k="contacto.dni" required maxlength="20">
+            <span class="ayuda">Obligatorio para el contrato y la factura.</span>
+            <span class="error">Necesitamos el documento de identidad o el NIF.</span>
+          </div>
+        </div>
+      </fieldset>
+
+      <fieldset class="grupo">
+        <legend>Cómo facturamos</legend>
+        <div class="campos">
+          <div class="campo ancho">
+            <div class="opciones fila">
+              <label class="opcion"><input type="radio" name="fact" value="particular" data-k="facturacion.tipo" checked><span><b>Particular</b><small>Factura a tu nombre</small></span></label>
+              <label class="opcion"><input type="radio" name="fact" value="autonomo" data-k="facturacion.tipo"><span><b>Autónomo</b><small>Con tu NIF</small></span></label>
+              <label class="opcion"><input type="radio" name="fact" value="empresa" data-k="facturacion.tipo"><span><b>Empresa</b><small>Con CIF y razón social</small></span></label>
+            </div>
+          </div>
+          <div class="campo ancho fact-empresa oculto">
+            <label class="req" for="fa-razon">Razón social</label>
+            <input type="text" id="fa-razon" data-k="facturacion.razonSocial" maxlength="160">
+            <span class="error">Falta la razón social.</span>
+          </div>
+          <div class="campo fact-empresa fact-autonomo oculto">
+            <label class="req" for="fa-nif">CIF o NIF fiscal</label>
+            <input type="text" id="fa-nif" data-k="facturacion.nif" maxlength="20">
+            <span class="error">Falta el CIF o NIF.</span>
+          </div>
+          <div class="campo fact-empresa oculto">
+            <label for="fa-rep">Representante que firma</label>
+            <input type="text" id="fa-rep" data-k="facturacion.representante" maxlength="160">
+          </div>
+          <div class="campo fact-autonomo oculto">
+            <label for="fa-epigrafe">Epígrafe de actividad</label>
+            <input type="text" id="fa-epigrafe" data-k="facturacion.epigrafe" maxlength="80">
+            <span class="ayuda">Opcional. Si no lo sabes, lo dejamos en blanco.</span>
+          </div>
+          <div class="campo ancho">
+            <label class="req" for="fa-dir">Dirección fiscal</label>
+            <input type="text" id="fa-dir" data-k="facturacion.direccion" required maxlength="180" autocomplete="street-address">
+            <span class="error">Falta la dirección para la factura.</span>
+          </div>
+          <div class="campo">
+            <label class="req" for="fa-cp">Código postal</label>
+            <input type="text" id="fa-cp" data-k="facturacion.cp" required maxlength="10" autocomplete="postal-code">
+            <span class="error">Falta el código postal.</span>
+          </div>
+          <div class="campo">
+            <label class="req" for="fa-loc">Localidad</label>
+            <input type="text" id="fa-loc" data-k="facturacion.localidad" required maxlength="80">
+            <span class="error">Falta la localidad.</span>
+          </div>
+          <div class="campo">
+            <label class="req" for="fa-prov">Provincia</label>
+            <input type="text" id="fa-prov" data-k="facturacion.provincia" required maxlength="80">
+            <span class="error">Falta la provincia.</span>
+          </div>
+          <div class="campo">
+            <label for="fa-pais">País</label>
+            <input type="text" id="fa-pais" data-k="facturacion.pais" maxlength="60" value="España">
+          </div>
+        </div>
+      </fieldset>
+
+      <div class="barra">
+        <button type="button" class="btn btn-ghost" data-anterior="1">Atrás</button>
+        <span class="guardado" id="guardado2"></span>
+        <button type="button" class="btn btn-primary" data-siguiente="3">Continuar</button>
+      </div>
+    </section>
+
+    <!-- ── Paso 3 ─────────────────────────────────────────────────── -->
+    <section class="paso" data-paso="3">
+      <h1>Lo que necesitamos para crear la web</h1>
+      <p class="sub">Esta es la parte que más se nota en el resultado. Rellena lo que sepas: lo que falte lo preguntamos, y lo que se pueda deducir lo escribimos nosotros.</p>
+
+      <div class="nosotros">
+        <h3>Esto lo hacemos nosotros, no hace falta que lo escribas</h3>
+        <ul>
+          <li>La descripción larga del negocio y el texto de cada servicio.</li>
+          <li>La trayectoria del responsable, a partir de los datos que nos des.</li>
+          <li>La palabra clave principal y las secundarias, con su estudio de demanda.</li>
+          <li>El análisis de los cinco competidores que mejor posicionan en tu zona.</li>
+          <li>Los textos legales, el aviso de cookies y la página de privacidad.</li>
+        </ul>
+      </div>
+
+      <fieldset class="grupo">
+        <legend>Servicios y diferencial</legend>
+        <div class="campos">
+          <div class="campo ancho">
+            <label class="req" for="n-servicios">Servicios que ofreces, uno por línea</label>
+            <textarea id="n-servicios" data-k="negocio.servicios" required maxlength="2000" placeholder="Derecho laboral&#10;Derecho civil&#10;Herencias y sucesiones&#10;Reclamaciones bancarias"></textarea>
+            <span class="ayuda">Ponlos por orden de importancia para ti. Cada uno tendrá su página.</span>
+            <span class="error">Necesitamos al menos los servicios principales.</span>
+          </div>
+          <div class="campo ancho">
+            <label class="req" for="n-dif">¿Qué te hace distinto de la competencia?</label>
+            <textarea id="n-dif" data-k="negocio.diferencial" required maxlength="1200" placeholder="Primera consulta sin coste, respuesta en 24 h, atención en catalán y castellano…"></textarea>
+            <span class="error">Esto es lo que más vende: cuéntanos algo.</span>
+          </div>
+          <div class="campo">
+            <label for="n-marcas">Marcas o productos con los que trabajas</label>
+            <textarea id="n-marcas" data-k="negocio.marcas" maxlength="800"></textarea>
+            <span class="ayuda">Si procede, hacemos una página por marca.</span>
+          </div>
+          <div class="campo">
+            <label for="n-cert">Certificaciones o titulaciones</label>
+            <textarea id="n-cert" data-k="negocio.certificaciones" maxlength="800"></textarea>
+            <span class="ayuda">Solo las que se pueden acreditar.</span>
+          </div>
+          <div class="campo">
+            <label for="n-dato">Un dato real de tu actividad</label>
+            <input type="text" id="n-dato" data-k="negocio.datoActividad" maxlength="160" placeholder="Más de 300 expedientes al año">
+            <span class="ayuda">Que sea verdad y lo puedas sostener si alguien pregunta.</span>
+          </div>
+          <div class="campo">
+            <label for="n-precios">Precios que podemos publicar</label>
+            <input type="text" id="n-precios" data-k="negocio.precios" maxlength="200" placeholder="Consulta inicial 60 € · Desde 300 € el trámite">
+            <span class="ayuda">Publicar precios sube mucho la conversión. Si prefieres no ponerlos, déjalo vacío.</span>
+          </div>
+          <div class="campo ancho">
+            <label class="req" for="n-zonas">Zonas donde trabajas</label>
+            <textarea id="n-zonas" data-k="negocio.zonas" required maxlength="1200" placeholder="Badalona, Santa Coloma, Sant Adrià y Barcelona"></textarea>
+            <span class="ayuda">Barrios, distritos o municipios. De aquí salen las páginas de zona.</span>
+            <span class="error">Dinos al menos la ciudad donde trabajas.</span>
+          </div>
+        </div>
+      </fieldset>
+
+      <fieldset class="grupo">
+        <legend>Contacto y ubicación que saldrán publicados</legend>
+        <div class="campos">
+          <div class="campo">
+            <label class="req" for="p-tel">Teléfono público</label>
+            <input type="tel" id="p-tel" data-k="contactoWeb.telefono" required maxlength="30">
+            <span class="error">Falta el teléfono que quieres publicar.</span>
+          </div>
+          <div class="campo">
+            <label class="req" for="p-email">Correo público</label>
+            <input type="email" id="p-email" data-k="contactoWeb.email" required maxlength="160">
+            <span class="ayuda">Si aún no lo tienes, te creamos uno con tu dominio.</span>
+            <span class="error">Falta el correo que quieres publicar.</span>
+          </div>
+          <div class="campo ancho">
+            <label>WhatsApp</label>
+            <div class="opciones fila">
+              <label class="opcion"><input type="radio" name="wa" value="mismo" data-k="contactoWeb.whatsappEstado" checked><span><b>El mismo teléfono</b></span></label>
+              <label class="opcion"><input type="radio" name="wa" value="otro" data-k="contactoWeb.whatsappEstado"><span><b>Otro número</b></span></label>
+              <label class="opcion"><input type="radio" name="wa" value="no" data-k="contactoWeb.whatsappEstado"><span><b>Sin WhatsApp</b></span></label>
+            </div>
+          </div>
+          <div class="campo ancho">
+            <label for="p-wa">Número de WhatsApp</label>
+            <input type="tel" id="p-wa" data-k="contactoWeb.whatsapp" maxlength="30">
+          </div>
+          <div class="campo ancho">
+            <label for="p-dir">Dirección que se publica</label>
+            <input type="text" id="p-dir" data-k="contactoWeb.direccion" maxlength="180">
+            <span class="ayuda">Si trabajas sin local abierto al público, déjalo en blanco y publicamos solo la zona.</span>
+          </div>
+          <div class="campo">
+            <label class="req" for="p-ciudad">Ciudad</label>
+            <input type="text" id="p-ciudad" data-k="contactoWeb.ciudad" required maxlength="80">
+            <span class="error">Falta la ciudad.</span>
+          </div>
+          <div class="campo">
+            <label for="p-barrio">Barrio o zona</label>
+            <input type="text" id="p-barrio" data-k="contactoWeb.barrio" maxlength="80">
+          </div>
+          <div class="campo">
+            <label for="p-cp">Código postal</label>
+            <input type="text" id="p-cp" data-k="contactoWeb.cp" maxlength="10">
+          </div>
+          <div class="campo">
+            <label for="p-prov">Provincia</label>
+            <input type="text" id="p-prov" data-k="contactoWeb.provincia" maxlength="80">
+          </div>
+          <div class="campo ancho">
+            <label class="req" for="p-horario">Horario de atención</label>
+            <input type="text" id="p-horario" data-k="contactoWeb.horario" required maxlength="200" placeholder="Lunes a viernes de 9:00 a 19:00; sábados de 9:00 a 14:00">
+            <span class="error">Falta el horario.</span>
+          </div>
+          <div class="campo ancho">
+            <label for="p-gps">Coordenadas exactas</label>
+            <input type="text" id="p-gps" data-k="contactoWeb.coordenadas" maxlength="60" placeholder="41.4500, 2.2470">
+            <span class="ayuda">Opcional. Si no las tienes, las buscamos por la dirección.</span>
+          </div>
+        </div>
+      </fieldset>
+
+      <fieldset class="grupo">
+        <legend>Reputación, redes y marca</legend>
+        <div class="campos">
+          <div class="campo ancho">
+            <label for="r-gbp">Ficha de Google de tu negocio</label>
+            <input type="url" id="r-gbp" data-k="recursos.gbpUrl" maxlength="300" placeholder="https://maps.app.goo.gl/…">
+            <span class="ayuda">Si no la tienes, te ayudamos a crearla. Sin ficha no aparecerás en el mapa.</span>
+          </div>
+          <div class="campo">
+            <label for="r-resenas">Nota media y número de reseñas</label>
+            <input type="text" id="r-resenas" data-k="recursos.resenas" maxlength="60" placeholder="4,8 con 112 reseñas">
+            <span class="ayuda">Solo lo publicamos si existe la ficha que lo respalda.</span>
+          </div>
+          <div class="campo">
+            <label for="r-redes">Redes sociales</label>
+            <textarea id="r-redes" data-k="recursos.redes" maxlength="600" placeholder="https://instagram.com/…"></textarea>
+          </div>
+          <div class="campo ancho">
+            <label>Logotipo</label>
+            <div class="opciones fila">
+              <label class="opcion"><input type="radio" name="logo" value="tengo" data-k="recursos.logoEstado" checked><span><b>Tengo logotipo</b><small>Te lo hacemos llegar</small></span></label>
+              <label class="opcion"><input type="radio" name="logo" value="iniciales" data-k="recursos.logoEstado"><span><b>Usad las iniciales</b><small>Con fondo de color</small></span></label>
+              <label class="opcion"><input type="radio" name="logo" value="nuevo" data-k="recursos.logoEstado"><span><b>Diseñádmelo</b><small>Incluido en el paquete</small></span></label>
+            </div>
+          </div>
+          <div class="campo ancho">
+            <label for="r-colores">Colores corporativos</label>
+            <input type="text" id="r-colores" data-k="recursos.colores" maxlength="120" placeholder="#1F3A5F y #C9A227, o «decidid vosotros»">
+            <span class="ayuda">Si lo dejas en nuestras manos, elegimos una paleta acorde a tu sector.</span>
+          </div>
+          <div class="campo">
+            <label for="r-gtm">Etiqueta de Google Tag Manager</label>
+            <input type="text" id="r-gtm" data-k="recursos.gtm" maxlength="40" placeholder="GTM-XXXXXXX">
+            <span class="ayuda">Opcional. Si no tienes, la creamos nosotros.</span>
+          </div>
+          <div class="campo">
+            <label for="r-ga4">Identificador de Google Analytics</label>
+            <input type="text" id="r-ga4" data-k="recursos.ga4" maxlength="40" placeholder="G-XXXXXXXXXX">
+          </div>
+        </div>
+      </fieldset>
+
+      <fieldset class="grupo tienda oculto">
+        <legend>Tu tienda online</legend>
+        <div class="campos">
+          <div class="campo">
+            <label for="t-num">¿Cuántos productos vas a vender?</label>
+            <input type="text" id="t-num" data-k="tienda.numProductos" maxlength="40" placeholder="Unos 40">
+          </div>
+          <div class="campo">
+            <label for="t-cat">Categorías del catálogo</label>
+            <input type="text" id="t-cat" data-k="tienda.categorias" maxlength="200">
+          </div>
+          <div class="campo ancho">
+            <label for="t-fichas">¿Tienes ya fotos y descripciones de producto?</label>
+            <textarea id="t-fichas" data-k="tienda.fichas" maxlength="800" placeholder="Tengo fotos de todo y descripciones de la mitad"></textarea>
+          </div>
+          <div class="campo ancho">
+            <label for="t-envios">Cómo quieres cobrar los envíos</label>
+            <textarea id="t-envios" data-k="tienda.envios" maxlength="800" placeholder="4,95 € en península, gratis a partir de 60 €, recogida en tienda"></textarea>
+          </div>
+          <div class="campo ancho">
+            <label for="t-pago">Formas de pago que quieres aceptar</label>
+            <input type="text" id="t-pago" data-k="tienda.pago" maxlength="200" placeholder="Tarjeta, Bizum y transferencia">
+            <span class="ayuda">Dejamos la pasarela configurada; la cuenta de cobro es tuya.</span>
+          </div>
+        </div>
+      </fieldset>
+
+      <fieldset class="grupo">
+        <legend>Últimos detalles</legend>
+        <div class="campos">
+          <div class="campo ancho">
+            <label for="x-comp">Competidores que te preocupan</label>
+            <textarea id="x-comp" data-k="extras.competidores" maxlength="800" placeholder="Nombres o webs"></textarea>
+            <span class="ayuda">Opcional. Nosotros analizamos los cinco que mejor posicionan, pero si sabes quién es tu rival directo, mejor.</span>
+          </div>
+          <div class="campo ancho">
+            <label>¿Cómo nos harás llegar el logotipo y las fotos?</label>
+            <div class="opciones fila">
+              <label class="opcion"><input type="radio" name="mat" value="whatsapp" data-k="extras.materialVia" checked><span><b>Por WhatsApp</b></span></label>
+              <label class="opcion"><input type="radio" name="mat" value="email" data-k="extras.materialVia"><span><b>Por correo</b></span></label>
+              <label class="opcion"><input type="radio" name="mat" value="enlace" data-k="extras.materialVia"><span><b>Con un enlace</b><small>Drive, WeTransfer…</small></span></label>
+              <label class="opcion"><input type="radio" name="mat" value="nada" data-k="extras.materialVia"><span><b>No tengo material</b><small>Usamos imágenes propias</small></span></label>
+            </div>
+          </div>
+          <div class="campo ancho">
+            <label for="x-enlace">Enlace al material</label>
+            <input type="url" id="x-enlace" data-k="extras.materialEnlace" maxlength="400" placeholder="https://…">
+          </div>
+          <div class="campo ancho">
+            <label for="x-notas">Cualquier cosa que debamos saber</label>
+            <textarea id="x-notas" data-k="extras.notas" maxlength="2000" placeholder="Tono, cosas que no queremos decir, plazos, idiomas concretos…"></textarea>
+          </div>
+        </div>
+      </fieldset>
+
+      <div class="barra">
+        <button type="button" class="btn btn-ghost" data-anterior="2">Atrás</button>
+        <span class="guardado" id="guardado3"></span>
+        <button type="button" class="btn btn-primary" data-siguiente="4">Ir a las condiciones</button>
+      </div>
+    </section>
+
+    <!-- ── Paso 4 ─────────────────────────────────────────────────── -->
+    <section class="paso" data-paso="4">
+      <h1>Condiciones de contratación</h1>
+      <p class="sub">Escritas para que se entiendan. Aquí está qué entregamos, de quién es la web, cómo tratamos tus datos y qué cuesta el mantenimiento a partir del segundo año.</p>
+
+      <div class="contrato" id="contrato">Cargando las condiciones…</div>
+
+      <div class="aceptos">
+        <label class="acepto"><input type="checkbox" id="ac-cond"> <span>He leído y acepto las <b>condiciones de contratación</b>, incluida la cesión de la web a mi nombre y el derecho de desistimiento.</span></label>
+        <label class="acepto"><input type="checkbox" id="ac-datos"> <span>Acepto la <b>información sobre protección de datos</b> del apartado 8 y que se traten mis datos para prestar el servicio y facturarlo.</span></label>
+        <label class="acepto"><input type="checkbox" id="ac-cargo"> <span>Autorizo el <b>cargo anual de 29 € + IVA a partir del segundo año</b> con la misma tarjeta, de forma indefinida y cancelable con quince días de aviso.</span></label>
+      </div>
+      <p class="ayuda" style="font-size:14px;color:#6b7280;margin-bottom:18px">Guardamos una copia del texto que aceptas, con la fecha y la hora, y te la mandamos por correo.</p>
+
+      <div class="barra">
+        <button type="button" class="btn btn-ghost" data-anterior="3">Atrás</button>
+        <span class="guardado" id="guardado4"></span>
+        <button type="button" class="btn btn-primary" id="btn-aceptar">Acepto y continúo al pago</button>
+      </div>
+    </section>
+
+    <!-- ── Paso 5 ─────────────────────────────────────────────────── -->
+    <section class="paso" data-paso="5">
+      <h1>Pago</h1>
+      <p class="sub">El cobro lo procesa Stripe. Nosotros no vemos ni guardamos los datos de tu tarjeta en ningún momento.</p>
+
+      <div class="resumen" id="resumen"></div>
+
+      <div class="aviso bueno ver" style="margin-bottom:22px">
+        <strong>Qué pasa después de pagar.</strong> Revisamos tu solicitud el mismo día laborable, te escribimos si falta algo y empezamos. El plazo de entrega cuenta desde que tenemos el pago y toda la información.
+      </div>
+
+      <div class="barra">
+        <button type="button" class="btn btn-ghost" data-anterior="4">Atrás</button>
+        <span class="guardado" id="guardado5"></span>
+        <button type="button" class="btn btn-primary" id="btn-pagar">Pagar con tarjeta</button>
+      </div>
+    </section>
+
+    <!-- ── Pagado ─────────────────────────────────────────────────── -->
+    <section class="paso" data-paso="6">
+      <div class="hecho">
+        <div class="tic">✅</div>
+        <h1>Pago recibido</h1>
+        <p>Ya está todo. Te hemos mandado el justificante al correo y empezamos con tu web hoy mismo si es día laborable.</p>
+        <p>Si nos falta algo de la información te escribimos; si no, lo siguiente que recibirás es tu web para revisar.</p>
+        <p style="margin-top:24px"><a class="btn btn-primary" href="../../">Volver a la web</a></p>
+      </div>
+    </section>
+
+    <div class="retomar" id="retomar">
+      <h3>Tu enlace para volver</h3>
+      <p>Guarda este enlace. Con él retomas la solicitud donde la dejaste, desde cualquier dispositivo. También te lo hemos mandado al correo.</p>
+      <div class="retomar-fila">
+        <input type="text" id="enlace" readonly>
+        <button type="button" id="btn-copiar">Copiar</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+</main>
+
+<footer style="background:var(--ink);color:#9ca3af;padding:28px 0;font-size:14.5px">
+  <div class="sol-wrap" style="display:flex;gap:16px;flex-wrap:wrap;justify-content:space-between">
+    <span>© <span id="anio">2026</span> TuWebPor99</span>
+    <span style="display:flex;gap:16px;flex-wrap:wrap">
+      <a href="../../aviso-legal/" style="color:#9ca3af">Aviso legal</a>
+      <a href="../../privacidad/" style="color:#9ca3af">Privacidad</a>
+      <a href="../../contacto/" style="color:#9ca3af">Contacto</a>
+    </span>
+  </div>
+</footer>
+
+<script src="solicitud.js"></script>
+</body>
+</html>
