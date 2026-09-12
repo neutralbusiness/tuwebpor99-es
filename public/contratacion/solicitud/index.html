@@ -25,18 +25,18 @@
 .sol-main{padding:34px 0 90px}
 
 /* Pasos */
-.pasos{display:flex;gap:6px;margin:0 0 26px;list-style:none;flex-wrap:wrap}
-.pasos li{flex:1 1 120px;font-family:'Barlow Condensed',sans-serif;font-weight:700;text-transform:uppercase;
+.sol-pasos{display:flex;gap:6px;margin:0 0 26px;list-style:none;flex-wrap:wrap}
+.sol-pasos li{flex:1 1 120px;font-family:'Barlow Condensed',sans-serif;font-weight:700;text-transform:uppercase;
   letter-spacing:.04em;font-size:14px;color:var(--muted);border-top:4px solid var(--line);padding-top:9px}
-.pasos li.on{color:var(--accent-ink);border-top-color:var(--accent)}
-.pasos li.ok{color:var(--accent-dark);border-top-color:var(--accent-dark)}
-.pasos li span{display:block;font-family:'Barlow',sans-serif;font-weight:600;font-size:12px;letter-spacing:0;text-transform:none;color:var(--muted)}
+.sol-pasos li.on{color:var(--accent-ink);border-top-color:var(--accent)}
+.sol-pasos li.ok{color:var(--accent-dark);border-top-color:var(--accent-dark)}
+.sol-pasos li span{display:block;font-family:'Barlow',sans-serif;font-weight:600;font-size:12px;letter-spacing:0;text-transform:none;color:var(--muted)}
 
 /* Tarjeta de paso */
-.paso{display:none;background:#fff;border:1px solid var(--line);border-radius:14px;padding:clamp(20px,3vw,34px)}
-.paso.on{display:block}
-.paso h1{font-size:clamp(30px,4vw,42px);font-weight:800;margin-bottom:8px}
-.paso h1+p.sub{font-size:18px;color:var(--muted);margin-bottom:26px;max-width:60ch}
+.sol-paso{display:none;background:#fff;border:1px solid var(--line);border-radius:14px;padding:clamp(20px,3vw,34px)}
+.sol-paso.on{display:block}
+.sol-paso h1{font-size:clamp(30px,4vw,42px);font-weight:800;margin-bottom:8px}
+.sol-paso h1+p.sol-sub{font-size:18px;color:var(--muted);margin-bottom:26px;max-width:60ch}
 .grupo{border:0;margin:0 0 26px;padding:0}
 .grupo>legend{font-family:'Barlow Condensed',sans-serif;font-weight:700;text-transform:uppercase;letter-spacing:.06em;
   font-size:17px;color:var(--accent-ink);border-bottom:1px solid var(--tint2);width:100%;padding-bottom:7px;margin-bottom:16px}
@@ -112,7 +112,7 @@
 .oculto{display:none !important}
 @media(max-width:720px){
   .campos{grid-template-columns:1fr}
-  .pasos li span{display:none}
+  .sol-pasos li span{display:none}
   .sol-head .tel{display:none}
 }
 </style>
@@ -132,7 +132,7 @@
   <div id="cargando" class="cargando">Preparando tu solicitud…</div>
 
   <div id="app" class="oculto">
-    <ol class="pasos" id="pasos">
+    <ol class="sol-pasos" id="sol-pasos">
       <li data-p="1">1. Tu web <span>Qué necesitas</span></li>
       <li data-p="2">2. Tus datos <span>Contacto y facturación</span></li>
       <li data-p="3">3. El contenido <span>Lo que hace falta</span></li>
@@ -143,9 +143,9 @@
     <div id="aviso" class="aviso malo"></div>
 
     <!-- ── Paso 1 ─────────────────────────────────────────────────── -->
-    <section class="paso" data-paso="1">
+    <section class="sol-paso" data-paso="1">
       <h1>Cuéntanos qué web quieres</h1>
-      <p class="sub">Cinco minutos ahora nos ahorran una semana de correos después. Puedes dejarlo a medias: guardamos todo y te damos un enlace para volver.</p>
+      <p class="sol-sub">Cinco minutos ahora nos ahorran una semana de correos después. Puedes dejarlo a medias: guardamos todo y te damos un enlace para volver.</p>
 
       <fieldset class="grupo">
         <legend>Qué contratas</legend>
@@ -224,9 +224,9 @@
     </section>
 
     <!-- ── Paso 2 ─────────────────────────────────────────────────── -->
-    <section class="paso" data-paso="2">
+    <section class="sol-paso" data-paso="2">
       <h1>Tus datos</h1>
-      <p class="sub">Los necesitamos para el contrato y la factura. No se usan para nada más y no se ceden a nadie.</p>
+      <p class="sol-sub">Los necesitamos para el contrato y la factura. No se usan para nada más y no se ceden a nadie.</p>
 
       <fieldset class="grupo">
         <legend>Persona de contacto</legend>
@@ -325,9 +325,9 @@
     </section>
 
     <!-- ── Paso 3 ─────────────────────────────────────────────────── -->
-    <section class="paso" data-paso="3">
+    <section class="sol-paso" data-paso="3">
       <h1>Lo que necesitamos para crear la web</h1>
-      <p class="sub">Esta es la parte que más se nota en el resultado. Rellena lo que sepas: lo que falte lo preguntamos, y lo que se pueda deducir lo escribimos nosotros.</p>
+      <p class="sol-sub">Esta es la parte que más se nota en el resultado. Rellena lo que sepas: lo que falte lo preguntamos, y lo que se pueda deducir lo escribimos nosotros.</p>
 
       <div class="nosotros">
         <h3>Esto lo hacemos nosotros, no hace falta que lo escribas</h3>
@@ -549,9 +549,9 @@
     </section>
 
     <!-- ── Paso 4 ─────────────────────────────────────────────────── -->
-    <section class="paso" data-paso="4">
+    <section class="sol-paso" data-paso="4">
       <h1>Condiciones de contratación</h1>
-      <p class="sub">Escritas para que se entiendan. Aquí está qué entregamos, de quién es la web, cómo tratamos tus datos y qué cuesta el mantenimiento a partir del segundo año.</p>
+      <p class="sol-sub">Escritas para que se entiendan. Aquí está qué entregamos, de quién es la web, cómo tratamos tus datos y qué cuesta el mantenimiento a partir del segundo año.</p>
 
       <div class="contrato" id="contrato">Cargando las condiciones…</div>
 
@@ -570,9 +570,9 @@
     </section>
 
     <!-- ── Paso 5 ─────────────────────────────────────────────────── -->
-    <section class="paso" data-paso="5">
+    <section class="sol-paso" data-paso="5">
       <h1>Pago</h1>
-      <p class="sub">El cobro lo procesa Stripe. Nosotros no vemos ni guardamos los datos de tu tarjeta en ningún momento.</p>
+      <p class="sol-sub">El cobro lo procesa Stripe. Nosotros no vemos ni guardamos los datos de tu tarjeta en ningún momento.</p>
 
       <div class="resumen" id="resumen"></div>
 
@@ -588,7 +588,7 @@
     </section>
 
     <!-- ── Pagado ─────────────────────────────────────────────────── -->
-    <section class="paso" data-paso="6">
+    <section class="sol-paso" data-paso="6">
       <div class="hecho">
         <div class="tic">✅</div>
         <h1>Pago recibido</h1>

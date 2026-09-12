@@ -114,7 +114,7 @@
   }
 
   function validaPaso(n) {
-    var seccion = $('.paso[data-paso="' + n + '"]');
+    var seccion = $('.sol-paso[data-paso="' + n + '"]');
     var malos = [];
     $$("[required]", seccion).forEach(function (el) {
       var campo = el.closest(".campo");
@@ -140,14 +140,14 @@
   function irA(n, sinValidar) {
     if (n > pasoActual && !sinValidar && !validaPaso(pasoActual)) return;
     pasoActual = n;
-    $$(".paso").forEach(function (s) { s.classList.toggle("on", Number(s.dataset.paso) === n); });
+    $$(".sol-paso").forEach(function (s) { s.classList.toggle("on", Number(s.dataset.sol-paso) === n); });
     $$("#pasos li").forEach(function (li) {
       var p = Number(li.dataset.p);
       li.classList.toggle("on", p === n);
       li.classList.toggle("ok", p < n);
     });
     $("#retomar").classList.toggle("oculto", n >= 6);
-    $("#pasos").classList.toggle("oculto", n >= 6);
+    $("#sol-pasos").classList.toggle("oculto", n >= 6);
     window.scrollTo({ top: 0, behavior: "smooth" });
     if (n === 4) cargaContrato();
     if (n === 5) pintaResumen();
