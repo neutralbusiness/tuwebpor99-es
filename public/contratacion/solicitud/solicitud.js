@@ -140,7 +140,7 @@
   function irA(n, sinValidar) {
     if (n > pasoActual && !sinValidar && !validaPaso(pasoActual)) return;
     pasoActual = n;
-    $$(".sol-paso").forEach(function (s) { s.classList.toggle("on", Number(s.dataset.sol-paso) === n); });
+    $$(".sol-paso").forEach(function (s) { s.classList.toggle("on", Number(s.dataset.paso) === n); });
     $$("#pasos li").forEach(function (li) {
       var p = Number(li.dataset.p);
       li.classList.toggle("on", p === n);
