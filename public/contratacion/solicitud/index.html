@@ -622,6 +622,36 @@
   </div>
 </footer>
 
+<script>
+/* Las cadenas que necesita el JS. Cada idioma define las suyas y el script
+   es el mismo, para no arreglar cada fallo dos veces. */
+window.SOL_CFG = {
+  locale: "es",
+  productos: {
+    web:  { titulo: "Web profesional", precio: 9900,  nota: "Diseño a medida, SEO completo, 10 artículos, dominio y correo" },
+    shop: { titulo: "Tienda online",   precio: 27000, nota: "Todo lo de la web más catálogo, carrito y pasarela de pago" }
+  },
+  textos: {
+    guardando: "Guardando…", guardado: "Guardado", sinGuardar: "Cambios sin guardar",
+    errorRed: "No hemos podido conectar. Inténtalo otra vez.",
+    camposMal: "Revisa los campos marcados en rojo: son los que necesitamos para seguir.",
+    cambioProducto: "Cambiar de producto empieza una solicitud nueva. ¿Seguimos?",
+    contratoError: "No hemos podido cargar las condiciones:",
+    faltanCasillas: "Para continuar hay que marcar las tres casillas. La del cargo anual es obligatoria porque autoriza un cobro recurrente.",
+    registrando: "Registrando…", aceptar: "Acepto y continúo al pago",
+    abriendoPago: "Abriendo el pago…", pagar: "Pagar con tarjeta",
+    copiar: "Copiar", copiado: "Copiado",
+    pagoKo: "El pago no se ha completado. Puedes volver a intentarlo cuando quieras: tu solicitud sigue guardada.",
+    pagoConfirmando: "Estamos confirmando el pago con el banco. En cuanto nos llegue te mandamos el justificante por correo.",
+    noEncontrada: "No encontramos esa solicitud. Puede que el enlace esté incompleto.",
+    empezarDeNuevo: "Empezar de nuevo", noAbrir: "No hemos podido abrir la solicitud:", volver: "Volver",
+    iva: "IVA {pct} %", primerAno: "Primer año de dominio, alojamiento, correo y mantenimiento",
+    incluido: "Incluido", segundoAno: "A partir del segundo año", masIva: " + IVA al año",
+    masIvaCorto: " + IVA", totalHoy: "Total a pagar hoy",
+    dominioTengo: "Dominio que ya tienes", dominioQuiero: "Dominio que quieres"
+  }
+};
+</script>
 <script src="solicitud.js"></script>
 </body>
 </html>

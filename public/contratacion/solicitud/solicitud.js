@@ -14,6 +14,9 @@
   "use strict";
 
   var API = "/api/solicitud";
+  var CFG = window.SOL_CFG || {};
+  var IDIOMA = CFG.locale === "en" ? "en" : "es";
+  var T = CFG.textos || {};
   var estado = null;      // lo que devuelve el servidor
   var token = null;
   var pasoActual = 1;
@@ -73,7 +76,7 @@
     return fetch(API + ruta, Object.assign({ headers: { "content-type": "application/json" } }, opciones || {}))
       .then(function (r) {
         return r.json().catch(function () { return {}; }).then(function (j) {
-          if (!r.ok) throw new Error(j.error || "No hemos podido conectar. Inténtalo otra vez.");
+          if (!r.ok) throw new Error(j.error || T.errorRed);
           return j;
         });
       });
@@ -89,19 +92,19 @@
   function guardar(paso) {
     if (!token || guardando) return Promise.resolve();
     guardando = true;
-    marcaGuardado("Guardando…", false);
+    marcaGuardado(T.guardando, false);
     return api("/" + token, {
       method: "PATCH",
       body: JSON.stringify({ brief: recogerBrief(), step: paso || pasoActual }),
     })
-      .then(function (j) { estado = j; marcaGuardado("Guardado", true); })
+      .then(function (j) { estado = j; marcaGuardado(T.guardado, true); })
       .catch(function (e) { marcaGuardado(e.message, false); })
       .then(function () { guardando = false; });
   }
 
   function autoguardar() {
     clearTimeout(pendiente);
-    marcaGuardado("Cambios sin guardar", false);
+    marcaGuardado(T.sinGuardar, false);
     pendiente = setTimeout(function () { guardar(); }, 900);
   }
 
@@ -126,7 +129,7 @@
       malos[0].scrollIntoView({ behavior: "smooth", block: "center" });
       var primer = $("input,select,textarea", malos[0]);
       if (primer) primer.focus({ preventScroll: true });
-      aviso("Revisa los campos marcados en rojo: son los que necesitamos para seguir.", "malo");
+      aviso(T.camposMal, "malo");
       return false;
     }
     ocultaAviso();
@@ -159,13 +162,10 @@
   function ocultaAviso() { $("#aviso").className = "aviso malo"; }
 
   // ── Producto y dependencias del formulario ─────────────────────────────
-  var PRODUCTOS = {
-    web: { titulo: "Web profesional", precio: 9900, nota: "Diseño a medida, SEO completo, 10 artículos, dominio y correo" },
-    shop: { titulo: "Tienda online", precio: 27000, nota: "Todo lo de la web más catálogo, carrito y pasarela de pago" },
-  };
+  var PRODUCTOS = CFG.productos;
 
   function euros(cents) {
-    return (cents / 100).toLocaleString("es-ES", { style: "currency", currency: "EUR" });
+    return (cents / 100).toLocaleString(IDIOMA === "en" ? "en-IE" : "es-ES", { style: "currency", currency: "EUR" });
   }
 
   function pintaProducto() {
@@ -178,7 +178,7 @@
       l.className = "opcion";
       l.innerHTML =
         '<input type="radio" name="prod" value="' + id + '"' + (marcado ? " checked" : "") +
-        '><span><b>' + p.titulo + " — " + euros(p.precio) + " + IVA</b><small>" + p.nota + "</small></span>";
+        '><span><b>' + p.titulo + " — " + euros(p.precio) + T.masIvaCorto + "</b><small>" + p.nota + "</small></span>";
       cont.appendChild(l);
     });
     // Cambiar de producto obliga a empezar una solicitud nueva: el precio y
@@ -186,7 +186,7 @@
     $$('input[name="prod"]', cont).forEach(function (r) {
       r.addEventListener("change", function () {
         if (r.value === estado.product) return;
-        if (!confirm("Cambiar de producto empieza una solicitud nueva. ¿Seguimos?")) {
+        if (!confirm(T.cambioProducto)) {
           $$('input[name="prod"]', cont).forEach(function (o) { o.checked = o.value === estado.product; });
           return;
         }
@@ -215,7 +215,7 @@
 
     var dom = ($('input[name="dom"]:checked') || {}).value || "nuevo";
     var etiqueta = $('label[for="f-dominio"]');
-    if (etiqueta) etiqueta.textContent = dom === "tengo" ? "Dominio que ya tienes" : "Dominio que quieres";
+    if (etiqueta) etiqueta.textContent = dom === "tengo" ? T.dominioTengo : T.dominioQuiero;
   }
 
   // ── Contrato ───────────────────────────────────────────────────────────
@@ -233,7 +233,7 @@
       $("#contrato").innerHTML = html;
       contratoCargado = true;
     }).catch(function (e) {
-      $("#contrato").textContent = "No hemos podido cargar las condiciones: " + e.message;
+      $("#contrato").textContent = T.contratoError + " " + e.message;
     });
   }
 
@@ -245,10 +245,10 @@
     var anual = estado.annualPriceCents;
     var filas = [
       [PRODUCTOS[estado.product].titulo, euros(base)],
-      ["IVA " + iva + " %", euros(cuota)],
-      ["Primer año de dominio, alojamiento, correo y mantenimiento", "Incluido"],
-      ["A partir del segundo año", euros(anual) + " + IVA al año"],
-      ["Total a pagar hoy", euros(base + cuota)],
+      [T.iva.replace("{pct}", String(iva)), euros(cuota)],
+      [T.primerAno, T.incluido],
+      [T.segundoAno, euros(anual) + T.masIva],
+      [T.totalHoy, euros(base + cuota)],
     ];
     $("#resumen").innerHTML = filas.map(function (f) {
       return "<div><span>" + f[0] + "</span><b>" + f[1] + "</b></div>";
@@ -278,14 +278,14 @@
       return;
     }
     if (pago === "ko") {
-      aviso("El pago no se ha completado. Puedes volver a intentarlo cuando quieras: tu solicitud sigue guardada.", "malo");
+      aviso(T.pagoKo, "malo");
       irA(5, true);
       return;
     }
     if (pago === "ok") {
       // Stripe nos devuelve antes de que llegue su webhook: mostramos el paso
       // de pago con un aviso en vez de dar por cobrado lo que aún no consta.
-      aviso("Estamos confirmando el pago con el banco. En cuanto nos llegue te mandamos el justificante por correo.", "bueno");
+      aviso(T.pagoConfirmando, "bueno");
       irA(5, true);
       return;
     }
@@ -299,9 +299,8 @@
 
     if (t) {
       api("/" + t).then(arranca).catch(function (e) {
-        $("#cargando").innerHTML =
-          "No encontramos esa solicitud. Puede que el enlace esté incompleto.<br><br>" +
-          '<a class="btn btn-primary" href="../">Empezar de nuevo</a>';
+        $("#cargando").innerHTML = T.noEncontrada +
+          '<br><br><a class="btn btn-primary" href="../">' + T.empezarDeNuevo + "</a>";
       });
       return;
     }
@@ -309,8 +308,8 @@
     api("", { method: "POST", body: JSON.stringify({ product: p, locale: "es" }) })
       .then(arranca)
       .catch(function (e) {
-        $("#cargando").innerHTML = "No hemos podido abrir la solicitud: " + e.message +
-          '<br><br><a class="btn btn-primary" href="../">Volver</a>';
+        $("#cargando").innerHTML = T.noAbrir + " " + e.message +
+          '<br><br><a class="btn btn-primary" href="../">' + T.volver + "</a>";
       });
   }
 
@@ -332,20 +331,20 @@
     var i = $("#enlace");
     i.select();
     navigator.clipboard.writeText(i.value).then(function () {
-      $("#btn-copiar").textContent = "Copiado";
-      setTimeout(function () { $("#btn-copiar").textContent = "Copiar"; }, 2000);
+      $("#btn-copiar").textContent = T.copiado;
+      setTimeout(function () { $("#btn-copiar").textContent = T.copiar; }, 2000);
     }).catch(function () { document.execCommand("copy"); });
   });
 
   $("#btn-aceptar").addEventListener("click", function () {
     var cond = $("#ac-cond").checked, datos = $("#ac-datos").checked, cargo = $("#ac-cargo").checked;
     if (!cond || !datos || !cargo) {
-      aviso("Para continuar hay que marcar las tres casillas. La del cargo anual es obligatoria porque autoriza un cobro recurrente.", "malo");
+      aviso(T.faltanCasillas, "malo");
       return;
     }
     var btn = this;
     btn.disabled = true;
-    btn.textContent = "Registrando…";
+    btn.textContent = T.registrando;
     guardar(4)
       .then(function () {
         return api("/" + token + "/contrato", {
@@ -355,19 +354,19 @@
       })
       .then(function (j) { estado = j; ocultaAviso(); irA(5, true); })
       .catch(function (e) { aviso(e.message, "malo"); })
-      .then(function () { btn.disabled = false; btn.textContent = "Acepto y continúo al pago"; });
+      .then(function () { btn.disabled = false; btn.textContent = T.aceptar; });
   });
 
   $("#btn-pagar").addEventListener("click", function () {
     var btn = this;
     btn.disabled = true;
-    btn.textContent = "Abriendo el pago…";
+    btn.textContent = T.abriendoPago;
     api("/" + token + "/pago", { method: "POST", body: "{}" })
       .then(function (j) { location.href = j.url; })
       .catch(function (e) {
         aviso(e.message, "malo");
         btn.disabled = false;
-        btn.textContent = "Pagar con tarjeta";
+        btn.textContent = T.pagar;
       });
   });
 

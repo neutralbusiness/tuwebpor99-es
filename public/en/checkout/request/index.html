@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#0d9488">
+<title>Your order | TuWebPor99</title>
+<meta name="description" content="Tell us how you want your website, review the terms and pay. You can stop halfway and come back with your link.">
+<meta name="robots" content="noindex,nofollow">
+<link rel="canonical" href="https://www.tuwebpor99.es/en/checkout/request/">
+<link rel="icon" type="image/svg+xml" href="../../../favicon.svg"><link rel="icon" href="../../../favicon.ico" sizes="32x32"><link rel="apple-touch-icon" href="../../../apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700&family=Barlow+Condensed:wght@600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../css/styles.css">
+<style>
+/* ── Embudo de contratación ───────────────────────────────────────────────
+   Cabecera mínima a propósito: aquí el visitante ya ha decidido, y el menú
+   completo solo le da sitios a los que irse. */
+.sol-head{border-bottom:1px solid var(--line);background:#fff;position:sticky;top:0;z-index:60}
+.sol-head-in{display:flex;align-items:center;justify-content:space-between;gap:20px;height:68px}
+.sol-head .logo{font-size:26px}
+.sol-head .tel{font-weight:600;font-size:15px;color:var(--ink)}
+.sol-wrap{max-width:980px;margin:0 auto;padding:0 20px}
+.sol-main{padding:34px 0 90px}
+
+/* Pasos */
+.pasos{display:flex;gap:6px;margin:0 0 26px;list-style:none;flex-wrap:wrap}
+.pasos li{flex:1 1 120px;font-family:'Barlow Condensed',sans-serif;font-weight:700;text-transform:uppercase;
+  letter-spacing:.04em;font-size:14px;color:var(--muted);border-top:4px solid var(--line);padding-top:9px}
+.pasos li.on{color:var(--accent-ink);border-top-color:var(--accent)}
+.pasos li.ok{color:var(--accent-dark);border-top-color:var(--accent-dark)}
+.pasos li span{display:block;font-family:'Barlow',sans-serif;font-weight:600;font-size:12px;letter-spacing:0;text-transform:none;color:var(--muted)}
+
+/* Tarjeta de paso */
+.paso{display:none;background:#fff;border:1px solid var(--line);border-radius:14px;padding:clamp(20px,3vw,34px)}
+.paso.on{display:block}
+.paso h1{font-size:clamp(30px,4vw,42px);font-weight:800;margin-bottom:8px}
+.paso h1+p.sub{font-size:18px;color:var(--muted);margin-bottom:26px;max-width:60ch}
+.grupo{border:0;margin:0 0 26px;padding:0}
+.grupo>legend{font-family:'Barlow Condensed',sans-serif;font-weight:700;text-transform:uppercase;letter-spacing:.06em;
+  font-size:17px;color:var(--accent-ink);border-bottom:1px solid var(--tint2);width:100%;padding-bottom:7px;margin-bottom:16px}
+.campos{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.campo{display:flex;flex-direction:column;gap:6px}
+.campo.ancho{grid-column:1/-1}
+.campo label{font-weight:600;font-size:15px;color:var(--ink)}
+.campo .ayuda{font-size:13.5px;color:var(--muted);line-height:1.45}
+.campo input[type=text],.campo input[type=email],.campo input[type=tel],.campo input[type=url],.campo input[type=number],
+.campo select,.campo textarea{font:inherit;font-size:16px;color:var(--ink);background:#fff;border:1px solid var(--line);
+  border-radius:8px;padding:11px 13px;width:100%}
+.campo textarea{min-height:104px;resize:vertical;line-height:1.55}
+.campo input:focus,.campo select:focus,.campo textarea:focus{outline:2px solid var(--accent);outline-offset:1px;border-color:var(--accent)}
+.campo.mal input,.campo.mal select,.campo.mal textarea{border-color:#dc2626}
+.campo .error{color:#b91c1c;font-size:13.5px;font-weight:600;display:none}
+.campo.mal .error{display:block}
+.req::after{content:" *";color:#dc2626}
+.opciones{display:flex;flex-direction:column;gap:9px}
+.opcion{display:flex;gap:10px;align-items:flex-start;border:1px solid var(--line);border-radius:8px;padding:11px 13px;cursor:pointer}
+.opcion:hover{border-color:var(--accent)}
+.opcion input{margin-top:3px;flex:0 0 auto;width:18px;height:18px;accent-color:var(--accent)}
+.opcion b{display:block;font-size:15.5px;color:var(--ink)}
+.opcion small{color:var(--muted);font-size:13.5px}
+.opciones.fila{flex-direction:row;flex-wrap:wrap}
+.opciones.fila .opcion{flex:1 1 180px}
+
+/* Aviso de lo que hacemos nosotros */
+.nosotros{background:var(--tint);border:1px solid var(--tint2);border-radius:10px;padding:16px 18px;margin-bottom:24px}
+.nosotros h3{font-size:18px;margin-bottom:8px}
+.nosotros ul{margin:0;padding-left:20px;font-size:14.5px;color:var(--body)}
+.nosotros li{margin-bottom:4px}
+
+/* Contrato */
+.contrato{max-height:46vh;overflow:auto;border:1px solid var(--line);border-radius:10px;padding:20px 22px;background:#fcfcfc;margin-bottom:20px}
+.contrato h3{font-size:19px;margin:18px 0 7px}
+.contrato h3:first-child{margin-top:0}
+.contrato p{font-size:15px;margin-bottom:9px;max-width:none}
+.aceptos{display:flex;flex-direction:column;gap:11px;margin-bottom:8px}
+.acepto{display:flex;gap:11px;align-items:flex-start;font-size:15px}
+.acepto input{margin-top:3px;width:19px;height:19px;flex:0 0 auto;accent-color:var(--accent)}
+
+/* Resumen y pago */
+.resumen{border:1px solid var(--line);border-radius:10px;overflow:hidden;margin-bottom:22px}
+.resumen div{display:flex;justify-content:space-between;gap:16px;padding:13px 18px;border-bottom:1px solid var(--line);font-size:15.5px}
+.resumen div:last-child{border-bottom:0;background:var(--tint);font-weight:700;font-size:19px}
+.resumen b{font-family:'Barlow Condensed',sans-serif;font-size:20px}
+
+/* Barra inferior */
+.barra{display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap;margin-top:8px}
+.barra .btn{font-size:19px}
+.guardado{font-size:14px;color:var(--muted);min-height:20px}
+.guardado.ok{color:var(--accent-dark);font-weight:600}
+
+/* Enlace para retomar */
+.retomar{margin-top:26px;background:#fff;border:1px dashed var(--accent);border-radius:12px;padding:16px 18px}
+.retomar h3{font-size:17px;margin-bottom:6px}
+.retomar p{font-size:14.5px;color:var(--muted);margin-bottom:10px;max-width:none}
+.retomar-fila{display:flex;gap:8px;flex-wrap:wrap}
+.retomar input{flex:1 1 260px;font:inherit;font-size:14px;border:1px solid var(--line);border-radius:8px;padding:9px 11px;color:var(--muted)}
+.retomar button{font-family:'Barlow Condensed',sans-serif;font-weight:700;text-transform:uppercase;font-size:16px;
+  letter-spacing:.04em;background:var(--ink);color:#fff;border:0;border-radius:8px;padding:9px 18px;cursor:pointer}
+
+/* Estados */
+.aviso{border-radius:10px;padding:14px 16px;font-size:15.5px;margin-bottom:20px;display:none}
+.aviso.ver{display:block}
+.aviso.malo{background:#fef2f2;border:1px solid #fecaca;color:#991b1b}
+.aviso.bueno{background:var(--tint);border:1px solid var(--tint2);color:var(--accent-ink)}
+.cargando{text-align:center;padding:70px 20px;color:var(--muted)}
+.hecho{text-align:center;padding:30px 10px}
+.hecho .tic{font-size:56px;line-height:1}
+.hecho h1{font-size:clamp(30px,4vw,44px);font-weight:800;margin:10px 0 12px}
+.hecho p{font-size:18px;max-width:52ch;margin:0 auto 12px}
+.oculto{display:none !important}
+@media(max-width:720px){
+  .campos{grid-template-columns:1fr}
+  .pasos li span{display:none}
+  .sol-head .tel{display:none}
+}
+</style>
+</head>
+<body>
+
+<header class="sol-head">
+  <div class="sol-wrap sol-head-in">
+    <a class="logo" href="../../../en/">TuWeb<em>Por99</em><span class="eur">€</span></a>
+    <a class="tel" href="tel:+34618794322">Questions? +34 618 79 43 22</a>
+  </div>
+</header>
+
+<main class="sol-main">
+<div class="sol-wrap">
+
+  <div id="cargando" class="cargando">Setting up your order…</div>
+
+  <div id="app" class="oculto">
+    <ol class="pasos" id="pasos">
+      <li data-p="1">1. Your site <span>What you need</span></li>
+      <li data-p="2">2. Your details <span>Contact and billing</span></li>
+      <li data-p="3">3. Content <span>What we need</span></li>
+      <li data-p="4">4. Terms <span>Contract and GDPR</span></li>
+      <li data-p="5">5. Payment <span>By card</span></li>
+    </ol>
+
+    <div id="aviso" class="aviso malo"></div>
+
+    <!-- ── Paso 1 ─────────────────────────────────────────────────── -->
+    <section class="paso" data-paso="1">
+      <h1>Tell us what website you want</h1>
+      <p class="sub">Five minutes now save a week of emails later. You can stop halfway: everything is saved and you get a link to come back.</p>
+
+      <fieldset class="grupo">
+        <legend>What you are ordering</legend>
+        <div class="opciones fila" id="producto-ops"></div>
+      </fieldset>
+
+      <fieldset class="grupo">
+        <legend>Basic identity</legend>
+        <div class="campos">
+          <div class="campo">
+            <label class="req" for="f-nombre">Trading name</label>
+            <input type="text" id="f-nombre" data-k="web.nombreComercial" required maxlength="120" autocomplete="organization">
+            <span class="ayuda">The name your customers know you by.</span>
+            <span class="error">We need the name of the business.</span>
+          </div>
+          <div class="campo">
+            <label for="f-ano">Year founded</label>
+            <input type="text" id="f-ano" data-k="web.anoFundacion" maxlength="4" inputmode="numeric" placeholder="2018">
+            <span class="ayuda">If the business is new, leave it blank.</span>
+          </div>
+          <div class="campo ancho">
+            <label class="req" for="f-tipo">What does the business do? One or two sentences</label>
+            <textarea id="f-tipo" data-k="web.tipoNegocio" required maxlength="600" placeholder="Law firm in Badalona. Advice for individuals and companies on employment, civil and commercial law."></textarea>
+            <span class="ayuda">From this we write the long description and each service page.</span>
+            <span class="error">Tell us in one sentence what you do.</span>
+          </div>
+          <div class="campo">
+            <label for="f-gerente">Owner or manager name</label>
+            <input type="text" id="f-gerente" data-k="web.gerenteNombre" maxlength="120">
+            <span class="ayuda">They will be the face of the business on the site.</span>
+          </div>
+          <div class="campo">
+            <label for="f-anos-exp">Years of experience in the trade</label>
+            <input type="text" id="f-anos-exp" data-k="web.anosExperiencia" maxlength="40" placeholder="Más de 20">
+            <span class="ayuda">Only if it is true and you can back it up.</span>
+          </div>
+        </div>
+      </fieldset>
+
+      <fieldset class="grupo">
+        <legend>Domain</legend>
+        <div class="campos">
+          <div class="campo ancho">
+            <div class="opciones fila">
+              <label class="opcion"><input type="radio" name="dom" value="nuevo" data-k="web.dominioEstado" checked><span><b>I want a new one</b><small>We register it and pay the first year</small></span></label>
+              <label class="opcion"><input type="radio" name="dom" value="tengo" data-k="web.dominioEstado"><span><b>I already have one</b><small>We point it to our hosting</small></span></label>
+            </div>
+          </div>
+          <div class="campo ancho">
+            <label class="req" for="f-dominio">Domain you want</label>
+            <input type="text" id="f-dominio" data-k="web.dominio" required maxlength="120" placeholder="miNegocio.es" autocomplete="off">
+            <span class="ayuda">If it is taken we suggest alternatives before registering anything.</span>
+            <span class="error">Tell us the domain you want, even if it is just an idea.</span>
+          </div>
+          <div class="campo ancho">
+            <label>Website languages</label>
+            <div class="opciones fila">
+              <label class="opcion"><input type="checkbox" value="es" data-k="web.idiomas" checked><span><b>Spanish</b></span></label>
+              <label class="opcion"><input type="checkbox" value="ca" data-k="web.idiomas"><span><b>Catalan</b></span></label>
+              <label class="opcion"><input type="checkbox" value="en" data-k="web.idiomas"><span><b>English</b></span></label>
+              <label class="opcion"><input type="checkbox" value="otros" data-k="web.idiomas"><span><b>Other</b><small>Tell us in the notes</small></span></label>
+            </div>
+          </div>
+          <div class="campo ancho">
+            <label for="f-refs">Websites you like</label>
+            <textarea id="f-refs" data-k="web.referencias" maxlength="1200" placeholder="https://... and what you like about each one"></textarea>
+            <span class="ayuda">We copy nothing, but knowing what you like speeds up the design.</span>
+          </div>
+        </div>
+      </fieldset>
+
+      <div class="barra">
+        <span class="guardado" id="guardado1"></span>
+        <button type="button" class="btn btn-primary" data-siguiente="2">Continue</button>
+      </div>
+    </section>
+
+    <!-- ── Paso 2 ─────────────────────────────────────────────────── -->
+    <section class="paso" data-paso="2">
+      <h1>Your details</h1>
+      <p class="sub">We need them for the contract and the invoice. They are used for nothing else and shared with no one.</p>
+
+      <fieldset class="grupo">
+        <legend>Contact person</legend>
+        <div class="campos">
+          <div class="campo">
+            <label class="req" for="c-nombre">First name</label>
+            <input type="text" id="c-nombre" data-k="contacto.nombre" required maxlength="80" autocomplete="given-name">
+            <span class="error">Your first name is missing.</span>
+          </div>
+          <div class="campo">
+            <label class="req" for="c-apellidos">Surname</label>
+            <input type="text" id="c-apellidos" data-k="contacto.apellidos" required maxlength="120" autocomplete="family-name">
+            <span class="error">Your surname is missing.</span>
+          </div>
+          <div class="campo">
+            <label class="req" for="c-email">Email</label>
+            <input type="email" id="c-email" data-k="contacto.email" required maxlength="160" autocomplete="email">
+            <span class="ayuda">We send the link to resume and the invoice here.</span>
+            <span class="error">Check the email: it does not look valid.</span>
+          </div>
+          <div class="campo">
+            <label class="req" for="c-tel">Phone</label>
+            <input type="tel" id="c-tel" data-k="contacto.telefono" required maxlength="30" autocomplete="tel">
+            <span class="error">A contact phone is missing.</span>
+          </div>
+          <div class="campo ancho">
+            <label class="req" for="c-dni">ID or tax number of the person ordering</label>
+            <input type="text" id="c-dni" data-k="contacto.dni" required maxlength="20">
+            <span class="ayuda">Required for the contract and the invoice.</span>
+            <span class="error">We need the ID document or tax number.</span>
+          </div>
+        </div>
+      </fieldset>
+
+      <fieldset class="grupo">
+        <legend>How we invoice</legend>
+        <div class="campos">
+          <div class="campo ancho">
+            <div class="opciones fila">
+              <label class="opcion"><input type="radio" name="fact" value="particular" data-k="facturacion.tipo" checked><span><b>Individual</b><small>Invoice in your name</small></span></label>
+              <label class="opcion"><input type="radio" name="fact" value="autonomo" data-k="facturacion.tipo"><span><b>Sole trader</b><small>With your tax number</small></span></label>
+              <label class="opcion"><input type="radio" name="fact" value="empresa" data-k="facturacion.tipo"><span><b>Company</b><small>With company number and legal name</small></span></label>
+            </div>
+          </div>
+          <div class="campo ancho fact-empresa oculto">
+            <label class="req" for="fa-razon">Legal name</label>
+            <input type="text" id="fa-razon" data-k="facturacion.razonSocial" maxlength="160">
+            <span class="error">The legal name is missing.</span>
+          </div>
+          <div class="campo fact-empresa fact-autonomo oculto">
+            <label class="req" for="fa-nif">Company or tax number</label>
+            <input type="text" id="fa-nif" data-k="facturacion.nif" maxlength="20">
+            <span class="error">The company or tax number is missing.</span>
+          </div>
+          <div class="campo fact-empresa oculto">
+            <label for="fa-rep">Signing representative</label>
+            <input type="text" id="fa-rep" data-k="facturacion.representante" maxlength="160">
+          </div>
+          <div class="campo fact-autonomo oculto">
+            <label for="fa-epigrafe">Activity code</label>
+            <input type="text" id="fa-epigrafe" data-k="facturacion.epigrafe" maxlength="80">
+            <span class="ayuda">Optional. If you do not know it, we leave it blank.</span>
+          </div>
+          <div class="campo ancho">
+            <label class="req" for="fa-dir">Billing address</label>
+            <input type="text" id="fa-dir" data-k="facturacion.direccion" required maxlength="180" autocomplete="street-address">
+            <span class="error">The billing address is missing.</span>
+          </div>
+          <div class="campo">
+            <label class="req" for="fa-cp">Post code</label>
+            <input type="text" id="fa-cp" data-k="facturacion.cp" required maxlength="10" autocomplete="postal-code">
+            <span class="error">The post code is missing.</span>
+          </div>
+          <div class="campo">
+            <label class="req" for="fa-loc">Town or city</label>
+            <input type="text" id="fa-loc" data-k="facturacion.localidad" required maxlength="80">
+            <span class="error">The town or city is missing.</span>
+          </div>
+          <div class="campo">
+            <label class="req" for="fa-prov">Province or region</label>
+            <input type="text" id="fa-prov" data-k="facturacion.provincia" required maxlength="80">
+            <span class="error">The province is missing.</span>
+          </div>
+          <div class="campo">
+            <label for="fa-pais">Country</label>
+            <input type="text" id="fa-pais" data-k="facturacion.pais" maxlength="60" value="Spain">
+          </div>
+        </div>
+      </fieldset>
+
+      <div class="barra">
+        <button type="button" class="btn btn-ghost" data-anterior="1">Back</button>
+        <span class="guardado" id="guardado2"></span>
+        <button type="button" class="btn btn-primary" data-siguiente="3">Continue</button>
+      </div>
+    </section>
+
+    <!-- ── Paso 3 ─────────────────────────────────────────────────── -->
+    <section class="paso" data-paso="3">
+      <h1>What we need to build the site</h1>
+      <p class="sub">This is the part that shows most in the result. Fill in what you know: we will ask for the rest, and write whatever can be inferred.</p>
+
+      <div class="nosotros">
+        <h3>We write this, you do not have to</h3>
+        <ul>
+          <li>The long business description and the copy for every service.</li>
+          <li>The owner's background, from the details you give us.</li>
+          <li>The main and secondary keywords, with their demand research.</li>
+          <li>An analysis of the five best-ranking competitors in your area.</li>
+          <li>The legal texts, the cookie notice and the privacy page.</li>
+        </ul>
+      </div>
+
+      <fieldset class="grupo">
+        <legend>Services and what sets you apart</legend>
+        <div class="campos">
+          <div class="campo ancho">
+            <label class="req" for="n-servicios">Services you offer, one per line</label>
+            <textarea id="n-servicios" data-k="negocio.servicios" required maxlength="2000" placeholder="Employment law&#10;Civil law&#10;Wills and probate&#10;Bank claims"></textarea>
+            <span class="ayuda">List them in order of importance to you. Each one gets its own page.</span>
+            <span class="error">We need at least the main services.</span>
+          </div>
+          <div class="campo ancho">
+            <label class="req" for="n-dif">What makes you different from the competition?</label>
+            <textarea id="n-dif" data-k="negocio.diferencial" required maxlength="1200" placeholder="Free first consultation, reply within 24 h, service in English and Spanish…"></textarea>
+            <span class="error">This is what sells most: tell us something.</span>
+          </div>
+          <div class="campo">
+            <label for="n-marcas">Brands or products you work with</label>
+            <textarea id="n-marcas" data-k="negocio.marcas" maxlength="800"></textarea>
+            <span class="ayuda">Where it makes sense, we build a page per brand.</span>
+          </div>
+          <div class="campo">
+            <label for="n-cert">Certifications or qualifications</label>
+            <textarea id="n-cert" data-k="negocio.certificaciones" maxlength="800"></textarea>
+            <span class="ayuda">Only those you can evidence.</span>
+          </div>
+          <div class="campo">
+            <label for="n-dato">A real figure from your activity</label>
+            <input type="text" id="n-dato" data-k="negocio.datoActividad" maxlength="160" placeholder="More than 300 cases a year">
+            <span class="ayuda">It must be true and defensible if anyone asks.</span>
+          </div>
+          <div class="campo">
+            <label for="n-precios">Prices we can publish</label>
+            <input type="text" id="n-precios" data-k="negocio.precios" maxlength="200" placeholder="First consultation €60 · From €300 per matter">
+            <span class="ayuda">Published prices convert much better. If you would rather not, leave it empty.</span>
+          </div>
+          <div class="campo ancho">
+            <label class="req" for="n-zonas">Areas you cover</label>
+            <textarea id="n-zonas" data-k="negocio.zonas" required maxlength="1200" placeholder="Badalona, Santa Coloma, Sant Adrià and Barcelona"></textarea>
+            <span class="ayuda">Neighbourhoods, districts or towns. The area pages come from here.</span>
+            <span class="error">Tell us at least the city where you work.</span>
+          </div>
+        </div>
+      </fieldset>
+
+      <fieldset class="grupo">
+        <legend>Contact details and location to publish</legend>
+        <div class="campos">
+          <div class="campo">
+            <label class="req" for="p-tel">Public phone</label>
+            <input type="tel" id="p-tel" data-k="contactoWeb.telefono" required maxlength="30">
+            <span class="error">The phone you want to publish is missing.</span>
+          </div>
+          <div class="campo">
+            <label class="req" for="p-email">Public email</label>
+            <input type="email" id="p-email" data-k="contactoWeb.email" required maxlength="160">
+            <span class="ayuda">If you do not have one yet, we create one on your domain.</span>
+            <span class="error">The email you want to publish is missing.</span>
+          </div>
+          <div class="campo ancho">
+            <label>WhatsApp</label>
+            <div class="opciones fila">
+              <label class="opcion"><input type="radio" name="wa" value="mismo" data-k="contactoWeb.whatsappEstado" checked><span><b>Same phone number</b></span></label>
+              <label class="opcion"><input type="radio" name="wa" value="otro" data-k="contactoWeb.whatsappEstado"><span><b>A different number</b></span></label>
+              <label class="opcion"><input type="radio" name="wa" value="no" data-k="contactoWeb.whatsappEstado"><span><b>No WhatsApp</b></span></label>
+            </div>
+          </div>
+          <div class="campo ancho">
+            <label for="p-wa">WhatsApp number</label>
+            <input type="tel" id="p-wa" data-k="contactoWeb.whatsapp" maxlength="30">
+          </div>
+          <div class="campo ancho">
+            <label for="p-dir">Address to publish</label>
+            <input type="text" id="p-dir" data-k="contactoWeb.direccion" maxlength="180">
+            <span class="ayuda">If you have no premises open to the public, leave it blank and we publish only the area.</span>
+          </div>
+          <div class="campo">
+            <label class="req" for="p-ciudad">City</label>
+            <input type="text" id="p-ciudad" data-k="contactoWeb.ciudad" required maxlength="80">
+            <span class="error">The city is missing.</span>
+          </div>
+          <div class="campo">
+            <label for="p-barrio">Neighbourhood or area</label>
+            <input type="text" id="p-barrio" data-k="contactoWeb.barrio" maxlength="80">
+          </div>
+          <div class="campo">
+            <label for="p-cp">Post code</label>
+            <input type="text" id="p-cp" data-k="contactoWeb.cp" maxlength="10">
+          </div>
+          <div class="campo">
+            <label for="p-prov">Province or region</label>
+            <input type="text" id="p-prov" data-k="contactoWeb.provincia" maxlength="80">
+          </div>
+          <div class="campo ancho">
+            <label class="req" for="p-horario">Opening hours</label>
+            <input type="text" id="p-horario" data-k="contactoWeb.horario" required maxlength="200" placeholder="Monday to Friday 9:00 to 19:00; Saturday 9:00 to 14:00">
+            <span class="error">The opening hours are missing.</span>
+          </div>
+          <div class="campo ancho">
+            <label for="p-gps">Exact coordinates</label>
+            <input type="text" id="p-gps" data-k="contactoWeb.coordenadas" maxlength="60" placeholder="41.4500, 2.2470">
+            <span class="ayuda">Optional. If you do not have them, we look them up from the address.</span>
+          </div>
+        </div>
+      </fieldset>
+
+      <fieldset class="grupo">
+        <legend>Reputation, social media and brand</legend>
+        <div class="campos">
+          <div class="campo ancho">
+            <label for="r-gbp">Your Google business profile</label>
+            <input type="url" id="r-gbp" data-k="recursos.gbpUrl" maxlength="300" placeholder="https://maps.app.goo.gl/…">
+            <span class="ayuda">If you do not have one, we help you create it. Without it you will not show on the map.</span>
+          </div>
+          <div class="campo">
+            <label for="r-resenas">Average rating and number of reviews</label>
+            <input type="text" id="r-resenas" data-k="recursos.resenas" maxlength="60" placeholder="4.8 with 112 reviews">
+            <span class="ayuda">We only publish this if the profile backing it exists.</span>
+          </div>
+          <div class="campo">
+            <label for="r-redes">Social media</label>
+            <textarea id="r-redes" data-k="recursos.redes" maxlength="600" placeholder="https://instagram.com/…"></textarea>
+          </div>
+          <div class="campo ancho">
+            <label>Logo</label>
+            <div class="opciones fila">
+              <label class="opcion"><input type="radio" name="logo" value="tengo" data-k="recursos.logoEstado" checked><span><b>I have a logo</b><small>I will send it over</small></span></label>
+              <label class="opcion"><input type="radio" name="logo" value="iniciales" data-k="recursos.logoEstado"><span><b>Use the initials</b><small>On a colour background</small></span></label>
+              <label class="opcion"><input type="radio" name="logo" value="nuevo" data-k="recursos.logoEstado"><span><b>Design one for me</b><small>Included in the package</small></span></label>
+            </div>
+          </div>
+          <div class="campo ancho">
+            <label for="r-colores">Brand colours</label>
+            <input type="text" id="r-colores" data-k="recursos.colores" maxlength="120" placeholder="#1F3A5F and #C9A227, or “you decide”">
+            <span class="ayuda">If you leave it to us, we pick a palette that fits your sector.</span>
+          </div>
+          <div class="campo">
+            <label for="r-gtm">Google Tag Manager ID</label>
+            <input type="text" id="r-gtm" data-k="recursos.gtm" maxlength="40" placeholder="GTM-XXXXXXX">
+            <span class="ayuda">Optional. If you do not have one, we create it.</span>
+          </div>
+          <div class="campo">
+            <label for="r-ga4">Google Analytics ID</label>
+            <input type="text" id="r-ga4" data-k="recursos.ga4" maxlength="40" placeholder="G-XXXXXXXXXX">
+          </div>
+        </div>
+      </fieldset>
+
+      <fieldset class="grupo tienda oculto">
+        <legend>Your online shop</legend>
+        <div class="campos">
+          <div class="campo">
+            <label for="t-num">How many products will you sell?</label>
+            <input type="text" id="t-num" data-k="tienda.numProductos" maxlength="40" placeholder="Around 40">
+          </div>
+          <div class="campo">
+            <label for="t-cat">Catalogue categories</label>
+            <input type="text" id="t-cat" data-k="tienda.categorias" maxlength="200">
+          </div>
+          <div class="campo ancho">
+            <label for="t-fichas">Do you already have product photos and descriptions?</label>
+            <textarea id="t-fichas" data-k="tienda.fichas" maxlength="800" placeholder="I have photos of everything and descriptions for half"></textarea>
+          </div>
+          <div class="campo ancho">
+            <label for="t-envios">How you want to charge for shipping</label>
+            <textarea id="t-envios" data-k="tienda.envios" maxlength="800" placeholder="€4.95 mainland, free over €60, collection in store"></textarea>
+          </div>
+          <div class="campo ancho">
+            <label for="t-pago">Payment methods you want to accept</label>
+            <input type="text" id="t-pago" data-k="tienda.pago" maxlength="200" placeholder="Card, Bizum and bank transfer">
+            <span class="ayuda">We set up the gateway; the payout account is yours.</span>
+          </div>
+        </div>
+      </fieldset>
+
+      <fieldset class="grupo">
+        <legend>Final details</legend>
+        <div class="campos">
+          <div class="campo ancho">
+            <label for="x-comp">Competitors that worry you</label>
+            <textarea id="x-comp" data-k="extras.competidores" maxlength="800" placeholder="Names or websites"></textarea>
+            <span class="ayuda">Optional. We analyse the five best-ranking ones, but if you know your direct rival, all the better.</span>
+          </div>
+          <div class="campo ancho">
+            <label>How will you send us the logo and photos?</label>
+            <div class="opciones fila">
+              <label class="opcion"><input type="radio" name="mat" value="whatsapp" data-k="extras.materialVia" checked><span><b>By WhatsApp</b></span></label>
+              <label class="opcion"><input type="radio" name="mat" value="email" data-k="extras.materialVia"><span><b>By email</b></span></label>
+              <label class="opcion"><input type="radio" name="mat" value="enlace" data-k="extras.materialVia"><span><b>With a link</b><small>Drive, WeTransfer…</small></span></label>
+              <label class="opcion"><input type="radio" name="mat" value="nada" data-k="extras.materialVia"><span><b>I have no material</b><small>We use our own images</small></span></label>
+            </div>
+          </div>
+          <div class="campo ancho">
+            <label for="x-enlace">Link to the files</label>
+            <input type="url" id="x-enlace" data-k="extras.materialEnlace" maxlength="400" placeholder="https://…">
+          </div>
+          <div class="campo ancho">
+            <label for="x-notas">Anything else we should know</label>
+            <textarea id="x-notas" data-k="extras.notas" maxlength="2000" placeholder="Tone, things to avoid saying, deadlines, specific languages…"></textarea>
+          </div>
+        </div>
+      </fieldset>
+
+      <div class="barra">
+        <button type="button" class="btn btn-ghost" data-anterior="2">Back</button>
+        <span class="guardado" id="guardado3"></span>
+        <button type="button" class="btn btn-primary" data-siguiente="4">Go to the terms</button>
+      </div>
+    </section>
+
+    <!-- ── Paso 4 ─────────────────────────────────────────────────── -->
+    <section class="paso" data-paso="4">
+      <h1>Terms of service</h1>
+      <p class="sub">Written to be understood. What we deliver, who owns the site, how we handle your data and what maintenance costs from the second year.</p>
+
+      <div class="contrato" id="contrato">Loading the terms…</div>
+
+      <div class="aceptos">
+        <label class="acepto"><input type="checkbox" id="ac-cond"> <span>I have read and accept the <b>terms of service</b>, including the assignment of the site to me and the right of withdrawal.</span></label>
+        <label class="acepto"><input type="checkbox" id="ac-datos"> <span>I accept the <b>data protection information</b> in clause 8 and the processing of my data to provide and invoice the service.</span></label>
+        <label class="acepto"><input type="checkbox" id="ac-cargo"> <span>I authorise the <b>annual charge of €29 plus VAT from the second year</b> on the same card, for an indefinite term and cancellable with fifteen days' notice.</span></label>
+      </div>
+      <p class="ayuda" style="font-size:14px;color:#6b7280;margin-bottom:18px">We keep a copy of the text you accept, with date and time, and email it to you.</p>
+
+      <div class="barra">
+        <button type="button" class="btn btn-ghost" data-anterior="3">Back</button>
+        <span class="guardado" id="guardado4"></span>
+        <button type="button" class="btn btn-primary" id="btn-aceptar">Accept and continue to payment</button>
+      </div>
+    </section>
+
+    <!-- ── Paso 5 ─────────────────────────────────────────────────── -->
+    <section class="paso" data-paso="5">
+      <h1>Payment</h1>
+      <p class="sub">The payment is processed by Stripe. We never see or store your card details.</p>
+
+      <div class="resumen" id="resumen"></div>
+
+      <div class="aviso bueno ver" style="margin-bottom:22px">
+        <strong>What happens after you pay.</strong> We review your order the same working day, write to you if anything is missing and get started. The delivery time runs from the moment we have the payment and all the information.
+      </div>
+
+      <div class="barra">
+        <button type="button" class="btn btn-ghost" data-anterior="4">Back</button>
+        <span class="guardado" id="guardado5"></span>
+        <button type="button" class="btn btn-primary" id="btn-pagar">Pay by card</button>
+      </div>
+    </section>
+
+    <!-- ── Pagado ─────────────────────────────────────────────────── -->
+    <section class="paso" data-paso="6">
+      <div class="hecho">
+        <div class="tic">✅</div>
+        <h1>Payment received</h1>
+        <p>That is everything. We have emailed you the receipt and we start on your site today if it is a working day.</p>
+        <p>If any information is missing we will write to you; otherwise the next thing you get is your site to review.</p>
+        <p style="margin-top:24px"><a class="btn btn-primary" href="../../">Back to the site</a></p>
+      </div>
+    </section>
+
+    <div class="retomar" id="retomar">
+      <h3>Your link to come back</h3>
+      <p>Save this link. It takes you back to where you left off, from any device. We have also emailed it to you.</p>
+      <div class="retomar-fila">
+        <input type="text" id="enlace" readonly>
+        <button type="button" id="btn-copiar">Copy</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+</main>
+
+<footer style="background:var(--ink);color:#9ca3af;padding:28px 0;font-size:14.5px">
+  <div class="sol-wrap" style="display:flex;gap:16px;flex-wrap:wrap;justify-content:space-between">
+    <span>© <span id="anio">2026</span> TuWebPor99</span>
+    <span style="display:flex;gap:16px;flex-wrap:wrap">
+      <a href="../../legal-notice/" style="color:#9ca3af">Legal notice</a>
+      <a href="../../privacy-policy/" style="color:#9ca3af">Privacy</a>
+      <a href="../../contact/" style="color:#9ca3af">Contact</a>
+    </span>
+  </div>
+</footer>
+
+<script>
+/* Same script, English strings. */
+window.SOL_CFG = {
+  locale: "en",
+  productos: {
+    web:  { titulo: "Professional website", precio: 9900,  nota: "Bespoke design, full SEO, 10 articles, domain and email" },
+    shop: { titulo: "Online shop",          precio: 27000, nota: "Everything in the website plus catalogue, cart and payment gateway" }
+  },
+  textos: {
+    guardando: "Saving…", guardado: "Saved", sinGuardar: "Unsaved changes",
+    errorRed: "We could not connect. Please try again.",
+    camposMal: "Check the fields marked in red: those are the ones we need to continue.",
+    cambioProducto: "Changing product starts a new order. Continue?",
+    contratoError: "We could not load the terms:",
+    faltanCasillas: "All three boxes must be ticked to continue. The annual charge one is required because it authorises a recurring payment.",
+    registrando: "Recording…", aceptar: "Accept and continue to payment",
+    abriendoPago: "Opening payment…", pagar: "Pay by card",
+    copiar: "Copy", copiado: "Copied",
+    pagoKo: "The payment did not go through. You can try again whenever you want: your order is still saved.",
+    pagoConfirmando: "We are confirming the payment with the bank. As soon as it clears we email you the receipt.",
+    noEncontrada: "We cannot find that order. The link may be incomplete.",
+    empezarDeNuevo: "Start again", noAbrir: "We could not open the order:", volver: "Back",
+    iva: "VAT {pct} %", primerAno: "First year of domain, hosting, email and maintenance",
+    incluido: "Included", segundoAno: "From the second year", masIva: " + VAT per year",
+    masIvaCorto: " + VAT", totalHoy: "Total to pay today",
+    dominioTengo: "Domain you already have", dominioQuiero: "Domain you want"
+  }
+};
+</script>
+<script src="../../../contratacion/solicitud/solicitud.js"></script>
+</body>
+</html>
