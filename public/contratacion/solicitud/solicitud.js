@@ -358,8 +358,7 @@
   $("#btn-email").addEventListener("click", function () {
     var correo = $("#c-email");
     $("#dlg-email-input").value = (correo && correo.value.trim()) || $("#dlg-email-input").value;
-    $("#dlg-privacidad").checked = consiente();
-    $("#dlg-privacidad-fila").classList.toggle("oculto", consiente());
+    $("#dlg-privacidad").checked = false;
     dlgMensaje("");
     if (dlg.showModal) dlg.showModal(); else dlg.setAttribute("open", "");
     $("#dlg-email-input").focus();
