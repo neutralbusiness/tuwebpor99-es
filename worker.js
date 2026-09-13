@@ -33,6 +33,7 @@ const RUTAS = [
   { metodo: "GET", re: /^\/api\/solicitud\/([0-9a-f-]{36})$/, destino: (m) => `/${m[1]}` },
   { metodo: "PATCH", re: /^\/api\/solicitud\/([0-9a-f-]{36})$/, destino: (m) => `/${m[1]}` },
   { metodo: "GET", re: /^\/api\/solicitud\/([0-9a-f-]{36})\/contrato$/, destino: (m) => `/${m[1]}/contrato` },
+  { metodo: "GET", re: /^\/api\/solicitud\/([0-9a-f-]{36})\/contrato\/pdf$/, destino: (m) => `/${m[1]}/contrato/pdf`, descarga: true },
   { metodo: "POST", re: /^\/api\/solicitud\/([0-9a-f-]{36})\/contrato$/, destino: (m) => `/${m[1]}/contrato` },
   { metodo: "POST", re: /^\/api\/solicitud\/([0-9a-f-]{36})\/pago$/, destino: (m) => `/${m[1]}/pago` },
   { metodo: "POST", re: /^\/api\/solicitud\/([0-9a-f-]{36})\/enlace$/, destino: (m) => `/${m[1]}/enlace` },
@@ -54,10 +55,11 @@ async function contratacion(request, env, url) {
 
   let destino = null;
   let binario = false;
+  let descarga = false;
   for (const r of RUTAS) {
     if (r.metodo !== request.method) continue;
     const m = url.pathname.match(r.re);
-    if (m) { destino = r.destino(m); binario = !!r.binario; break; }
+    if (m) { destino = r.destino(m); binario = !!r.binario; descarga = !!r.descarga; break; }
   }
   if (destino === null) return json({ error: "Ruta no válida" }, 404);
 
@@ -88,6 +90,16 @@ async function contratacion(request, env, url) {
       headers: cabeceras,
       body: cuerpo,
     });
+    if (descarga && res.ok) {
+      return new Response(res.body, {
+        status: 200,
+        headers: {
+          "content-type": res.headers.get("content-type") || "application/pdf",
+          "content-disposition": res.headers.get("content-disposition") || "attachment",
+          "cache-control": "no-store",
+        },
+      });
+    }
     const texto = await res.text();
     return new Response(texto, {
       status: res.status,

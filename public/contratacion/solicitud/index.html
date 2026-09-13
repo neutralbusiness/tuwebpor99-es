@@ -682,14 +682,29 @@
       <div class="aceptos">
         <label class="acepto"><input type="checkbox" id="ac-cond"> <span>He leído y acepto las <b>condiciones de contratación</b>, incluida la cesión de la web a mi nombre y el derecho de desistimiento.</span></label>
         <label class="acepto"><input type="checkbox" id="ac-datos"> <span>Acepto la <b>información sobre protección de datos</b> del apartado 8 y que se traten mis datos para prestar el servicio y facturarlo.</span></label>
-        <label class="acepto"><input type="checkbox" id="ac-cargo"> <span>Autorizo el <b>cargo de 29 € al año, IVA incluido, a partir del segundo año</b> con la misma tarjeta, de forma indefinida y cancelable con quince días de aviso.</span></label>
+        <label class="acepto"><input type="checkbox" id="ac-cargo"> <span>Autorizo el <b>cargo de 29 € + IVA al año a partir del segundo año</b> con la misma tarjeta, de forma indefinida y cancelable con quince días de aviso.</span></label>
       </div>
-      <p class="ayuda" style="font-size:14px;color:#6b7280;margin-bottom:18px">Guardamos una copia del texto que aceptas, con la fecha y la hora, y te la mandamos por correo.</p>
+      <fieldset class="grupo">
+        <legend>Firma</legend>
+        <div class="campos">
+          <div class="campo">
+            <label class="req" for="sg-nombre">Nombre y apellidos de quien firma</label>
+            <input type="text" id="sg-nombre" maxlength="160" autocomplete="name">
+            <span class="error">Escribe tu nombre y apellidos.</span>
+          </div>
+          <div class="campo">
+            <label class="req" for="sg-doc">DNI, NIE, pasaporte, CIF o VAT number</label>
+            <input type="text" id="sg-doc" maxlength="30" autocomplete="off">
+            <span class="error">Escribe tu documento de identidad.</span>
+          </div>
+        </div>
+      </fieldset>
+      <p class="ayuda" style="font-size:14px;color:#6b7280;margin-bottom:18px">Escribir tu nombre y tu documento equivale a firmar. Generamos el contrato firmado en PDF, con la fecha, la hora y la huella del texto, y te lo mandamos por correo.</p>
 
       <div class="barra">
         <button type="button" class="btn btn-ghost" data-anterior="3">Atrás</button>
         <span class="guardado" id="guardado4"></span>
-        <button type="button" class="btn btn-primary" id="btn-aceptar">Acepto y continúo al pago</button>
+        <button type="button" class="btn btn-primary" id="btn-aceptar">Firmar y continuar al pago</button>
       </div>
     </section>
 
@@ -699,6 +714,7 @@
       <p class="sol-sub">El cobro lo procesa Stripe. Nosotros no vemos ni guardamos los datos de tu tarjeta en ningún momento.</p>
 
       <div class="resumen" id="resumen"></div>
+      <p style="margin:-8px 0 20px"><a class="ayuda-link oculto" id="descargar-contrato" href="#">Descargar el contrato firmado (PDF)</a></p>
 
       <div class="aviso bueno ver" style="margin-bottom:22px">
         <strong>Qué pasa después de pagar.</strong> Revisamos tu solicitud el mismo día laborable, te escribimos si falta algo y empezamos. El plazo de entrega cuenta desde que tenemos el pago y toda la información.
@@ -790,8 +806,8 @@
 window.SOL_CFG = {
   locale: "es",
   productos: {
-    web:  { titulo: "Web profesional", precio: 9900,  nota: "Diseño a medida, SEO completo, 10 artículos, dominio y correo. Después, 29 € al año" },
-    shop: { titulo: "Tienda online",   precio: 29900, nota: "Todo lo de la web más catálogo, carrito y pasarela de pago. Después, 29 € al año" }
+    web:  { titulo: "Web profesional", precio: 9900,  nota: "Diseño a medida, SEO completo, 10 artículos, dominio y correo. Después, 29 € + IVA al año" },
+    shop: { titulo: "Tienda online",   precio: 29900, nota: "Todo lo de la web más catálogo, carrito y pasarela de pago. Después, 29 € + IVA al año" }
   },
   textos: {
     guardando: "Guardando…", guardado: "Guardado", sinGuardar: "Cambios sin guardar",
@@ -815,7 +831,8 @@ window.SOL_CFG = {
     cambioProducto: "Cambiar de producto empieza una solicitud nueva. ¿Seguimos?",
     contratoError: "No hemos podido cargar las condiciones:",
     faltanCasillas: "Para continuar hay que marcar las tres casillas. La del cargo anual es obligatoria porque autoriza un cobro recurrente.",
-    registrando: "Registrando…", aceptar: "Acepto y continúo al pago",
+    faltaFirma: "Para firmar, escribe tu nombre y apellidos y tu documento de identidad.",
+    registrando: "Registrando…", aceptar: "Firmar y continuar al pago",
     abriendoPago: "Abriendo el pago…", pagar: "Pagar con tarjeta",
     copiar: "Copiar", copiado: "Copiado",
     pagoKo: "El pago no se ha completado. Puedes volver a intentarlo cuando quieras: tu solicitud sigue guardada.",
@@ -823,7 +840,7 @@ window.SOL_CFG = {
     noEncontrada: "No encontramos esa solicitud. Puede que el enlace esté incompleto.",
     empezarDeNuevo: "Empezar de nuevo", noAbrir: "No hemos podido abrir la solicitud:", volver: "Volver",
     alta: "diseño y puesta en marcha", primerAno: "Dominio, alojamiento, correo y mantenimiento del primer año",
-    segundoAno: "A partir del segundo año", masIva: " al año",
+    segundoAno: "A partir del segundo año", masIva: " + IVA al año",
     masIvaCorto: " IVA incluido", totalHoy: "Total a pagar hoy, IVA incluido",
     dominioTengo: "Dominio que ya tienes", dominioQuiero: "Dominio que quieres"
   }

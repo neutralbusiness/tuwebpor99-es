@@ -191,6 +191,14 @@
     })();
   }
 
+  // ── Contrato firmado ───────────────────────────────────────────────────
+  function pintaContrato() {
+    var a = $("#descargar-contrato");
+    if (!a || !estado) return;
+    a.classList.toggle("oculto", !estado.contractPdf);
+    a.href = API + "/" + token + "/contrato/pdf";
+  }
+
   // ── Colores corporativos ───────────────────────────────────────────────
   function hex(v) {
     v = (v || "").trim();
@@ -416,6 +424,7 @@
     pintaHorario();
     pintaAdjuntos();
     sincronizaColores();
+    pintaContrato();
     pintaProducto();
     aplicaDependencias();
 
@@ -620,6 +629,18 @@
       aviso(T.faltanCasillas, "malo");
       return;
     }
+    var campoNombre = $("#sg-nombre"), campoDoc = $("#sg-doc");
+    var firmante = campoNombre.value.trim().replace(/\s+/g, " ");
+    var documento = campoDoc.value.trim();
+    var nombreMal = firmante.length < 5 || firmante.indexOf(" ") === -1;
+    var docMal = documento.length < 5;
+    campoNombre.closest(".campo").classList.toggle("mal", nombreMal);
+    campoDoc.closest(".campo").classList.toggle("mal", docMal);
+    if (nombreMal || docMal) {
+      aviso(T.faltaFirma, "malo");
+      (nombreMal ? campoNombre : campoDoc).focus();
+      return;
+    }
     var btn = this;
     btn.disabled = true;
     btn.textContent = T.registrando;
@@ -627,10 +648,16 @@
       .then(function () {
         return api("/" + token + "/contrato", {
           method: "POST",
-          body: JSON.stringify({ aceptaCondiciones: true, aceptaDatos: true, aceptaCargoAnual: true }),
+          body: JSON.stringify({
+            aceptaCondiciones: true,
+            aceptaDatos: true,
+            aceptaCargoAnual: true,
+            firmanteNombre: firmante,
+            firmanteDocumento: documento,
+          }),
         });
       })
-      .then(function (j) { estado = j; ocultaAviso(); irA(5, true); })
+      .then(function (j) { estado = j; pintaContrato(); ocultaAviso(); irA(5, true); })
       .catch(function (e) { aviso(e.message, "malo"); })
       .then(function () { btn.disabled = false; btn.textContent = T.aceptar; });
   });

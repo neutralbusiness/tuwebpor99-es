@@ -682,14 +682,29 @@
       <div class="aceptos">
         <label class="acepto"><input type="checkbox" id="ac-cond"> <span>I have read and accept the <b>terms of service</b>, including the assignment of the site to me and the right of withdrawal.</span></label>
         <label class="acepto"><input type="checkbox" id="ac-datos"> <span>I accept the <b>data protection information</b> in clause 8 and the processing of my data to provide and invoice the service.</span></label>
-        <label class="acepto"><input type="checkbox" id="ac-cargo"> <span>I authorise the <b>charge of €29 a year, VAT included, from the second year</b> on the same card, for an indefinite term and cancellable with fifteen days' notice.</span></label>
+        <label class="acepto"><input type="checkbox" id="ac-cargo"> <span>I authorise the <b>charge of €29 plus VAT a year from the second year</b> on the same card, for an indefinite term and cancellable with fifteen days' notice.</span></label>
       </div>
-      <p class="ayuda" style="font-size:14px;color:#6b7280;margin-bottom:18px">We keep a copy of the text you accept, with date and time, and email it to you.</p>
+      <fieldset class="grupo">
+        <legend>Signature</legend>
+        <div class="campos">
+          <div class="campo">
+            <label class="req" for="sg-nombre">Full name of the person signing</label>
+            <input type="text" id="sg-nombre" maxlength="160" autocomplete="name">
+            <span class="error">Type your full name.</span>
+          </div>
+          <div class="campo">
+            <label class="req" for="sg-doc">ID card, passport, tax number or VAT number</label>
+            <input type="text" id="sg-doc" maxlength="30" autocomplete="off">
+            <span class="error">Type your identity document.</span>
+          </div>
+        </div>
+      </fieldset>
+      <p class="ayuda" style="font-size:14px;color:#6b7280;margin-bottom:18px">Typing your name and ID counts as your signature. We generate the signed contract as a PDF, with the date, the time and a fingerprint of the text, and email it to you.</p>
 
       <div class="barra">
         <button type="button" class="btn btn-ghost" data-anterior="3">Back</button>
         <span class="guardado" id="guardado4"></span>
-        <button type="button" class="btn btn-primary" id="btn-aceptar">Accept and continue to payment</button>
+        <button type="button" class="btn btn-primary" id="btn-aceptar">Sign and continue to payment</button>
       </div>
     </section>
 
@@ -699,6 +714,7 @@
       <p class="sol-sub">The payment is processed by Stripe. We never see or store your card details.</p>
 
       <div class="resumen" id="resumen"></div>
+      <p style="margin:-8px 0 20px"><a class="ayuda-link oculto" id="descargar-contrato" href="#">Download the signed contract (PDF)</a></p>
 
       <div class="aviso bueno ver" style="margin-bottom:22px">
         <strong>What happens after you pay.</strong> We review your order the same working day, write to you if anything is missing and get started. The delivery time runs from the moment we have the payment and all the information.
@@ -789,8 +805,8 @@
 window.SOL_CFG = {
   locale: "en",
   productos: {
-    web:  { titulo: "Professional website", precio: 9900,  nota: "Bespoke design, full SEO, 10 articles, domain and email. Then €29 a year" },
-    shop: { titulo: "Online shop",          precio: 29900, nota: "Everything in the website plus catalogue, cart and payment gateway. Then €29 a year" }
+    web:  { titulo: "Professional website", precio: 9900,  nota: "Bespoke design, full SEO, 10 articles, domain and email. Then €29 + VAT a year" },
+    shop: { titulo: "Online shop",          precio: 29900, nota: "Everything in the website plus catalogue, cart and payment gateway. Then €29 + VAT a year" }
   },
   textos: {
     guardando: "Saving…", guardado: "Saved", sinGuardar: "Unsaved changes",
@@ -814,7 +830,8 @@ window.SOL_CFG = {
     cambioProducto: "Changing product starts a new order. Continue?",
     contratoError: "We could not load the terms:",
     faltanCasillas: "All three boxes must be ticked to continue. The annual charge one is required because it authorises a recurring payment.",
-    registrando: "Recording…", aceptar: "Accept and continue to payment",
+    faltaFirma: "To sign, type your full name and your identity document.",
+    registrando: "Recording…", aceptar: "Sign and continue to payment",
     abriendoPago: "Opening payment…", pagar: "Pay by card",
     copiar: "Copy", copiado: "Copied",
     pagoKo: "The payment did not go through. You can try again whenever you want: your order is still saved.",
@@ -822,7 +839,7 @@ window.SOL_CFG = {
     noEncontrada: "We cannot find that order. The link may be incomplete.",
     empezarDeNuevo: "Start again", noAbrir: "We could not open the order:", volver: "Back",
     alta: "design and set-up", primerAno: "Domain, hosting, email and maintenance for the first year",
-    segundoAno: "From the second year", masIva: " a year",
+    segundoAno: "From the second year", masIva: " + VAT a year",
     masIvaCorto: " incl. VAT", totalHoy: "Total to pay today, VAT included",
     dominioTengo: "Domain you already have", dominioQuiero: "Domain you want"
   }
