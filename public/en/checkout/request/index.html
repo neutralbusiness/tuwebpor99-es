@@ -291,11 +291,17 @@
             <span class="error">Check the email: it does not look valid.</span>
           </div>
           <div class="campo">
+            <label class="req" for="c-email2">Repeat your email</label>
+            <input type="email" id="c-email2" required maxlength="160" autocomplete="off" data-igual-a="c-email" data-sin-pegar>
+            <span class="ayuda">Type it again, without copy and paste, to avoid mistakes.</span>
+            <span class="error">The two emails do not match.</span>
+          </div>
+          <div class="campo">
             <label class="req" for="c-tel">Phone</label>
             <input type="tel" id="c-tel" data-k="contacto.telefono" required maxlength="30" autocomplete="tel">
             <span class="error">A contact phone is missing.</span>
           </div>
-          <div class="campo ancho">
+          <div class="campo">
             <label class="req" for="c-dni">ID or tax number of the person ordering</label>
             <input type="text" id="c-dni" data-k="contacto.dni" required maxlength="20">
             <span class="ayuda">Required for the contract and the invoice.</span>

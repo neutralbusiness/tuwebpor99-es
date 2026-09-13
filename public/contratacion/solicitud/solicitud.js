@@ -60,6 +60,9 @@
   /** Vuelca en el DOM lo que ya estaba guardado. */
   function pintarBrief(brief) {
     if (!brief) return;
+    // Un correo ya guardado se confirmó al escribirlo: no se obliga a repetirlo al volver.
+    var guardado = leerRuta(brief, "contacto.email");
+    if (guardado && $("#c-email2")) $("#c-email2").value = guardado;
     $$("[data-k]").forEach(function (el) {
       var v = leerRuta(brief, el.getAttribute("data-k"));
       if (el.type === "radio") {
@@ -133,6 +136,7 @@
       var v = (el.value || "").trim();
       var bien = el.type === "checkbox" ? el.checked : !!v;
       if (bien && el.type === "email") bien = /^[^@\s]+@[^@\s]+\.[^@\s]{2,}$/.test(v);
+      if (bien && el.dataset.igualA) bien = v.toLowerCase() === ($("#" + el.dataset.igualA).value || "").trim().toLowerCase();
       campo.classList.toggle("mal", !bien);
       if (!bien) malos.push(campo);
     });
@@ -326,6 +330,11 @@
   }
 
   // ── Eventos ────────────────────────────────────────────────────────────
+  ["paste", "drop"].forEach(function (tipo) {
+    document.addEventListener(tipo, function (e) {
+      if (e.target.matches && e.target.matches("[data-sin-pegar]")) e.preventDefault();
+    });
+  });
   document.addEventListener("input", function (e) {
     if (e.target.matches("[data-k]")) autoguardar();
   });
