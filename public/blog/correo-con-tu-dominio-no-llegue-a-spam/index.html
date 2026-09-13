@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#0d9488">
+<title>Correo con tu dominio que llega a spam: SPF, DKIM y DMARC</title>
+<meta name="description" content="Por qué Gmail u Outlook mandan a spam el correo de tu dominio, qué son SPF, DKIM y DMARC, cómo comprobarlos en un minuto y los errores más habituales.">
+<link rel="canonical" href="https://www.tuwebpor99.es/blog/correo-con-tu-dominio-no-llegue-a-spam/">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Tu correo con dominio propio acaba en spam: SPF, DKIM y DMARC explicados sin tecnicismos">
+<meta property="og:description" content="Por qué Gmail u Outlook mandan a spam el correo de tu dominio, qué son SPF, DKIM y DMARC, cómo comprobarlos en un minuto y los errores más habituales.">
+<meta property="og:url" content="https://www.tuwebpor99.es/blog/correo-con-tu-dominio-no-llegue-a-spam/">
+<meta property="og:locale" content="es_ES">
+<meta property="og:image" content="https://www.tuwebpor99.es/img/blog-correo-con-tu-dominio-no-llegue-a-spam.webp">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="675">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://www.tuwebpor99.es/img/blog-correo-con-tu-dominio-no-llegue-a-spam.webp">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700&family=Barlow+Condensed:wght@600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../css/styles.css">
+<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "BlogPosting", "@id": "https://www.tuwebpor99.es/blog/correo-con-tu-dominio-no-llegue-a-spam/#post", "headline": "Tu correo con dominio propio acaba en spam: SPF, DKIM y DMARC explicados sin tecnicismos", "description": "Por qué Gmail u Outlook mandan a spam el correo de tu dominio, qué son SPF, DKIM y DMARC, cómo comprobarlos en un minuto y los errores más habituales.", "image": {"@type": "ImageObject", "url": "https://www.tuwebpor99.es/img/blog-correo-con-tu-dominio-no-llegue-a-spam.webp", "width": 1200, "height": 675}, "datePublished": "2026-09-12", "dateModified": "2026-09-12", "inLanguage": "es", "mainEntityOfPage": "https://www.tuwebpor99.es/blog/correo-con-tu-dominio-no-llegue-a-spam/", "author": {"@type": "Organization", "name": "TuWebPor99", "url": "https://www.tuwebpor99.es/"}, "publisher": {"@id": "https://www.tuwebpor99.es/#org"}, "wordCount": 880}, {"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Inicio", "item": "https://www.tuwebpor99.es/"}, {"@type": "ListItem", "position": 2, "name": "Blog", "item": "https://www.tuwebpor99.es/blog/"}, {"@type": "ListItem", "position": 3, "name": "Tu correo con dominio propio acaba en spam: SPF, DKIM y DMARC explicados sin tecnicismos", "item": "https://www.tuwebpor99.es/blog/correo-con-tu-dominio-no-llegue-a-spam/"}]}]}</script>
+<style>
+.post-meta{display:flex;flex-wrap:wrap;gap:14px;margin-top:14px;font-size:15px;color:var(--muted)}
+.post-cover{max-width:840px;margin:40px auto 0;padding:0 20px}
+.post-cover img{width:100%;height:auto;border-radius:10px;border:1px solid var(--line)}
+.post-body{max-width:760px}
+.post-body h2{margin-top:40px}
+.post-body h3{font-size:24px;margin:26px 0 10px;text-transform:none;letter-spacing:0}
+.post-body p,.post-body li{font-size:18px;line-height:1.7}
+.post-body ol{padding-left:22px;margin-bottom:14px}
+.post-body a{text-decoration:underline}
+</style>
+<link rel="icon" type="image/svg+xml" href="../../favicon.svg"><link rel="icon" href="../../favicon.ico" sizes="32x32"><link rel="apple-touch-icon" href="../../apple-touch-icon.png">
+<script>
+window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}
+(function(){
+  // En la UE el consentimiento se pide antes de medir: todo denegado de salida.
+  // Si el visitante ya aceptó en el aviso de cookies, se restaura su elección
+  // aquí para no perder la medición al cambiar de página.
+  var c={ad_storage:"denied",ad_user_data:"denied",ad_personalization:"denied",analytics_storage:"denied",wait_for_update:500};
+  try{var g=JSON.parse(localStorage.getItem("nb_consent")||"null");
+    if(g&&g.analytics){c.analytics_storage="granted"}
+    if(g&&g.ads){c.ad_storage="granted";c.ad_user_data="granted";c.ad_personalization="granted"}
+  }catch(e){}
+  gtag("consent","default",c);
+})();
+</script>
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-T54WPRS2');</script>
+<script defer src="https://panel.neutralb.es/consent.js"></script>
+<script defer src="https://panel.neutralb.es/track.js"></script>
+</head>
+<body>
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-T54WPRS2" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+<div class="topbar">🔥 <strong>Oferta de lanzamiento:</strong> web completa + hosting + dominio por <strong>99€ + IVA</strong> — entrega en menos de 3 días</div>
+
+<header class="nav">
+  <div class="wrap nav-in">
+    <a class="logo" href="../../">TuWeb<em>Por99</em><span class="eur">€</span></a>
+    <nav class="menu" id="menu">
+      <a href="/">Inicio</a><a href="../../que-incluye/">Qué incluye</a>
+      <a href="../../precios/">Precios</a><a href="../../contratacion/">Contratar</a>
+      <a href="../../portfolio/">Nuestras webs</a>
+      <a href="../../como-funciona/">Cómo funciona</a>
+      <a href="../../sobre-nosotros/">Sobre nosotros</a>
+      <a href="../../blog/">Blog</a>
+      <a href="../../preguntas-frecuentes/">FAQ</a>
+    </nav>
+    <div class="nav-cta">
+      <div class="lang"><span class="on">ES</span><a href="../../../en/" hreflang="en">EN</a></div>
+      <a class="btn btn-ghost" href="tel:+34618794322">618 79 43 22</a>
+      <a class="btn btn-primary" href="../../contratacion/">Quiero mi web</a>
+      <button id="nav-toggle" aria-label="Abrir menú" onclick="document.getElementById('menu').classList.toggle('open')">☰</button>
+    </div>
+  </div>
+</header>
+<div class="page-hero"><div class="wrap"><p class="crumb"><a href="../../">Inicio</a> › <a href="../">Blog</a> › Correo</p><h1 style="text-transform:none">Tu correo con dominio propio acaba en spam: SPF, DKIM y DMARC explicados sin tecnicismos</h1><p class="lead">Si tus presupuestos acaban en la carpeta de spam del cliente, casi nunca es por lo que escribes. Tres registros del DNS, cómo saber si los tienes y los fallos típicos.</p><p class="post-meta"><time datetime="2026-09-12">12 de septiembre de 2026</time><span>4 min de lectura</span><span>Correo</span></p></div></div>
+<div class="post-cover"><img src="/img/blog-correo-con-tu-dominio-no-llegue-a-spam.webp" alt="Ilustración: Tu correo con dominio propio acaba en spam: SPF, DKIM y DMARC explicados sin tecnicismos" width="1200" height="675" fetchpriority="high"></div>
+<section style="padding:48px 0 30px"><div class="wrap prose post-body">
+<article>
+<p>Tienes web nueva, tienes un correo del tipo <strong>info@tunegocio.es</strong> y el primer presupuesto que mandas a un cliente acaba en su carpeta de spam. O peor: no llega y te enteras cuando llamas para preguntar si lo ha visto. Pasa muchísimo, y en la mayoría de los casos no tiene nada que ver con lo que escribes, sino con tres registros del DNS que nadie configuró.</p>
+
+<p>Te explicamos qué son, cómo saber si los tienes y qué errores vemos una y otra vez cuando alguien nos pide que revisemos su dominio.</p>
+
+<h2>Por qué Gmail o Outlook desconfían de tu correo</h2>
+
+<p>Cualquiera puede escribir un correo y poner en el remitente la dirección que quiera. Para defenderse de eso, los grandes proveedores comprueban si el servidor que envía el mensaje está <strong>autorizado por el dueño del dominio</strong>. Si no pueden comprobarlo, el mensaje baja de categoría: va a spam, se retrasa o se rechaza.</p>
+
+<p>Google lo dejó por escrito en sus <a href="https://support.google.com/a/answer/81126?hl=es" target="_blank" rel="noopener">directrices para remitentes</a>, que se aplican desde febrero de 2024: <strong>todo</strong> el que envíe a cuentas de Gmail debe tener configurado SPF o DKIM, registros DNS directos e inversos válidos y conexión cifrada. A quien envía más de 5.000 mensajes al día le exige además SPF y DKIM a la vez, DMARC y baja con un clic en los correos comerciales. Un autónomo no llega a esas cifras, pero configurar los tres registros cuesta lo mismo y te ahorra problemas.</p>
+
+<h2>Los tres registros, sin tecnicismos</h2>
+
+<h3>SPF: la lista de quién puede enviar en tu nombre</h3>
+<p>Es una línea de texto en el DNS de tu dominio que dice «los correos de tunegocio.es solo pueden salir de estos servidores». Si tu correo está en el servidor de tu alojamiento, ese servidor tiene que estar en la lista. Si además envías facturas desde tu programa de facturación o boletines desde una herramienta de newsletter, esos servicios también.</p>
+
+<h3>DKIM: la firma del mensaje</h3>
+<p>El servidor firma cada correo con una clave privada, y en el DNS publicas la clave pública para que el destinatario compruebe la firma. Si alguien altera el mensaje por el camino o lo envía sin la clave, la firma no cuadra.</p>
+
+<h3>DMARC: qué hacer cuando lo anterior falla</h3>
+<p>Le dice al destinatario qué hacer con un correo que dice ser tuyo y no pasa las comprobaciones: nada, mandarlo a spam o rechazarlo. También puede pedir que te envíen informes. Lo razonable es empezar en modo observación y endurecerlo cuando sabes que todo lo legítimo pasa.</p>
+
+<h2>Cómo saber si ya los tienes</h2>
+
+<p>La prueba más rápida no requiere instalar nada:</p>
+<ol>
+<li>Envía un correo desde tu cuenta del dominio a una cuenta de Gmail que tengas.</li>
+<li>Abre el mensaje en Gmail desde el ordenador, pulsa los tres puntos y elige <strong>«Mostrar original»</strong>.</li>
+<li>Arriba verás tres líneas: SPF, DKIM y DMARC, cada una con <em>PASS</em> o con otra cosa.</li>
+</ol>
+<p>Si las tres dicen PASS, el problema de spam, si lo hay, viene de otro lado. Si alguna dice FAIL, NONE o no aparece, ya sabes por dónde empezar.</p>
+
+<h2>Los errores que más vemos</h2>
+
+<ul>
+<li><strong>Dos registros SPF.</strong> Alguien añade uno nuevo para la herramienta de facturas en lugar de ampliar el que ya existía. Con dos registros SPF el resultado es error, y es como no tener ninguno. Tiene que haber uno solo con todos los servicios dentro.</li>
+<li><strong>Cambiar el DNS de sitio y perder los registros.</strong> Al mover el dominio a otro proveedor o a Cloudflare se copian los registros de la web y se olvidan los TXT del correo. La web sigue funcionando y nadie se da cuenta hasta que los correos empiezan a rebotar.</li>
+<li><strong>Enviar desde Gmail personal «en nombre de» tu dirección.</strong> Configurar Gmail para que muestre info@tunegocio.es como remitente, pero enviando por los servidores de Google sin autorizarlos en tu SPF, es receta segura para spam.</li>
+<li><strong>DMARC en rechazo desde el primer día.</strong> Si pones la política más estricta sin haber comprobado que tu programa de facturas firma bien, los correos de facturas desaparecen sin aviso.</li>
+<li><strong>La clave DKIM del alojamiento antiguo.</strong> Cambias de servidor de correo y en el DNS sigue la clave vieja. La firma de los correos nuevos no cuadra con la publicada.</li>
+</ul>
+
+<h2>No todo el spam es culpa del DNS</h2>
+
+<p>Con los registros bien puestos, un correo todavía puede acabar en spam si el contenido parece sospechoso: un único enlace acortado sin texto, un asunto en mayúsculas con signos de exclamación, un PDF adjunto con nombre genérico enviado a alguien que nunca te ha escrito. Tampoco ayuda estrenar dominio y mandar cincuenta correos el primer día. Empieza por contestar a clientes que ya te han escrito; esas conversaciones van dando reputación a la dirección.</p>
+
+<p>Y una comprobación que se olvida: <strong>el buzón tiene que existir</strong>. Si pones en la web un correo al que nadie mira, los clientes que te escriben ahí creen que no les respondes.</p>
+
+<h2>Qué hacemos nosotros</h2>
+
+<p>En <a href="../../que-incluye/">el pack de la web</a> van incluidos los correos con tu dominio, sin límite de buzones. Si ya tienes dominio y correo en otro sitio y tus mensajes acaban en spam, o vas a mover el dominio y no quieres perder nada por el camino, <a href="../../contacto/">escríbenos</a> con el resultado de «Mostrar original» y te decimos qué falta.</p>
+
+</article>
+</div></section>
+<section class="cta-final"><div class="wrap"><h2>¿Empezamos con tu web? <em>Solo 99€ + IVA</em></h2><p>Rellena el formulario en 2 minutos y recibe tu web completa, con dominio y posicionamiento, en menos de 3 días.</p><a class="btn btn-primary" href="../../contratacion/">Quiero mi web por 99€</a><p class="sub">O escríbenos: <a href="https://wa.me/34618794322" target="_blank" rel="noopener">WhatsApp 618 79 43 22</a> · <a href="mailto:info@tuwebpor99.es">info@tuwebpor99.es</a></p></div></section>
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <a class="logo" href="../../">TuWeb<em>Por99</em><span class="eur">€</span></a>
+        <p>Empresa de diseño web y marketing digital en Barcelona. Trabajamos con negocios de España, LATAM y Europa.</p>
+      </div>
+      <div>
+        <h4>Servicios</h4>
+        <ul>
+          <li><a href="../../que-incluye/">Qué incluye</a></li>
+          <li><a href="../../precios/">Precios</a></li><li><a href="../../contratacion/">Contratar</a></li>
+          <li><a href="../../como-funciona/">Cómo funciona</a></li>
+          <li><a href="../../portfolio/">Nuestras webs</a></li>
+          <li><a href="../../preguntas-frecuentes/">Preguntas frecuentes</a></li>
+          <li><a href="../../comparativa-wix-wordpress/">Wix vs WordPress</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Especialidades</h4>
+        <ul>
+          <li><a href="../../diseno-web-talleres/">Webs para talleres</a></li>
+          <li><a href="../../diseno-web-cerrajeros/">Webs para cerrajeros</a></li>
+          <li><a href="../../diseno-web-reformas/">Webs para reformas</a></li>
+          <li><a href="../../diseno-web-clinicas-estetica/">Clínicas y estética</a></li>
+          <li><a href="../../diseno-web-restaurantes/">Restaurantes</a></li>
+          <li><a href="../../web-para-bodas/">Webs para bodas</a></li>
+          <li><a href="../../curriculum-online/">Currículum online</a></li>
+          <li><a href="../../diseno-web-tienda-online/">Tiendas online</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Empresa</h4>
+        <ul>
+          <li><a href="../../sobre-nosotros/">Sobre nosotros</a></li>
+          <li><a href="../../blog/">Blog</a></li>
+          <li><a href="../../contacto/">Contacto</a></li>
+          <li><a href="../../diseno-web-barcelona/">Diseño web Barcelona</a></li>
+          <li><a href="../../diseno-web-badalona/">Diseño web Badalona</a></li>
+          <li><a href="../../diseno-web-madrid/">Diseño web Madrid</a></li>
+          <li><a href="../../sitemap_index.xml">Mapa del sitio</a></li>
+          <li><a href="../../llms.txt">llms.txt</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contacto</h4>
+        <ul class="foot-contact">
+          <li>📍 Barcelona, España</li>
+          <li>📞 <a href="tel:+34618794322">618 79 43 22</a></li>
+          <li>✉️ <a href="mailto:info@tuwebpor99.es">info@tuwebpor99.es</a></li>
+          <li>💬 <a href="https://wa.me/34618794322" target="_blank" rel="noopener">WhatsApp</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 TuWebPor99 · Diseño web y marketing digital en Barcelona</span>
+      <nav>
+        <a href="../../aviso-legal/">Aviso legal</a>
+        <a href="../../politica-privacidad/">Privacidad</a>
+        <a href="../../politica-cookies/">Cookies</a>
+      </nav>
+    </div>
+  </div>
+</footer>
+<script>(function(){if(/tuwebpor99\.es$/.test(location.hostname))return;document.querySelectorAll('a[href$="/"]').forEach(function(a){var h=a.getAttribute("href");if(!/^(https?:|mailto:|tel:)/.test(h))a.setAttribute("href",h+"index.html");});})();</script>
+</body>
+</html>

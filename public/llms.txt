@@ -15,6 +15,12 @@ Contacto: info@tuwebpor99.es · +34 618 79 43 22 (WhatsApp disponible).
 - [Blog](https://www.tuwebpor99.es/blog/): consejos de diseño web, SEO y marketing
 - [Contacto](https://www.tuwebpor99.es/contacto/): formulario y datos de contacto
 
+## Artículos del blog
+
+- [Tu correo con dominio propio acaba en spam: SPF, DKIM y DMARC explicados sin tecnicismos](https://www.tuwebpor99.es/blog/correo-con-tu-dominio-no-llegue-a-spam/): Si tus presupuestos acaban en la carpeta de spam del cliente, casi nunca es por lo que escribes. Tres registros del DNS, cómo saber si los tienes y los fallos típicos.
+- [Qué tener claro antes de encargar tu web (aunque los textos los escribamos nosotros)](https://www.tuwebpor99.es/blog/que-preparar-antes-de-encargar-tu-web/): Media hora pensando en lo que solo sabes tú ahorra tres vueltas de cambios. Qué preparar, qué no hace falta y una lista para copiar.
+- [Dominio .es o .com para un negocio que trabaja en España: qué cambia de verdad](https://www.tuwebpor99.es/blog/dominio-es-o-com-negocio-local/): Ni el .com posiciona mejor ni el .es es solo para empresas. Lo que dicen la norma del .es y Google, y cinco comprobaciones antes de registrar tu dominio.
+
 ## Landings por sector y ciudad
 
 - [Precios](https://www.tuwebpor99.es/precios/)
