@@ -133,6 +133,38 @@
   letter-spacing:.04em;border-radius:8px;padding:9px 18px;cursor:pointer;border:1px solid var(--ink)}
 .dlg-botones .no{background:#fff;color:var(--ink)}
 .dlg-botones .si{background:var(--accent);border-color:var(--accent);color:#fff}
+.horario{border:1px solid var(--line);border-radius:10px;overflow:hidden;background:#fff}
+.h-dia{display:grid;grid-template-columns:150px 1fr auto;gap:12px;align-items:start;padding:10px 14px;border-bottom:1px solid var(--line)}
+.h-dia:last-child{border-bottom:0}
+.campo .h-nombre{display:flex;gap:9px;align-items:center;padding-top:8px;cursor:pointer}
+.h-nombre input{width:18px;height:18px;accent-color:var(--accent);flex:0 0 auto}
+.h-franjas{display:flex;flex-direction:column;gap:8px;align-items:flex-start}
+.h-cerrado{color:var(--muted);padding-top:8px;font-size:15px}
+.h-franja{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.h-franja input{font:inherit;font-size:15px;color:var(--ink);border:1px solid var(--line);border-radius:8px;padding:7px 9px;background:#fff}
+.h-franja input:focus{outline:2px solid var(--accent);outline-offset:1px;border-color:var(--accent)}
+.h-franja.h-mal input{border-color:#dc2626}
+.h-btn{font:inherit;font-size:14px;font-weight:600;color:var(--accent-ink);background:none;border:0;cursor:pointer;padding:6px 0}
+.h-copiar{padding-top:8px;white-space:nowrap}
+.h-quitar{font-size:22px;line-height:1;color:var(--muted);background:none;border:0;cursor:pointer;padding:2px 8px}
+.h-quitar:hover{color:#b91c1c}
+.subida input[type=file]{font:inherit;font-size:15px;max-width:100%}
+.subidos{list-style:none;margin:10px 0 0;padding:0;display:flex;flex-direction:column;gap:6px}
+.subidos:empty{display:none}
+.subidos li{display:flex;align-items:center;gap:8px;font-size:14.5px;background:var(--tint);border:1px solid var(--tint2);border-radius:8px;padding:7px 11px}
+.subidos li small{color:var(--muted)}
+.subidos button{margin-left:auto;background:none;border:0;color:#b91c1c;font:inherit;font-size:14px;font-weight:600;cursor:pointer}
+.subida-msg{font-size:13.5px;min-height:18px;color:var(--muted)}
+.subida-msg.malo{color:#b91c1c;font-weight:600}
+@media(max-width:720px){.h-dia{grid-template-columns:1fr;gap:6px}.h-copiar{padding-top:0}}
+.dlg-cuerpo{padding:24px}
+.dlg-texto ol{margin:4px 0 18px;padding-left:20px}
+.dlg-texto li{font-size:15px;line-height:1.55;margin-bottom:8px;color:var(--body)}
+.dlg-texto a{color:var(--accent-ink);text-decoration:underline}
+.ayuda-link{align-self:flex-start;background:none;border:0;padding:0;font:inherit;font-size:13.5px;font-weight:600;color:var(--accent-ink);text-decoration:underline;cursor:pointer}
+.color-fila{display:flex;gap:8px;align-items:stretch}
+.color-fila input[type=color]{width:52px;min-width:52px;border:1px solid var(--line);border-radius:8px;padding:3px;background:#fff;cursor:pointer}
+.campo .color-fila input[type=text]{font-family:ui-monospace,Menlo,monospace;text-transform:uppercase}
 .oculto{display:none !important}
 @media(max-width:720px){
   .campos{grid-template-columns:1fr}
@@ -413,15 +445,24 @@
             <textarea id="n-cert" data-k="negocio.certificaciones" maxlength="800"></textarea>
             <span class="ayuda">Solo las que se pueden acreditar.</span>
           </div>
-          <div class="campo">
-            <label for="n-dato">Un dato real de tu actividad</label>
+          <div class="campo ancho">
+            <label for="n-dato">Una cifra que demuestre tu experiencia</label>
             <input type="text" id="n-dato" data-k="negocio.datoActividad" maxlength="160">
-            <span class="ayuda">Que sea verdad y lo puedas sostener si alguien pregunta.</span>
+            <span class="ayuda">Un número concreto que dé confianza y que destacaremos en la web. Por ejemplo: «más de 500 reseñas de 5 estrellas», «1.200 coches reparados al año» o «15 años en el barrio». Solo si es verdad y lo puedes demostrar.</span>
           </div>
-          <div class="campo">
-            <label for="n-precios">Precios que podemos publicar</label>
-            <input type="text" id="n-precios" data-k="negocio.precios" maxlength="200">
-            <span class="ayuda">Publicar precios sube mucho la conversión. Si prefieres no ponerlos, déjalo vacío.</span>
+          <div class="campo ancho">
+            <label for="n-precios">Precios o tarifas que quieres mostrar en la web</label>
+            <textarea id="n-precios" data-k="negocio.precios" maxlength="1200"></textarea>
+            <span class="ayuda">Escribe los precios de tus servicios más pedidos, uno por línea. Por ejemplo: «Cambio de aceite: desde 49 €» o «Primera consulta: gratis». Si ya tienes una lista de precios, súbela aquí debajo. Si prefieres no publicar precios, déjalo vacío, aunque mostrarlos suele traer más clientes.</span>
+          </div>
+          <div class="campo ancho">
+            <label for="n-tarifas">Sube tu lista de tarifas (opcional)</label>
+            <div class="subida">
+              <input type="file" id="n-tarifas" data-subir="tarifas" accept=".pdf,.jpg,.jpeg,.png,.webp,.heic,.xlsx,.xls,.csv,.docx,.doc" multiple>
+              <ul class="subidos" data-lista="tarifas"></ul>
+            </div>
+            <span class="ayuda">PDF, foto, Excel o Word. Hasta 4 MB por archivo y 5 archivos en total.</span>
+            <span class="subida-msg" data-msg="tarifas" role="status" aria-live="polite"></span>
           </div>
           <div class="campo ancho">
             <label class="req" for="n-zonas">Zonas donde trabajas</label>
@@ -481,14 +522,18 @@
             <input type="text" id="p-prov" data-k="contactoWeb.provincia" maxlength="80">
           </div>
           <div class="campo ancho">
-            <label class="req" for="p-horario">Horario de atención</label>
-            <input type="text" id="p-horario" data-k="contactoWeb.horario" required maxlength="200">
-            <span class="error">Falta el horario.</span>
+            <label class="req">Horario de atención</label>
+            <div class="horario" id="horario"></div>
+            <input type="hidden" id="p-horario" data-k="contactoWeb.horario" required>
+            <input type="hidden" id="p-horario-detalle" data-k="contactoWeb.horarioDetalle">
+            <span class="ayuda">Marca los días que abres y ajusta las horas. Si cierras a mediodía, añade una segunda franja.</span>
+            <span class="error">Marca al menos un día abierto y revisa que cada franja termine después de empezar.</span>
           </div>
           <div class="campo ancho">
             <label for="p-gps">Coordenadas exactas</label>
             <input type="text" id="p-gps" data-k="contactoWeb.coordenadas" maxlength="60">
             <span class="ayuda">Opcional. Si no las tienes, las buscamos por la dirección.</span>
+            <button type="button" class="ayuda-link" data-ayuda="coordenadas">¿Dónde conseguirlas?</button>
           </div>
         </div>
       </fieldset>
@@ -497,40 +542,70 @@
         <legend>Reputación, redes y marca</legend>
         <div class="campos">
           <div class="campo ancho">
-            <label for="r-gbp">Ficha de Google de tu negocio</label>
+            <label for="r-gbp">Dirección web (URL) de tu ficha de Google</label>
             <input type="url" id="r-gbp" data-k="recursos.gbpUrl" maxlength="300">
-            <span class="ayuda">Si no la tienes, te ayudamos a crearla. Sin ficha no aparecerás en el mapa.</span>
+            <span class="ayuda">El enlace que abre tu negocio en Google Maps. Si no tienes ficha, te ayudamos a crearla: sin ella no aparecerás en el mapa.</span>
+            <button type="button" class="ayuda-link" data-ayuda="gbp">¿Dónde conseguirla?</button>
           </div>
           <div class="campo">
-            <label for="r-resenas">Nota media y número de reseñas</label>
-            <input type="text" id="r-resenas" data-k="recursos.resenas" maxlength="60">
-            <span class="ayuda">Solo lo publicamos si existe la ficha que lo respalda.</span>
+            <label for="r-nota">Nota media en Google</label>
+            <input type="text" id="r-nota" data-k="recursos.notaMedia" maxlength="4" inputmode="decimal">
+            <span class="ayuda">La que sale junto a las estrellas de tu ficha.</span>
           </div>
           <div class="campo">
+            <label for="r-num-resenas">Número de reseñas</label>
+            <input type="text" id="r-num-resenas" data-k="recursos.numResenas" maxlength="7" inputmode="numeric">
+            <span class="ayuda">Solo publicamos la nota y las reseñas si tu ficha lo respalda.</span>
+          </div>
+          <div class="campo ancho">
             <label for="r-redes">Redes sociales</label>
             <textarea id="r-redes" data-k="recursos.redes" maxlength="600"></textarea>
+            <span class="ayuda">Pega el enlace de cada perfil, uno por línea.</span>
           </div>
           <div class="campo ancho">
             <label>Logotipo</label>
             <div class="opciones fila">
-              <label class="opcion"><input type="radio" name="logo" value="tengo" data-k="recursos.logoEstado" checked><span><b>Tengo logotipo</b><small>Te lo hacemos llegar</small></span></label>
+              <label class="opcion"><input type="radio" name="logo" value="tengo" data-k="recursos.logoEstado" checked><span><b>Tengo logotipo</b><small>Súbelo aquí debajo</small></span></label>
               <label class="opcion"><input type="radio" name="logo" value="iniciales" data-k="recursos.logoEstado"><span><b>Usad las iniciales</b><small>Con fondo de color</small></span></label>
               <label class="opcion"><input type="radio" name="logo" value="nuevo" data-k="recursos.logoEstado"><span><b>Diseñádmelo</b><small>Incluido en el paquete</small></span></label>
             </div>
           </div>
-          <div class="campo ancho">
-            <label for="r-colores">Colores corporativos</label>
-            <input type="text" id="r-colores" data-k="recursos.colores" maxlength="120">
-            <span class="ayuda">Si lo dejas en nuestras manos, elegimos una paleta acorde a tu sector.</span>
+          <div class="campo ancho logo-subida">
+            <label for="r-logo">Sube tu logotipo</label>
+            <div class="subida">
+              <input type="file" id="r-logo" data-subir="logo" accept=".png,.jpg,.jpeg,.webp,.svg,.pdf,.ai,.eps" multiple>
+              <ul class="subidos" data-lista="logo"></ul>
+            </div>
+            <span class="ayuda">Mejor en SVG, PDF o PNG con fondo transparente. Si tienes varias versiones (horizontal, solo el símbolo, en blanco), súbelas todas. Hasta 4 MB por archivo y 3 archivos.</span>
+            <span class="subida-msg" data-msg="logo" role="status" aria-live="polite"></span>
+          </div>
+          <div class="campo">
+            <label for="r-color1">Color principal</label>
+            <div class="color-fila">
+              <input type="color" data-color-de="r-color1" value="#ffffff" aria-label="Elegir el color principal">
+              <input type="text" id="r-color1" data-k="recursos.colorPrincipal" maxlength="7" autocomplete="off" spellcheck="false">
+            </div>
+            <span class="ayuda">Pulsa el cuadro para elegirlo o escribe su código hexadecimal, como #0D9488.</span>
+          </div>
+          <div class="campo">
+            <label for="r-color2">Color secundario</label>
+            <div class="color-fila">
+              <input type="color" data-color-de="r-color2" value="#ffffff" aria-label="Elegir el color secundario">
+              <input type="text" id="r-color2" data-k="recursos.colorSecundario" maxlength="7" autocomplete="off" spellcheck="false">
+            </div>
+            <span class="ayuda">Si los dejas vacíos, elegimos una paleta acorde a tu sector.</span>
           </div>
           <div class="campo">
             <label for="r-gtm">Etiqueta de Google Tag Manager</label>
             <input type="text" id="r-gtm" data-k="recursos.gtm" maxlength="40">
-            <span class="ayuda">Opcional. Si no tienes, la creamos nosotros.</span>
+            <span class="ayuda">Opcional. Empieza por GTM-. Si no tienes, la creamos nosotros.</span>
+            <button type="button" class="ayuda-link" data-ayuda="gtm">¿Dónde conseguirla?</button>
           </div>
           <div class="campo">
             <label for="r-ga4">Identificador de Google Analytics</label>
             <input type="text" id="r-ga4" data-k="recursos.ga4" maxlength="40">
+            <span class="ayuda">Opcional. Empieza por G-. Si no tienes, lo creamos nosotros.</span>
+            <button type="button" class="ayuda-link" data-ayuda="ga4">¿Dónde conseguirlo?</button>
           </div>
         </div>
       </fieldset>
@@ -651,6 +726,37 @@
 </div>
 </main>
 
+<dialog class="dlg" id="dlg-ayuda">
+  <div class="dlg-cuerpo">
+    <h3 id="dlg-ayuda-titulo"></h3>
+    <div class="dlg-texto" id="dlg-ayuda-texto"></div>
+    <div class="dlg-botones"><button type="button" class="si" id="dlg-ayuda-cerrar">Entendido</button></div>
+  </div>
+</dialog>
+<template id="ayuda-coordenadas" data-titulo="Cómo sacar las coordenadas"><ol>
+  <li>Abre <a href="https://www.google.com/maps" target="_blank" rel="noopener">Google Maps</a> en el ordenador y busca tu negocio.</li>
+  <li>Acerca el mapa y haz clic con el <b>botón derecho</b> justo encima de la puerta de tu local.</li>
+  <li>La primera línea del menú que aparece son dos números separados por una coma, como 41.38740, 2.16860. Haz clic en ellos y se copian solos.</li>
+  <li>Vuelve aquí y pégalos en el campo.</li>
+</ol></template>
+<template id="ayuda-gbp" data-titulo="Cómo copiar el enlace de tu ficha"><ol>
+  <li>Abre <a href="https://www.google.com/maps" target="_blank" rel="noopener">Google Maps</a> y busca el nombre de tu negocio.</li>
+  <li>Pulsa en tu negocio para abrir la ficha y después en el botón <b>Compartir</b>.</li>
+  <li>Pulsa <b>Copiar enlace</b>. Es una dirección que empieza por https://maps.app.goo.gl/</li>
+  <li>Pégala aquí. Si tu negocio no sale en Google Maps, déjalo vacío y te ayudamos a crear la ficha.</li>
+</ol></template>
+<template id="ayuda-gtm" data-titulo="Dónde está tu etiqueta de Tag Manager"><ol>
+  <li>Entra en <a href="https://tagmanager.google.com" target="_blank" rel="noopener">tagmanager.google.com</a> con la cuenta de Google de tu negocio.</li>
+  <li>Abre el contenedor de tu web.</li>
+  <li>En la barra de arriba, a la izquierda de los botones <b>Vista previa</b> y <b>Enviar</b>, verás un código que empieza por <b>GTM-</b>, como GTM-AB12CD3.</li>
+  <li>Cópialo y pégalo aquí. Si no tienes cuenta, déjalo vacío: la creamos nosotros.</li>
+</ol></template>
+<template id="ayuda-ga4" data-titulo="Dónde está tu identificador de Analytics"><ol>
+  <li>Entra en <a href="https://analytics.google.com" target="_blank" rel="noopener">analytics.google.com</a> con la cuenta de Google de tu negocio.</li>
+  <li>Pulsa <b>Administrar</b>, la rueda dentada de abajo a la izquierda.</li>
+  <li>En el apartado de la propiedad, abre <b>Flujos de datos</b> y pulsa en tu web.</li>
+  <li>Copia el <b>ID de medición</b>, que empieza por <b>G-</b>, como G-1A2B3C4D5E, y pégalo aquí. Si no tienes, déjalo vacío: lo creamos nosotros.</li>
+</ol></template>
 <dialog class="dlg" id="dlg-email">
   <form method="dialog" id="form-email" novalidate>
     <h3>Envíate el enlace</h3>
@@ -691,6 +797,15 @@ window.SOL_CFG = {
     guardando: "Guardando…", guardado: "Guardado", sinGuardar: "Cambios sin guardar",
     errorRed: "No hemos podido conectar. Inténtalo otra vez.",
     camposMal: "Revisa los campos marcados en rojo: son los que necesitamos para seguir.",
+    dias: ["Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado", "Domingo"],
+    cerrado: "Cerrado",
+    anadirFranja: "+ Añadir franja",
+    quitarFranja: "Quitar franja",
+    copiarTodos: "Copiar a los días abiertos",
+    tarifasGrande: "Ese archivo pasa de 4 MB. Redúcelo o mándanoslo por WhatsApp.",
+    tarifasSubiendo: "Subiendo…",
+    tarifasQuitar: "Quitar",
+    tarifasPrivacidad: "Antes marca la casilla de privacidad del paso 1.",
     emailMal: "Escribe un correo válido.",
     emailPrivacidad: "Marca la casilla de privacidad para poder enviártelo.",
     emailEnviando: "Enviando…",

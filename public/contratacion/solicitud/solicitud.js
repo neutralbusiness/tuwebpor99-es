@@ -75,6 +75,120 @@
     });
   }
 
+  // ── Horario por días ───────────────────────────────────────────────────
+  // Siete listas de franjas [desde, hasta], de lunes a domingo. Vacía = cerrado.
+  var horario = [[], [], [], [], [], [], []];
+
+  function hhmm(v) { return /^\d{2}:\d{2}$/.test(v || "") ? v : ""; }
+
+  function cargaHorario() {
+    var crudo = $("#p-horario-detalle") && $("#p-horario-detalle").value;
+    if (!crudo) return;
+    try {
+      var d = JSON.parse(crudo);
+      if (!Array.isArray(d) || d.length !== 7) return;
+      horario = d.map(function (f) {
+        return (Array.isArray(f) ? f : []).filter(function (r) {
+          return Array.isArray(r) && hhmm(r[0]) && hhmm(r[1]);
+        });
+      });
+    } catch (e) { /* un detalle corrupto se ignora y se empieza de cero */ }
+  }
+
+  function volcarHorario() {
+    var dias = T.dias || [];
+    var valido = horario.some(function (f) { return f.length; });
+    var lineas = horario.map(function (f, i) {
+      if (!f.length) return dias[i] + ": " + (T.cerrado || "").toLowerCase();
+      f.forEach(function (r) { if (!(r[0] && r[1] && r[0] < r[1])) valido = false; });
+      return dias[i] + ": " + f.map(function (r) { return r[0] + "–" + r[1]; }).join(", ");
+    });
+    $("#p-horario").value = valido ? lineas.join("\n") : "";
+    $("#p-horario-detalle").value = JSON.stringify(horario);
+    autoguardar();
+  }
+
+  function pintaHorario() {
+    var cont = $("#horario");
+    if (!cont) return;
+    var dias = T.dias || [];
+    cont.innerHTML = horario.map(function (f, i) {
+      var abierto = f.length > 0;
+      var franjas = abierto
+        ? f.map(function (r, j) {
+            var mal = r[0] && r[1] && r[0] >= r[1];
+            return '<span class="h-franja' + (mal ? " h-mal" : "") + '">' +
+              '<input type="time" step="900" class="h-ini" data-j="' + j + '" value="' + r[0] + '" aria-label="' + dias[i] + '">' +
+              " – " +
+              '<input type="time" step="900" class="h-fin" data-j="' + j + '" value="' + r[1] + '" aria-label="' + dias[i] + '">' +
+              '<button type="button" class="h-quitar" data-j="' + j + '" aria-label="' + T.quitarFranja + '">×</button></span>';
+          }).join("") + '<button type="button" class="h-btn h-mas">' + T.anadirFranja + "</button>"
+        : '<span class="h-cerrado">' + T.cerrado + "</span>";
+      return '<div class="h-dia" data-d="' + i + '">' +
+        '<label class="h-nombre"><input type="checkbox" class="h-abierto"' + (abierto ? " checked" : "") + "> " + dias[i] + "</label>" +
+        '<div class="h-franjas">' + franjas + "</div>" +
+        (abierto ? '<button type="button" class="h-btn h-copiar">' + T.copiarTodos + "</button>" : "<span></span>") +
+        "</div>";
+    }).join("");
+  }
+
+  function copia(f) { return f.map(function (r) { return [r[0], r[1]]; }); }
+
+  // ── Archivos adjuntos (tarifas, logotipo) ──────────────────────────────
+  function esc(s) {
+    return String(s).replace(/[&<>"]/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]; });
+  }
+
+  function adjuntoMsg(clave, texto, malo) {
+    var m = $('[data-msg="' + clave + '"]');
+    if (!m) return;
+    m.textContent = texto || "";
+    m.className = "subida-msg" + (malo ? " malo" : "");
+  }
+
+  function pintaAdjuntos() {
+    var archivos = (((estado && estado.brief) || {}).archivos) || {};
+    $$("[data-lista]").forEach(function (lista) {
+      var clave = lista.getAttribute("data-lista");
+      lista.innerHTML = (archivos[clave] || []).map(function (a) {
+        return "<li>📎 " + esc(a.nombre) + " <small>" + Math.max(1, Math.round(a.bytes / 1024)) + " KB</small>" +
+          '<button type="button" data-quitar="' + esc(clave) + ":" + esc(a.id) + '">' + T.tarifasQuitar + "</button></li>";
+      }).join("");
+    });
+  }
+
+  function subeAdjuntos(input) {
+    var clave = input.getAttribute("data-subir");
+    if (!consiente()) { adjuntoMsg(clave, T.tarifasPrivacidad, true); input.value = ""; return; }
+    var cola = Array.prototype.slice.call(input.files);
+    (function sigue() {
+      var f = cola.shift();
+      if (!f) { adjuntoMsg(clave, ""); input.value = ""; return; }
+      if (f.size > 4 * 1024 * 1024) { adjuntoMsg(clave, T.tarifasGrande, true); input.value = ""; return; }
+      adjuntoMsg(clave, T.tarifasSubiendo);
+      api("/" + token + "/adjuntos/" + clave, {
+        method: "POST",
+        headers: { "content-type": f.type || "application/octet-stream", "x-file-name": encodeURIComponent(f.name) },
+        body: f,
+      })
+        .then(function (j) { estado = j; pintaAdjuntos(); sigue(); })
+        .catch(function (e) { adjuntoMsg(clave, e.message, true); input.value = ""; });
+    })();
+  }
+
+  // ── Colores corporativos ───────────────────────────────────────────────
+  function hex(v) {
+    v = (v || "").trim();
+    return /^#?[0-9a-f]{6}$/i.test(v) ? (v.charAt(0) === "#" ? v : "#" + v).toLowerCase() : "";
+  }
+
+  function sincronizaColores() {
+    $$("[data-color-de]").forEach(function (picker) {
+      var v = hex($("#" + picker.getAttribute("data-color-de")).value);
+      if (v) picker.value = v;
+    });
+  }
+
   // ── Llamadas al servidor ───────────────────────────────────────────────
   function api(ruta, opciones) {
     return fetch(API + ruta, Object.assign({ headers: { "content-type": "application/json" } }, opciones || {}))
@@ -229,6 +343,9 @@
     var mat = ($('input[name="mat"]:checked') || {}).value || "whatsapp";
     $("#x-enlace").closest(".campo").classList.toggle("oculto", mat !== "enlace");
 
+    var logo = ($('input[name="logo"]:checked') || {}).value || "tengo";
+    $$(".logo-subida").forEach(function (n) { n.classList.toggle("oculto", logo !== "tengo"); });
+
     var dom = ($('input[name="dom"]:checked') || {}).value || "nuevo";
     var etiqueta = $('label[for="f-dominio"]');
     if (etiqueta) etiqueta.textContent = dom === "tengo" ? T.dominioTengo : T.dominioQuiero;
@@ -282,6 +399,10 @@
 
     $("#enlace").value = location.origin + location.pathname + "?t=" + token;
     pintarBrief(j.brief);
+    cargaHorario();
+    pintaHorario();
+    pintaAdjuntos();
+    sincronizaColores();
     pintaProducto();
     aplicaDependencias();
 
@@ -347,6 +468,92 @@
     var ant = e.target.closest("[data-anterior]");
     if (ant) { irA(Number(ant.dataset.anterior), true); return; }
   });
+
+  var cajaHorario = $("#horario");
+  if (cajaHorario) {
+    cajaHorario.addEventListener("change", function (e) {
+      var fila = e.target.closest(".h-dia");
+      if (!fila) return;
+      var d = Number(fila.dataset.d);
+      if (e.target.matches(".h-abierto")) {
+        if (e.target.checked) {
+          // Al abrir un día se copian las horas del último día abierto, como en Google.
+          var previo = null;
+          for (var k = d - 1; k >= 0 && !previo; k--) if (horario[k].length) previo = horario[k];
+          for (var k2 = 6; k2 > d && !previo; k2--) if (horario[k2].length) previo = horario[k2];
+          horario[d] = previo ? copia(previo) : [["09:00", "18:00"]];
+        } else {
+          horario[d] = [];
+        }
+        pintaHorario();
+        volcarHorario();
+        return;
+      }
+      if (e.target.matches(".h-ini, .h-fin")) {
+        var j = Number(e.target.dataset.j);
+        horario[d][j][e.target.matches(".h-ini") ? 0 : 1] = hhmm(e.target.value);
+        var r = horario[d][j];
+        e.target.closest(".h-franja").classList.toggle("h-mal", !!(r[0] && r[1] && r[0] >= r[1]));
+        volcarHorario();
+      }
+    });
+    cajaHorario.addEventListener("click", function (e) {
+      var fila = e.target.closest(".h-dia");
+      if (!fila) return;
+      var d = Number(fila.dataset.d);
+      if (e.target.matches(".h-mas")) {
+        horario[d].push(["16:00", "20:00"]);
+      } else if (e.target.matches(".h-quitar")) {
+        horario[d].splice(Number(e.target.dataset.j), 1);
+      } else if (e.target.matches(".h-copiar")) {
+        for (var k = 0; k < 7; k++) if (k !== d && horario[k].length) horario[k] = copia(horario[d]);
+      } else {
+        return;
+      }
+      pintaHorario();
+      volcarHorario();
+    });
+  }
+
+  $$("[data-subir]").forEach(function (input) {
+    input.addEventListener("change", function () {
+      if (input.files && input.files.length) subeAdjuntos(input);
+    });
+  });
+
+  $$("[data-color-de]").forEach(function (picker) {
+    var texto = $("#" + picker.getAttribute("data-color-de"));
+    picker.addEventListener("input", function () {
+      texto.value = picker.value.toUpperCase();
+      autoguardar();
+    });
+    texto.addEventListener("input", function () {
+      var v = hex(texto.value);
+      if (v) picker.value = v;
+    });
+  });
+
+  var dlgAyuda = $("#dlg-ayuda");
+  document.addEventListener("click", function (e) {
+    var quitar = e.target.closest("[data-quitar]");
+    if (quitar) {
+      var partes = quitar.getAttribute("data-quitar").split(":");
+      quitar.disabled = true;
+      api("/" + token + "/adjuntos/" + partes[0] + "/" + partes[1], { method: "DELETE" })
+        .then(function (j) { estado = j; pintaAdjuntos(); adjuntoMsg(partes[0], ""); })
+        .catch(function (err) { quitar.disabled = false; adjuntoMsg(partes[0], err.message, true); });
+      return;
+    }
+    var ayuda = e.target.closest("[data-ayuda]");
+    if (ayuda && dlgAyuda) {
+      var tpl = $("#ayuda-" + ayuda.getAttribute("data-ayuda"));
+      if (!tpl) return;
+      $("#dlg-ayuda-titulo").textContent = tpl.getAttribute("data-titulo");
+      $("#dlg-ayuda-texto").innerHTML = tpl.innerHTML;
+      if (dlgAyuda.showModal) dlgAyuda.showModal(); else dlgAyuda.setAttribute("open", "");
+    }
+  });
+  if (dlgAyuda) $("#dlg-ayuda-cerrar").addEventListener("click", function () { dlgAyuda.close(); });
 
   $("#btn-copiar").addEventListener("click", function () {
     var i = $("#enlace");

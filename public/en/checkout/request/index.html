@@ -133,6 +133,38 @@
   letter-spacing:.04em;border-radius:8px;padding:9px 18px;cursor:pointer;border:1px solid var(--ink)}
 .dlg-botones .no{background:#fff;color:var(--ink)}
 .dlg-botones .si{background:var(--accent);border-color:var(--accent);color:#fff}
+.horario{border:1px solid var(--line);border-radius:10px;overflow:hidden;background:#fff}
+.h-dia{display:grid;grid-template-columns:150px 1fr auto;gap:12px;align-items:start;padding:10px 14px;border-bottom:1px solid var(--line)}
+.h-dia:last-child{border-bottom:0}
+.campo .h-nombre{display:flex;gap:9px;align-items:center;padding-top:8px;cursor:pointer}
+.h-nombre input{width:18px;height:18px;accent-color:var(--accent);flex:0 0 auto}
+.h-franjas{display:flex;flex-direction:column;gap:8px;align-items:flex-start}
+.h-cerrado{color:var(--muted);padding-top:8px;font-size:15px}
+.h-franja{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.h-franja input{font:inherit;font-size:15px;color:var(--ink);border:1px solid var(--line);border-radius:8px;padding:7px 9px;background:#fff}
+.h-franja input:focus{outline:2px solid var(--accent);outline-offset:1px;border-color:var(--accent)}
+.h-franja.h-mal input{border-color:#dc2626}
+.h-btn{font:inherit;font-size:14px;font-weight:600;color:var(--accent-ink);background:none;border:0;cursor:pointer;padding:6px 0}
+.h-copiar{padding-top:8px;white-space:nowrap}
+.h-quitar{font-size:22px;line-height:1;color:var(--muted);background:none;border:0;cursor:pointer;padding:2px 8px}
+.h-quitar:hover{color:#b91c1c}
+.subida input[type=file]{font:inherit;font-size:15px;max-width:100%}
+.subidos{list-style:none;margin:10px 0 0;padding:0;display:flex;flex-direction:column;gap:6px}
+.subidos:empty{display:none}
+.subidos li{display:flex;align-items:center;gap:8px;font-size:14.5px;background:var(--tint);border:1px solid var(--tint2);border-radius:8px;padding:7px 11px}
+.subidos li small{color:var(--muted)}
+.subidos button{margin-left:auto;background:none;border:0;color:#b91c1c;font:inherit;font-size:14px;font-weight:600;cursor:pointer}
+.subida-msg{font-size:13.5px;min-height:18px;color:var(--muted)}
+.subida-msg.malo{color:#b91c1c;font-weight:600}
+@media(max-width:720px){.h-dia{grid-template-columns:1fr;gap:6px}.h-copiar{padding-top:0}}
+.dlg-cuerpo{padding:24px}
+.dlg-texto ol{margin:4px 0 18px;padding-left:20px}
+.dlg-texto li{font-size:15px;line-height:1.55;margin-bottom:8px;color:var(--body)}
+.dlg-texto a{color:var(--accent-ink);text-decoration:underline}
+.ayuda-link{align-self:flex-start;background:none;border:0;padding:0;font:inherit;font-size:13.5px;font-weight:600;color:var(--accent-ink);text-decoration:underline;cursor:pointer}
+.color-fila{display:flex;gap:8px;align-items:stretch}
+.color-fila input[type=color]{width:52px;min-width:52px;border:1px solid var(--line);border-radius:8px;padding:3px;background:#fff;cursor:pointer}
+.campo .color-fila input[type=text]{font-family:ui-monospace,Menlo,monospace;text-transform:uppercase}
 .oculto{display:none !important}
 @media(max-width:720px){
   .campos{grid-template-columns:1fr}
@@ -413,15 +445,24 @@
             <textarea id="n-cert" data-k="negocio.certificaciones" maxlength="800"></textarea>
             <span class="ayuda">Only those you can evidence.</span>
           </div>
-          <div class="campo">
-            <label for="n-dato">A real figure from your activity</label>
+          <div class="campo ancho">
+            <label for="n-dato">A figure that proves your experience</label>
             <input type="text" id="n-dato" data-k="negocio.datoActividad" maxlength="160">
-            <span class="ayuda">It must be true and defensible if anyone asks.</span>
+            <span class="ayuda">A specific number that builds trust and that we will highlight on the website. For example: "over 500 five-star reviews", "1,200 cars repaired a year" or "15 years in the neighbourhood". Only if it is true and you can back it up.</span>
           </div>
-          <div class="campo">
-            <label for="n-precios">Prices we can publish</label>
-            <input type="text" id="n-precios" data-k="negocio.precios" maxlength="200">
-            <span class="ayuda">Published prices convert much better. If you would rather not, leave it empty.</span>
+          <div class="campo ancho">
+            <label for="n-precios">Prices or rates you want to show on the website</label>
+            <textarea id="n-precios" data-k="negocio.precios" maxlength="1200"></textarea>
+            <span class="ayuda">Write the prices of your most requested services, one per line. For example: "Oil change: from €49" or "First consultation: free". If you already have a price list, upload it below. If you would rather not publish prices, leave it empty, although showing them usually brings more customers.</span>
+          </div>
+          <div class="campo ancho">
+            <label for="n-tarifas">Upload your price list (optional)</label>
+            <div class="subida">
+              <input type="file" id="n-tarifas" data-subir="tarifas" accept=".pdf,.jpg,.jpeg,.png,.webp,.heic,.xlsx,.xls,.csv,.docx,.doc" multiple>
+              <ul class="subidos" data-lista="tarifas"></ul>
+            </div>
+            <span class="ayuda">PDF, photo, Excel or Word. Up to 4 MB per file and 5 files in total.</span>
+            <span class="subida-msg" data-msg="tarifas" role="status" aria-live="polite"></span>
           </div>
           <div class="campo ancho">
             <label class="req" for="n-zonas">Areas you cover</label>
@@ -481,14 +522,18 @@
             <input type="text" id="p-prov" data-k="contactoWeb.provincia" maxlength="80">
           </div>
           <div class="campo ancho">
-            <label class="req" for="p-horario">Opening hours</label>
-            <input type="text" id="p-horario" data-k="contactoWeb.horario" required maxlength="200">
-            <span class="error">The opening hours are missing.</span>
+            <label class="req">Opening hours</label>
+            <div class="horario" id="horario"></div>
+            <input type="hidden" id="p-horario" data-k="contactoWeb.horario" required>
+            <input type="hidden" id="p-horario-detalle" data-k="contactoWeb.horarioDetalle">
+            <span class="ayuda">Tick the days you open and adjust the hours. If you close at midday, add a second time slot.</span>
+            <span class="error">Open at least one day and check that every slot ends after it starts.</span>
           </div>
           <div class="campo ancho">
             <label for="p-gps">Exact coordinates</label>
             <input type="text" id="p-gps" data-k="contactoWeb.coordenadas" maxlength="60">
             <span class="ayuda">Optional. If you do not have them, we look them up from the address.</span>
+            <button type="button" class="ayuda-link" data-ayuda="coordenadas">Where do I find them?</button>
           </div>
         </div>
       </fieldset>
@@ -497,40 +542,70 @@
         <legend>Reputation, social media and brand</legend>
         <div class="campos">
           <div class="campo ancho">
-            <label for="r-gbp">Your Google business profile</label>
+            <label for="r-gbp">Web address (URL) of your Google Business Profile</label>
             <input type="url" id="r-gbp" data-k="recursos.gbpUrl" maxlength="300">
-            <span class="ayuda">If you do not have one, we help you create it. Without it you will not show on the map.</span>
+            <span class="ayuda">The link that opens your business on Google Maps. If you do not have a profile, we help you create one: without it you will not show up on the map.</span>
+            <button type="button" class="ayuda-link" data-ayuda="gbp">Where do I find it?</button>
           </div>
           <div class="campo">
-            <label for="r-resenas">Average rating and number of reviews</label>
-            <input type="text" id="r-resenas" data-k="recursos.resenas" maxlength="60">
-            <span class="ayuda">We only publish this if the profile backing it exists.</span>
+            <label for="r-nota">Average rating on Google</label>
+            <input type="text" id="r-nota" data-k="recursos.notaMedia" maxlength="4" inputmode="decimal">
+            <span class="ayuda">The one shown next to the stars on your profile.</span>
           </div>
           <div class="campo">
+            <label for="r-num-resenas">Number of reviews</label>
+            <input type="text" id="r-num-resenas" data-k="recursos.numResenas" maxlength="7" inputmode="numeric">
+            <span class="ayuda">We only publish the rating and reviews if your profile backs them up.</span>
+          </div>
+          <div class="campo ancho">
             <label for="r-redes">Social media</label>
             <textarea id="r-redes" data-k="recursos.redes" maxlength="600"></textarea>
+            <span class="ayuda">Paste the link to each profile, one per line.</span>
           </div>
           <div class="campo ancho">
             <label>Logo</label>
             <div class="opciones fila">
-              <label class="opcion"><input type="radio" name="logo" value="tengo" data-k="recursos.logoEstado" checked><span><b>I have a logo</b><small>I will send it over</small></span></label>
+              <label class="opcion"><input type="radio" name="logo" value="tengo" data-k="recursos.logoEstado" checked><span><b>I have a logo</b><small>Upload it below</small></span></label>
               <label class="opcion"><input type="radio" name="logo" value="iniciales" data-k="recursos.logoEstado"><span><b>Use the initials</b><small>On a colour background</small></span></label>
               <label class="opcion"><input type="radio" name="logo" value="nuevo" data-k="recursos.logoEstado"><span><b>Design one for me</b><small>Included in the package</small></span></label>
             </div>
           </div>
-          <div class="campo ancho">
-            <label for="r-colores">Brand colours</label>
-            <input type="text" id="r-colores" data-k="recursos.colores" maxlength="120">
-            <span class="ayuda">If you leave it to us, we pick a palette that fits your sector.</span>
+          <div class="campo ancho logo-subida">
+            <label for="r-logo">Upload your logo</label>
+            <div class="subida">
+              <input type="file" id="r-logo" data-subir="logo" accept=".png,.jpg,.jpeg,.webp,.svg,.pdf,.ai,.eps" multiple>
+              <ul class="subidos" data-lista="logo"></ul>
+            </div>
+            <span class="ayuda">Ideally SVG, PDF or PNG with a transparent background. If you have several versions (horizontal, symbol only, white), upload them all. Up to 4 MB per file and 3 files.</span>
+            <span class="subida-msg" data-msg="logo" role="status" aria-live="polite"></span>
           </div>
           <div class="campo">
-            <label for="r-gtm">Google Tag Manager ID</label>
+            <label for="r-color1">Main colour</label>
+            <div class="color-fila">
+              <input type="color" data-color-de="r-color1" value="#ffffff" aria-label="Pick the main colour">
+              <input type="text" id="r-color1" data-k="recursos.colorPrincipal" maxlength="7" autocomplete="off" spellcheck="false">
+            </div>
+            <span class="ayuda">Click the square to pick it or type its hex code, such as #0D9488.</span>
+          </div>
+          <div class="campo">
+            <label for="r-color2">Secondary colour</label>
+            <div class="color-fila">
+              <input type="color" data-color-de="r-color2" value="#ffffff" aria-label="Pick the secondary colour">
+              <input type="text" id="r-color2" data-k="recursos.colorSecundario" maxlength="7" autocomplete="off" spellcheck="false">
+            </div>
+            <span class="ayuda">If you leave them empty, we choose a palette that suits your sector.</span>
+          </div>
+          <div class="campo">
+            <label for="r-gtm">Google Tag Manager container ID</label>
             <input type="text" id="r-gtm" data-k="recursos.gtm" maxlength="40">
-            <span class="ayuda">Optional. If you do not have one, we create it.</span>
+            <span class="ayuda">Optional. It starts with GTM-. If you do not have one, we create it.</span>
+            <button type="button" class="ayuda-link" data-ayuda="gtm">Where do I find it?</button>
           </div>
           <div class="campo">
-            <label for="r-ga4">Google Analytics ID</label>
+            <label for="r-ga4">Google Analytics measurement ID</label>
             <input type="text" id="r-ga4" data-k="recursos.ga4" maxlength="40">
+            <span class="ayuda">Optional. It starts with G-. If you do not have one, we create it.</span>
+            <button type="button" class="ayuda-link" data-ayuda="ga4">Where do I find it?</button>
           </div>
         </div>
       </fieldset>
@@ -651,6 +726,37 @@
 </div>
 </main>
 
+<dialog class="dlg" id="dlg-ayuda">
+  <div class="dlg-cuerpo">
+    <h3 id="dlg-ayuda-titulo"></h3>
+    <div class="dlg-texto" id="dlg-ayuda-texto"></div>
+    <div class="dlg-botones"><button type="button" class="si" id="dlg-ayuda-cerrar">Got it</button></div>
+  </div>
+</dialog>
+<template id="ayuda-coordenadas" data-titulo="How to get the coordinates"><ol>
+  <li>Open <a href="https://www.google.com/maps" target="_blank" rel="noopener">Google Maps</a> on a computer and search for your business.</li>
+  <li>Zoom in and <b>right-click</b> right on top of your front door.</li>
+  <li>The first line of the menu shows two numbers separated by a comma, such as 41.38740, 2.16860. Click them and they are copied.</li>
+  <li>Come back here and paste them into the field.</li>
+</ol></template>
+<template id="ayuda-gbp" data-titulo="How to copy your profile link"><ol>
+  <li>Open <a href="https://www.google.com/maps" target="_blank" rel="noopener">Google Maps</a> and search for your business name.</li>
+  <li>Click your business to open the profile, then click <b>Share</b>.</li>
+  <li>Click <b>Copy link</b>. It is an address that starts with https://maps.app.goo.gl/</li>
+  <li>Paste it here. If your business does not appear on Google Maps, leave it empty and we help you create the profile.</li>
+</ol></template>
+<template id="ayuda-gtm" data-titulo="Where to find your Tag Manager ID"><ol>
+  <li>Go to <a href="https://tagmanager.google.com" target="_blank" rel="noopener">tagmanager.google.com</a> with your business Google account.</li>
+  <li>Open your website's container.</li>
+  <li>In the top bar, to the left of the <b>Preview</b> and <b>Submit</b> buttons, you will see a code that starts with <b>GTM-</b>, such as GTM-AB12CD3.</li>
+  <li>Copy it and paste it here. If you do not have an account, leave it empty: we create it.</li>
+</ol></template>
+<template id="ayuda-ga4" data-titulo="Where to find your Analytics ID"><ol>
+  <li>Go to <a href="https://analytics.google.com" target="_blank" rel="noopener">analytics.google.com</a> with your business Google account.</li>
+  <li>Click <b>Admin</b>, the cog at the bottom left.</li>
+  <li>Under the property, open <b>Data streams</b> and click your website.</li>
+  <li>Copy the <b>Measurement ID</b>, which starts with <b>G-</b>, such as G-1A2B3C4D5E, and paste it here. If you do not have one, leave it empty: we create it.</li>
+</ol></template>
 <dialog class="dlg" id="dlg-email">
   <form method="dialog" id="form-email" novalidate>
     <h3>Email yourself the link</h3>
@@ -690,6 +796,15 @@ window.SOL_CFG = {
     guardando: "Saving…", guardado: "Saved", sinGuardar: "Unsaved changes",
     errorRed: "We could not connect. Please try again.",
     camposMal: "Check the fields marked in red: those are the ones we need to continue.",
+    dias: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+    cerrado: "Closed",
+    anadirFranja: "+ Add time slot",
+    quitarFranja: "Remove time slot",
+    copiarTodos: "Copy to open days",
+    tarifasGrande: "That file is over 4 MB. Make it smaller or send it to us on WhatsApp.",
+    tarifasSubiendo: "Uploading…",
+    tarifasQuitar: "Remove",
+    tarifasPrivacidad: "First tick the privacy box in step 1.",
     emailMal: "Enter a valid email address.",
     emailPrivacidad: "Tick the privacy box so we can send it.",
     emailEnviando: "Sending…",

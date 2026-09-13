@@ -36,6 +36,8 @@ const RUTAS = [
   { metodo: "POST", re: /^\/api\/solicitud\/([0-9a-f-]{36})\/contrato$/, destino: (m) => `/${m[1]}/contrato` },
   { metodo: "POST", re: /^\/api\/solicitud\/([0-9a-f-]{36})\/pago$/, destino: (m) => `/${m[1]}/pago` },
   { metodo: "POST", re: /^\/api\/solicitud\/([0-9a-f-]{36})\/enlace$/, destino: (m) => `/${m[1]}/enlace` },
+  { metodo: "POST", re: /^\/api\/solicitud\/([0-9a-f-]{36})\/adjuntos\/(tarifas|logo)$/, destino: (m) => `/${m[1]}/adjuntos/${m[2]}`, binario: true },
+  { metodo: "DELETE", re: /^\/api\/solicitud\/([0-9a-f-]{36})\/adjuntos\/(tarifas|logo)\/([0-9a-f-]{36})$/, destino: (m) => `/${m[1]}/adjuntos/${m[2]}/${m[3]}` },
 ];
 
 function json(obj, status) {
@@ -51,10 +53,11 @@ async function contratacion(request, env, url) {
   }
 
   let destino = null;
+  let binario = false;
   for (const r of RUTAS) {
     if (r.metodo !== request.method) continue;
     const m = url.pathname.match(r.re);
-    if (m) { destino = r.destino(m); break; }
+    if (m) { destino = r.destino(m); binario = !!r.binario; break; }
   }
   if (destino === null) return json({ error: "Ruta no válida" }, 404);
 
@@ -67,8 +70,17 @@ async function contratacion(request, env, url) {
     "user-agent": request.headers.get("user-agent") || "",
   });
 
-  const cuerpo = request.method === "GET" ? undefined : await request.text();
-  if (cuerpo && cuerpo.length > 250000) return json({ error: "Demasiados datos" }, 413);
+  let cuerpo;
+  if (binario) {
+    // Los adjuntos pasan en crudo. El tope lo pone Vercel, que corta por encima de 4,5 MB.
+    cuerpo = await request.arrayBuffer();
+    if (cuerpo.byteLength > 4 * 1024 * 1024) return json({ error: "El archivo supera los 4 MB." }, 413);
+    cabeceras.set("content-type", request.headers.get("content-type") || "application/octet-stream");
+    cabeceras.set("x-file-name", request.headers.get("x-file-name") || "");
+  } else {
+    cuerpo = request.method === "GET" ? undefined : await request.text();
+    if (cuerpo && cuerpo.length > 250000) return json({ error: "Demasiados datos" }, 413);
+  }
 
   try {
     const res = await fetch(`${PANEL}${destino}`, {
