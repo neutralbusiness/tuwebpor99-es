@@ -302,10 +302,10 @@
             <span class="error">A contact phone is missing.</span>
           </div>
           <div class="campo">
-            <label class="req" for="c-dni">ID or tax number of the person ordering</label>
+            <label class="req" for="c-dni">ID card, passport, tax number or VAT number of the person ordering</label>
             <input type="text" id="c-dni" data-k="contacto.dni" required maxlength="20">
             <span class="ayuda">Required for the contract and the invoice.</span>
-            <span class="error">We need the ID document or tax number.</span>
+            <span class="error">We need the ID card, passport, tax number or VAT number.</span>
           </div>
         </div>
       </fieldset>
@@ -316,7 +316,7 @@
           <div class="campo ancho">
             <div class="opciones fila">
               <label class="opcion"><input type="radio" name="fact" value="particular" data-k="facturacion.tipo" checked><span><b>Individual</b><small>Invoice in your name</small></span></label>
-              <label class="opcion"><input type="radio" name="fact" value="autonomo" data-k="facturacion.tipo"><span><b>Sole trader</b><small>With your tax number</small></span></label>
+              <label class="opcion"><input type="radio" name="fact" value="autonomo" data-k="facturacion.tipo"><span><b>Sole trader</b><small>With your tax number or VAT number</small></span></label>
               <label class="opcion"><input type="radio" name="fact" value="empresa" data-k="facturacion.tipo"><span><b>Company</b><small>With company number and legal name</small></span></label>
             </div>
           </div>
@@ -326,9 +326,9 @@
             <span class="error">The legal name is missing.</span>
           </div>
           <div class="campo fact-empresa fact-autonomo oculto">
-            <label class="req" for="fa-nif">Company or tax number</label>
+            <label class="req" for="fa-nif">Company number, tax number or VAT number</label>
             <input type="text" id="fa-nif" data-k="facturacion.nif" maxlength="20">
-            <span class="error">The company or tax number is missing.</span>
+            <span class="error">The company number, tax number or VAT number is missing.</span>
           </div>
           <div class="campo fact-empresa oculto">
             <label for="fa-rep">Signing representative</label>

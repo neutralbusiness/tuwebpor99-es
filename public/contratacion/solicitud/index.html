@@ -302,10 +302,10 @@
             <span class="error">Falta un teléfono de contacto.</span>
           </div>
           <div class="campo">
-            <label class="req" for="c-dni">DNI, NIE o NIF de quien contrata</label>
+            <label class="req" for="c-dni">DNI, NIE, pasaporte, NIF o VAT number de quien contrata</label>
             <input type="text" id="c-dni" data-k="contacto.dni" required maxlength="20">
             <span class="ayuda">Obligatorio para el contrato y la factura.</span>
-            <span class="error">Necesitamos el documento de identidad o el NIF.</span>
+            <span class="error">Necesitamos el DNI, NIE, pasaporte, NIF o VAT number.</span>
           </div>
         </div>
       </fieldset>
@@ -316,7 +316,7 @@
           <div class="campo ancho">
             <div class="opciones fila">
               <label class="opcion"><input type="radio" name="fact" value="particular" data-k="facturacion.tipo" checked><span><b>Particular</b><small>Factura a tu nombre</small></span></label>
-              <label class="opcion"><input type="radio" name="fact" value="autonomo" data-k="facturacion.tipo"><span><b>Autónomo</b><small>Con tu NIF</small></span></label>
+              <label class="opcion"><input type="radio" name="fact" value="autonomo" data-k="facturacion.tipo"><span><b>Autónomo</b><small>Con tu NIF o VAT number</small></span></label>
               <label class="opcion"><input type="radio" name="fact" value="empresa" data-k="facturacion.tipo"><span><b>Empresa</b><small>Con CIF y razón social</small></span></label>
             </div>
           </div>
@@ -326,9 +326,9 @@
             <span class="error">Falta la razón social.</span>
           </div>
           <div class="campo fact-empresa fact-autonomo oculto">
-            <label class="req" for="fa-nif">CIF o NIF fiscal</label>
+            <label class="req" for="fa-nif">CIF, NIF o VAT number</label>
             <input type="text" id="fa-nif" data-k="facturacion.nif" maxlength="20">
-            <span class="error">Falta el CIF o NIF.</span>
+            <span class="error">Falta el CIF, NIF o VAT number.</span>
           </div>
           <div class="campo fact-empresa oculto">
             <label for="fa-rep">Representante que firma</label>
