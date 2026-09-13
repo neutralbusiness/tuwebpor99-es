@@ -387,16 +387,14 @@
 
   // ── Resumen del pago ───────────────────────────────────────────────────
   function pintaResumen() {
-    var iva = estado.vatPct || 21;
+    // Los precios ya llevan el IVA: hoy se paga la puesta en marcha más el primer año.
     var base = estado.basePriceCents;
-    var cuota = Math.round(base * iva / 100);
     var anual = estado.annualPriceCents;
     var filas = [
-      [PRODUCTOS[estado.product].titulo, euros(base)],
-      [T.iva.replace("{pct}", String(iva)), euros(cuota)],
-      [T.primerAno, T.incluido],
+      [PRODUCTOS[estado.product].titulo + ", " + T.alta, euros(base)],
+      [T.primerAno, euros(anual)],
       [T.segundoAno, euros(anual) + T.masIva],
-      [T.totalHoy, euros(base + cuota)],
+      [T.totalHoy, euros(base + anual)],
     ];
     $("#resumen").innerHTML = filas.map(function (f) {
       return "<div><span>" + f[0] + "</span><b>" + f[1] + "</b></div>";
