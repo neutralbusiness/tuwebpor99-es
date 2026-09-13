@@ -35,6 +35,7 @@ const RUTAS = [
   { metodo: "GET", re: /^\/api\/solicitud\/([0-9a-f-]{36})\/contrato$/, destino: (m) => `/${m[1]}/contrato` },
   { metodo: "POST", re: /^\/api\/solicitud\/([0-9a-f-]{36})\/contrato$/, destino: (m) => `/${m[1]}/contrato` },
   { metodo: "POST", re: /^\/api\/solicitud\/([0-9a-f-]{36})\/pago$/, destino: (m) => `/${m[1]}/pago` },
+  { metodo: "POST", re: /^\/api\/solicitud\/([0-9a-f-]{36})\/enlace$/, destino: (m) => `/${m[1]}/enlace` },
 ];
 
 function json(obj, status) {

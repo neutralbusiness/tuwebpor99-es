@@ -22,6 +22,7 @@
   var pasoActual = 1;
   var pendiente = null;   // temporizador del autoguardado
   var guardando = false;
+  var repetir = 0;        // paso a guardar en cuanto termine el guardado en curso
 
   var $ = function (s, r) { return (r || document).querySelector(s); };
   var $$ = function (s, r) { return Array.prototype.slice.call((r || document).querySelectorAll(s)); };
@@ -89,8 +90,15 @@
     });
   }
 
+  function consiente() {
+    var c = $("#lg-privacidad");
+    return !!(c && c.checked);
+  }
+
   function guardar(paso) {
-    if (!token || guardando) return Promise.resolve();
+    if (!token) return Promise.resolve();
+    if (!consiente()) { marcaGuardado(T.aceptaPrivacidad, false); return Promise.resolve(); }
+    if (guardando) { repetir = Math.max(repetir, paso || pasoActual); return Promise.resolve(); }
     guardando = true;
     marcaGuardado(T.guardando, false);
     return api("/" + token, {
@@ -99,13 +107,16 @@
     })
       .then(function (j) { estado = j; marcaGuardado(T.guardado, true); })
       .catch(function (e) { marcaGuardado(e.message, false); })
-      .then(function () { guardando = false; });
+      .then(function () {
+        guardando = false;
+        if (repetir) { var p = repetir; repetir = 0; return guardar(p); }
+      });
   }
 
   function autoguardar() {
     clearTimeout(pendiente);
     marcaGuardado(T.sinGuardar, false);
-    pendiente = setTimeout(function () { guardar(); }, 900);
+    pendiente = setTimeout(function () { pendiente = null; guardar(); }, 900);
   }
 
   // ── Validación ─────────────────────────────────────────────────────────
@@ -120,7 +131,7 @@
       var campo = el.closest(".campo");
       if (!campo || !visible(campo)) return;
       var v = (el.value || "").trim();
-      var bien = !!v;
+      var bien = el.type === "checkbox" ? el.checked : !!v;
       if (bien && el.type === "email") bien = /^[^@\s]+@[^@\s]+\.[^@\s]{2,}$/.test(v);
       campo.classList.toggle("mal", !bien);
       if (!bien) malos.push(campo);
@@ -139,6 +150,7 @@
   // ── Navegación ─────────────────────────────────────────────────────────
   function irA(n, sinValidar) {
     if (n > pasoActual && !sinValidar && !validaPaso(pasoActual)) return;
+    if (n > pasoActual && n <= 5) { clearTimeout(pendiente); pendiente = null; guardar(n); }
     pasoActual = n;
     $$(".sol-paso").forEach(function (s) { s.classList.toggle("on", Number(s.dataset.paso) === n); });
     $$("#sol-pasos li").forEach(function (li) {
@@ -334,6 +346,42 @@
       $("#btn-copiar").textContent = T.copiado;
       setTimeout(function () { $("#btn-copiar").textContent = T.copiar; }, 2000);
     }).catch(function () { document.execCommand("copy"); });
+  });
+
+  // ── Enviar el enlace por email ─────────────────────────────────────────
+  var dlg = $("#dlg-email");
+  function dlgMensaje(texto, tipo) {
+    var m = $("#dlg-msg");
+    m.textContent = texto || "";
+    m.className = "dlg-msg" + (tipo ? " " + tipo : "");
+  }
+  $("#btn-email").addEventListener("click", function () {
+    var correo = $("#c-email");
+    $("#dlg-email-input").value = (correo && correo.value.trim()) || $("#dlg-email-input").value;
+    $("#dlg-privacidad").checked = consiente();
+    $("#dlg-privacidad-fila").classList.toggle("oculto", consiente());
+    dlgMensaje("");
+    if (dlg.showModal) dlg.showModal(); else dlg.setAttribute("open", "");
+    $("#dlg-email-input").focus();
+  });
+  $("#dlg-cancelar").addEventListener("click", function () { dlg.close(); });
+  $("#form-email").addEventListener("submit", function (e) {
+    e.preventDefault();
+    var email = $("#dlg-email-input").value.trim();
+    var privacidad = $("#dlg-privacidad").checked;
+    if (!/^[^@\s]+@[^@\s]+\.[^@\s]{2,}$/.test(email)) { dlgMensaje(T.emailMal, "malo"); return; }
+    if (!privacidad) { dlgMensaje(T.emailPrivacidad, "malo"); return; }
+    var btn = $("#dlg-enviar");
+    btn.disabled = true;
+    btn.textContent = T.emailEnviando;
+    api("/" + token + "/enlace", { method: "POST", body: JSON.stringify({ email: email, privacidad: true }) })
+      .then(function () {
+        dlgMensaje(T.emailEnviado, "bueno");
+        if (!consiente()) { $("#lg-privacidad").checked = true; guardar(); }
+        setTimeout(function () { if (dlg.open) dlg.close(); }, 2500);
+      })
+      .catch(function (err) { dlgMensaje(err.message, "malo"); })
+      .then(function () { btn.disabled = false; btn.textContent = T.emailEnviar; });
   });
 
   $("#btn-aceptar").addEventListener("click", function () {

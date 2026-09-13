@@ -75,6 +75,11 @@
 .contrato p{font-size:15px;margin-bottom:9px;max-width:none}
 .aceptos{display:flex;flex-direction:column;gap:11px;margin-bottom:8px}
 .acepto{display:flex;gap:11px;align-items:flex-start;font-size:15px}
+.rgpd-info{font-size:13.5px;color:var(--muted);line-height:1.5;background:#fcfcfc;border:1px solid var(--line);border-radius:8px;padding:12px 14px;margin-bottom:14px}
+.rgpd-info a,.acepto a{color:var(--accent-ink);text-decoration:underline}
+.campo .acepto{font-weight:400;color:var(--body)}
+.acepto small{display:block;color:var(--muted);font-size:13px;margin-top:2px}
+.campo.mal .acepto input{outline:2px solid #dc2626;outline-offset:1px}
 .acepto input{margin-top:3px;width:19px;height:19px;flex:0 0 auto;accent-color:var(--accent)}
 
 /* Resumen y pago */
@@ -111,6 +116,23 @@
 .wa-float{position:fixed;bottom:20px;right:20px;z-index:80;width:56px;height:56px;border-radius:50%;background:#25d366;
   display:flex;align-items:center;justify-content:center;box-shadow:0 4px 14px rgba(0,0,0,.28);transition:transform .2s}
 .wa-float:hover{transform:scale(1.08)}
+.retomar .btn-sec{background:#fff;color:var(--ink);border:1px solid var(--ink)}
+.dlg{border:0;border-radius:14px;padding:0;width:min(440px,calc(100vw - 32px));box-shadow:0 20px 60px rgba(0,0,0,.25)}
+.dlg::backdrop{background:rgba(17,24,39,.55)}
+.dlg form{padding:24px}
+.dlg h3{font-size:22px;margin-bottom:6px}
+.dlg p{font-size:15px;color:var(--muted);margin-bottom:14px;max-width:none}
+.dlg input[type=email]{font:inherit;font-size:16px;width:100%;border:1px solid var(--line);border-radius:8px;padding:11px 13px;margin-bottom:12px}
+.dlg input[type=email]:focus{outline:2px solid var(--accent);outline-offset:1px;border-color:var(--accent)}
+.dlg .acepto{margin-bottom:12px;font-size:14px}
+.dlg-msg{font-size:14px;min-height:20px;margin-bottom:10px}
+.dlg-msg.malo{color:#b91c1c;font-weight:600}
+.dlg-msg.bueno{color:var(--accent-dark);font-weight:600}
+.dlg-botones{display:flex;justify-content:flex-end;gap:8px}
+.dlg-botones button{font-family:'Barlow Condensed',sans-serif;font-weight:700;text-transform:uppercase;font-size:16px;
+  letter-spacing:.04em;border-radius:8px;padding:9px 18px;cursor:pointer;border:1px solid var(--ink)}
+.dlg-botones .no{background:#fff;color:var(--ink)}
+.dlg-botones .si{background:var(--accent);border-color:var(--accent);color:#fff}
 .oculto{display:none !important}
 @media(max-width:720px){
   .campos{grid-template-columns:1fr}
@@ -141,10 +163,11 @@
     </ol>
     <div class="retomar" id="retomar">
       <h3>Tu enlace para volver</h3>
-      <p>Guarda este enlace. Con él retomas la solicitud donde la dejaste, desde cualquier dispositivo. También te lo hemos mandado al correo.</p>
+      <p>Guarda este enlace. Con él retomas la solicitud donde la dejaste, desde cualquier dispositivo.</p>
       <div class="retomar-fila">
         <input type="text" id="enlace" readonly>
         <button type="button" id="btn-copiar">Copiar</button>
+        <button type="button" id="btn-email" class="btn-sec">Enviar por email</button>
       </div>
     </div>
 
@@ -222,6 +245,18 @@
             <textarea id="f-refs" data-k="web.referencias" maxlength="1200" placeholder="https://... y qué te gusta de cada una"></textarea>
             <span class="ayuda">No copiamos nada, pero saber qué te gusta acelera el diseño.</span>
           </div>
+        </div>
+      </fieldset>
+
+      <fieldset class="grupo">
+        <legend>Protección de datos</legend>
+        <p class="rgpd-info">Tratamos lo que escribes en esta solicitud para preparar tu web, el contrato y la factura, y para escribirte sobre ella. No lo cedemos a terceros salvo obligación legal; el alojamiento y el cobro los prestan proveedores que actúan por nuestra cuenta. Puedes pedir acceso, rectificación, supresión, oposición, limitación o portabilidad en <a href="mailto:info@tuwebpor99.es">info@tuwebpor99.es</a>. Toda la información, en la <a href="../../politica-privacidad/" target="_blank" rel="noopener">política de privacidad</a>.</p>
+        <div class="aceptos">
+          <div class="campo">
+            <label class="acepto"><input type="checkbox" id="lg-privacidad" data-k="legal.privacidad" value="si" required> <span class="req">He leído y acepto la <a href="../../politica-privacidad/" target="_blank" rel="noopener">política de privacidad</a> y que guardéis lo que escribo en esta solicitud para preparar mi web.</span></label>
+            <span class="error">Sin esta casilla no podemos guardar tu solicitud.</span>
+          </div>
+          <label class="acepto"><input type="checkbox" id="lg-comunicaciones" data-k="legal.comunicaciones" value="si"> <span>Quiero recibir novedades y ofertas de TuWebPor99 por correo o WhatsApp. <small>Opcional: puedes contratar sin marcarla y darte de baja cuando quieras.</small></span></label>
         </div>
       </fieldset>
 
@@ -610,6 +645,20 @@
 </div>
 </main>
 
+<dialog class="dlg" id="dlg-email">
+  <form method="dialog" id="form-email" novalidate>
+    <h3>Envíate el enlace</h3>
+    <p>Te lo mandamos al correo para que puedas terminar la solicitud cuando quieras, desde cualquier dispositivo.</p>
+    <input type="email" id="dlg-email-input" placeholder="tu@correo.es" autocomplete="email" maxlength="160" required>
+    <label class="acepto" id="dlg-privacidad-fila"><input type="checkbox" id="dlg-privacidad"> <span>He leído y acepto la <a href="../../politica-privacidad/" target="_blank" rel="noopener">política de privacidad</a>.</span></label>
+    <div class="dlg-msg" id="dlg-msg" role="status" aria-live="polite"></div>
+    <div class="dlg-botones">
+      <button type="button" class="no" id="dlg-cancelar">Cancelar</button>
+      <button type="submit" class="si" id="dlg-enviar">Enviar</button>
+    </div>
+  </form>
+</dialog>
+
 <a class="wa-float" href="https://wa.me/34618794322?text=IMPORTANTE%3A+Env%C3%ADa+este+mensaje+sin+editarlo+para+hablar+con+nosotros%3A+tuwebpor99.es+%C2%B7+Tratamos+tus+datos+seg%C3%BAn+tuwebpor99.es%2Fpolitica-privacidad" target="_blank" rel="noopener noreferrer" aria-label="Contactar por WhatsApp"><svg viewBox="0 0 24 24" width="30" height="30" fill="#fff" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></a>
 
 <footer style="background:var(--ink);color:#9ca3af;padding:28px 0;font-size:14.5px">
@@ -617,7 +666,7 @@
     <span>© <span id="anio">2026</span> TuWebPor99</span>
     <span style="display:flex;gap:16px;flex-wrap:wrap">
       <a href="../../aviso-legal/" style="color:#9ca3af">Aviso legal</a>
-      <a href="../../privacidad/" style="color:#9ca3af">Privacidad</a>
+      <a href="../../politica-privacidad/" style="color:#9ca3af">Privacidad</a>
       <a href="../../contacto/" style="color:#9ca3af">Contacto</a>
     </span>
   </div>
@@ -636,6 +685,12 @@ window.SOL_CFG = {
     guardando: "Guardando…", guardado: "Guardado", sinGuardar: "Cambios sin guardar",
     errorRed: "No hemos podido conectar. Inténtalo otra vez.",
     camposMal: "Revisa los campos marcados en rojo: son los que necesitamos para seguir.",
+    emailMal: "Escribe un correo válido.",
+    emailPrivacidad: "Marca la casilla de privacidad para poder enviártelo.",
+    emailEnviando: "Enviando…",
+    emailEnviado: "Enviado. Revisa tu bandeja de entrada (y la de spam, por si acaso).",
+    emailEnviar: "Enviar",
+    aceptaPrivacidad: "Marca la casilla de privacidad del final del paso 1 para que podamos guardar lo que escribes.",
     cambioProducto: "Cambiar de producto empieza una solicitud nueva. ¿Seguimos?",
     contratoError: "No hemos podido cargar las condiciones:",
     faltanCasillas: "Para continuar hay que marcar las tres casillas. La del cargo anual es obligatoria porque autoriza un cobro recurrente.",
