@@ -194,12 +194,12 @@
           </div>
           <div class="campo">
             <label for="f-ano">Year founded</label>
-            <input type="text" id="f-ano" data-k="web.anoFundacion" maxlength="4" inputmode="numeric" placeholder="2018">
+            <input type="text" id="f-ano" data-k="web.anoFundacion" maxlength="4" inputmode="numeric">
             <span class="ayuda">If the business is new, leave it blank.</span>
           </div>
           <div class="campo ancho">
             <label class="req" for="f-tipo">What does the business do? One or two sentences</label>
-            <textarea id="f-tipo" data-k="web.tipoNegocio" required maxlength="600" placeholder="Law firm in Badalona. Advice for individuals and companies on employment, civil and commercial law."></textarea>
+            <textarea id="f-tipo" data-k="web.tipoNegocio" required maxlength="600"></textarea>
             <span class="ayuda">From this we write the long description and each service page.</span>
             <span class="error">Tell us in one sentence what you do.</span>
           </div>
@@ -210,7 +210,7 @@
           </div>
           <div class="campo">
             <label for="f-anos-exp">Years of experience in the trade</label>
-            <input type="text" id="f-anos-exp" data-k="web.anosExperiencia" maxlength="40" placeholder="Más de 20">
+            <input type="text" id="f-anos-exp" data-k="web.anosExperiencia" maxlength="40">
             <span class="ayuda">Only if it is true and you can back it up.</span>
           </div>
         </div>
@@ -227,7 +227,7 @@
           </div>
           <div class="campo ancho">
             <label class="req" for="f-dominio">Domain you want</label>
-            <input type="text" id="f-dominio" data-k="web.dominio" required maxlength="120" placeholder="miNegocio.es" autocomplete="off">
+            <input type="text" id="f-dominio" data-k="web.dominio" required maxlength="120" autocomplete="off">
             <span class="ayuda">If it is taken we suggest alternatives before registering anything.</span>
             <span class="error">Tell us the domain you want, even if it is just an idea.</span>
           </div>
@@ -242,7 +242,7 @@
           </div>
           <div class="campo ancho">
             <label for="f-refs">Websites you like</label>
-            <textarea id="f-refs" data-k="web.referencias" maxlength="1200" placeholder="https://... and what you like about each one"></textarea>
+            <textarea id="f-refs" data-k="web.referencias" maxlength="1200"></textarea>
             <span class="ayuda">We copy nothing, but knowing what you like speeds up the design.</span>
           </div>
         </div>
@@ -388,13 +388,13 @@
         <div class="campos">
           <div class="campo ancho">
             <label class="req" for="n-servicios">Services you offer, one per line</label>
-            <textarea id="n-servicios" data-k="negocio.servicios" required maxlength="2000" placeholder="Employment law&#10;Civil law&#10;Wills and probate&#10;Bank claims"></textarea>
+            <textarea id="n-servicios" data-k="negocio.servicios" required maxlength="2000"></textarea>
             <span class="ayuda">List them in order of importance to you. Each one gets its own page.</span>
             <span class="error">We need at least the main services.</span>
           </div>
           <div class="campo ancho">
             <label class="req" for="n-dif">What makes you different from the competition?</label>
-            <textarea id="n-dif" data-k="negocio.diferencial" required maxlength="1200" placeholder="Free first consultation, reply within 24 h, service in English and Spanish…"></textarea>
+            <textarea id="n-dif" data-k="negocio.diferencial" required maxlength="1200"></textarea>
             <span class="error">This is what sells most: tell us something.</span>
           </div>
           <div class="campo">
@@ -409,17 +409,17 @@
           </div>
           <div class="campo">
             <label for="n-dato">A real figure from your activity</label>
-            <input type="text" id="n-dato" data-k="negocio.datoActividad" maxlength="160" placeholder="More than 300 cases a year">
+            <input type="text" id="n-dato" data-k="negocio.datoActividad" maxlength="160">
             <span class="ayuda">It must be true and defensible if anyone asks.</span>
           </div>
           <div class="campo">
             <label for="n-precios">Prices we can publish</label>
-            <input type="text" id="n-precios" data-k="negocio.precios" maxlength="200" placeholder="First consultation €60 · From €300 per matter">
+            <input type="text" id="n-precios" data-k="negocio.precios" maxlength="200">
             <span class="ayuda">Published prices convert much better. If you would rather not, leave it empty.</span>
           </div>
           <div class="campo ancho">
             <label class="req" for="n-zonas">Areas you cover</label>
-            <textarea id="n-zonas" data-k="negocio.zonas" required maxlength="1200" placeholder="Badalona, Santa Coloma, Sant Adrià and Barcelona"></textarea>
+            <textarea id="n-zonas" data-k="negocio.zonas" required maxlength="1200"></textarea>
             <span class="ayuda">Neighbourhoods, districts or towns. The area pages come from here.</span>
             <span class="error">Tell us at least the city where you work.</span>
           </div>
@@ -476,12 +476,12 @@
           </div>
           <div class="campo ancho">
             <label class="req" for="p-horario">Opening hours</label>
-            <input type="text" id="p-horario" data-k="contactoWeb.horario" required maxlength="200" placeholder="Monday to Friday 9:00 to 19:00; Saturday 9:00 to 14:00">
+            <input type="text" id="p-horario" data-k="contactoWeb.horario" required maxlength="200">
             <span class="error">The opening hours are missing.</span>
           </div>
           <div class="campo ancho">
             <label for="p-gps">Exact coordinates</label>
-            <input type="text" id="p-gps" data-k="contactoWeb.coordenadas" maxlength="60" placeholder="41.4500, 2.2470">
+            <input type="text" id="p-gps" data-k="contactoWeb.coordenadas" maxlength="60">
             <span class="ayuda">Optional. If you do not have them, we look them up from the address.</span>
           </div>
         </div>
@@ -492,17 +492,17 @@
         <div class="campos">
           <div class="campo ancho">
             <label for="r-gbp">Your Google business profile</label>
-            <input type="url" id="r-gbp" data-k="recursos.gbpUrl" maxlength="300" placeholder="https://maps.app.goo.gl/…">
+            <input type="url" id="r-gbp" data-k="recursos.gbpUrl" maxlength="300">
             <span class="ayuda">If you do not have one, we help you create it. Without it you will not show on the map.</span>
           </div>
           <div class="campo">
             <label for="r-resenas">Average rating and number of reviews</label>
-            <input type="text" id="r-resenas" data-k="recursos.resenas" maxlength="60" placeholder="4.8 with 112 reviews">
+            <input type="text" id="r-resenas" data-k="recursos.resenas" maxlength="60">
             <span class="ayuda">We only publish this if the profile backing it exists.</span>
           </div>
           <div class="campo">
             <label for="r-redes">Social media</label>
-            <textarea id="r-redes" data-k="recursos.redes" maxlength="600" placeholder="https://instagram.com/…"></textarea>
+            <textarea id="r-redes" data-k="recursos.redes" maxlength="600"></textarea>
           </div>
           <div class="campo ancho">
             <label>Logo</label>
@@ -514,17 +514,17 @@
           </div>
           <div class="campo ancho">
             <label for="r-colores">Brand colours</label>
-            <input type="text" id="r-colores" data-k="recursos.colores" maxlength="120" placeholder="#1F3A5F and #C9A227, or “you decide”">
+            <input type="text" id="r-colores" data-k="recursos.colores" maxlength="120">
             <span class="ayuda">If you leave it to us, we pick a palette that fits your sector.</span>
           </div>
           <div class="campo">
             <label for="r-gtm">Google Tag Manager ID</label>
-            <input type="text" id="r-gtm" data-k="recursos.gtm" maxlength="40" placeholder="GTM-XXXXXXX">
+            <input type="text" id="r-gtm" data-k="recursos.gtm" maxlength="40">
             <span class="ayuda">Optional. If you do not have one, we create it.</span>
           </div>
           <div class="campo">
             <label for="r-ga4">Google Analytics ID</label>
-            <input type="text" id="r-ga4" data-k="recursos.ga4" maxlength="40" placeholder="G-XXXXXXXXXX">
+            <input type="text" id="r-ga4" data-k="recursos.ga4" maxlength="40">
           </div>
         </div>
       </fieldset>
@@ -534,7 +534,7 @@
         <div class="campos">
           <div class="campo">
             <label for="t-num">How many products will you sell?</label>
-            <input type="text" id="t-num" data-k="tienda.numProductos" maxlength="40" placeholder="Around 40">
+            <input type="text" id="t-num" data-k="tienda.numProductos" maxlength="40">
           </div>
           <div class="campo">
             <label for="t-cat">Catalogue categories</label>
@@ -542,15 +542,15 @@
           </div>
           <div class="campo ancho">
             <label for="t-fichas">Do you already have product photos and descriptions?</label>
-            <textarea id="t-fichas" data-k="tienda.fichas" maxlength="800" placeholder="I have photos of everything and descriptions for half"></textarea>
+            <textarea id="t-fichas" data-k="tienda.fichas" maxlength="800"></textarea>
           </div>
           <div class="campo ancho">
             <label for="t-envios">How you want to charge for shipping</label>
-            <textarea id="t-envios" data-k="tienda.envios" maxlength="800" placeholder="€4.95 mainland, free over €60, collection in store"></textarea>
+            <textarea id="t-envios" data-k="tienda.envios" maxlength="800"></textarea>
           </div>
           <div class="campo ancho">
             <label for="t-pago">Payment methods you want to accept</label>
-            <input type="text" id="t-pago" data-k="tienda.pago" maxlength="200" placeholder="Card, Bizum and bank transfer">
+            <input type="text" id="t-pago" data-k="tienda.pago" maxlength="200">
             <span class="ayuda">We set up the gateway; the payout account is yours.</span>
           </div>
         </div>
@@ -561,7 +561,7 @@
         <div class="campos">
           <div class="campo ancho">
             <label for="x-comp">Competitors that worry you</label>
-            <textarea id="x-comp" data-k="extras.competidores" maxlength="800" placeholder="Names or websites"></textarea>
+            <textarea id="x-comp" data-k="extras.competidores" maxlength="800"></textarea>
             <span class="ayuda">Optional. We analyse the five best-ranking ones, but if you know your direct rival, all the better.</span>
           </div>
           <div class="campo ancho">
@@ -575,11 +575,11 @@
           </div>
           <div class="campo ancho">
             <label for="x-enlace">Link to the files</label>
-            <input type="url" id="x-enlace" data-k="extras.materialEnlace" maxlength="400" placeholder="https://…">
+            <input type="url" id="x-enlace" data-k="extras.materialEnlace" maxlength="400">
           </div>
           <div class="campo ancho">
             <label for="x-notas">Anything else we should know</label>
-            <textarea id="x-notas" data-k="extras.notas" maxlength="2000" placeholder="Tone, things to avoid saying, deadlines, specific languages…"></textarea>
+            <textarea id="x-notas" data-k="extras.notas" maxlength="2000"></textarea>
           </div>
         </div>
       </fieldset>
@@ -649,7 +649,7 @@
   <form method="dialog" id="form-email" novalidate>
     <h3>Email yourself the link</h3>
     <p>We will send it to your inbox so you can finish the request whenever you like, from any device.</p>
-    <input type="email" id="dlg-email-input" placeholder="you@email.com" autocomplete="email" maxlength="160" required>
+    <input type="email" id="dlg-email-input" autocomplete="email" maxlength="160" required>
     <label class="acepto" id="dlg-privacidad-fila"><input type="checkbox" id="dlg-privacidad"> <span>I have read and accept the <a href="../../privacy-policy/" target="_blank" rel="noopener">privacy policy</a>.</span></label>
     <div class="dlg-msg" id="dlg-msg" role="status" aria-live="polite"></div>
     <div class="dlg-botones">
