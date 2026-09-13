@@ -117,7 +117,7 @@
   display:flex;align-items:center;justify-content:center;box-shadow:0 4px 14px rgba(0,0,0,.28);transition:transform .2s}
 .wa-float:hover{transform:scale(1.08)}
 .retomar .btn-sec{background:#fff;color:var(--ink);border:1px solid var(--ink)}
-.dlg{border:0;border-radius:14px;padding:0;width:min(440px,calc(100vw - 32px));box-shadow:0 20px 60px rgba(0,0,0,.25)}
+.dlg{position:fixed;inset:0;margin:auto;height:fit-content;max-height:calc(100vh - 32px);overflow:auto;border:0;border-radius:14px;padding:0;width:min(440px,calc(100vw - 32px));box-shadow:0 20px 60px rgba(0,0,0,.25)}
 .dlg::backdrop{background:rgba(17,24,39,.55)}
 .dlg form{padding:24px}
 .dlg h3{font-size:22px;margin-bottom:6px}
