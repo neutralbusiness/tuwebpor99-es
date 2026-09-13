@@ -100,7 +100,10 @@
     var valido = horario.some(function (f) { return f.length; });
     var lineas = horario.map(function (f, i) {
       if (!f.length) return dias[i] + ": " + (T.cerrado || "").toLowerCase();
-      f.forEach(function (r) { if (!(r[0] && r[1] && r[0] < r[1])) valido = false; });
+      f.forEach(function (r, j) {
+        if (!(r[0] && r[1] && r[0] < r[1])) valido = false;
+        if (j > 0 && f[j - 1][1] && r[0] && r[0] < f[j - 1][1]) valido = false;
+      });
       return dias[i] + ": " + f.map(function (r) { return r[0] + "–" + r[1]; }).join(", ");
     });
     $("#p-horario").value = valido ? lineas.join("\n") : "";
@@ -133,6 +136,18 @@
   }
 
   function copia(f) { return f.map(function (r) { return [r[0], r[1]]; }); }
+
+  function aMinutos(v) { return Number(v.slice(0, 2)) * 60 + Number(v.slice(3, 5)); }
+  function aHora(m) { return ("0" + Math.floor(m / 60)).slice(-2) + ":" + ("0" + (m % 60)).slice(-2); }
+
+  /** Una franja nueva empieza una hora después de la última, para que no se solapen. */
+  function franjaSiguiente(f) {
+    var ultima = f[f.length - 1];
+    if (!ultima || !ultima[1]) return ["09:00", "14:00"];
+    var inicio = aMinutos(ultima[1]) + 60;
+    if (inicio > 23 * 60) return null;
+    return [aHora(inicio), aHora(Math.min(inicio + 240, 23 * 60 + 45))];
+  }
 
   // ── Archivos adjuntos (tarifas, logotipo) ──────────────────────────────
   function esc(s) {
@@ -502,7 +517,9 @@
       if (!fila) return;
       var d = Number(fila.dataset.d);
       if (e.target.matches(".h-mas")) {
-        horario[d].push(["16:00", "20:00"]);
+        var nueva = franjaSiguiente(horario[d]);
+        if (!nueva) return;
+        horario[d].push(nueva);
       } else if (e.target.matches(".h-quitar")) {
         horario[d].splice(Number(e.target.dataset.j), 1);
       } else if (e.target.matches(".h-copiar")) {
