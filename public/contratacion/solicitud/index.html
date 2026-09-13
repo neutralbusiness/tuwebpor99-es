@@ -20,7 +20,6 @@
 .sol-head{border-bottom:1px solid var(--line);background:#fff;position:sticky;top:0;z-index:60}
 .sol-head-in{display:flex;align-items:center;justify-content:space-between;gap:20px;height:68px}
 .sol-head .logo{font-size:26px}
-.sol-head .tel{font-weight:600;font-size:15px;color:var(--ink)}
 .sol-wrap{max-width:980px;margin:0 auto;padding:0 20px}
 .sol-main{padding:34px 0 90px}
 
@@ -91,7 +90,7 @@
 .guardado.ok{color:var(--accent-dark);font-weight:600}
 
 /* Enlace para retomar */
-.retomar{margin-top:26px;background:#fff;border:1px dashed var(--accent);border-radius:12px;padding:16px 18px}
+.retomar{margin:0 0 22px;background:#fff;border:1px dashed var(--accent);border-radius:12px;padding:16px 18px}
 .retomar h3{font-size:17px;margin-bottom:6px}
 .retomar p{font-size:14.5px;color:var(--muted);margin-bottom:10px;max-width:none}
 .retomar-fila{display:flex;gap:8px;flex-wrap:wrap}
@@ -109,11 +108,13 @@
 .hecho .tic{font-size:56px;line-height:1}
 .hecho h1{font-size:clamp(30px,4vw,44px);font-weight:800;margin:10px 0 12px}
 .hecho p{font-size:18px;max-width:52ch;margin:0 auto 12px}
+.wa-float{position:fixed;bottom:20px;right:20px;z-index:80;width:56px;height:56px;border-radius:50%;background:#25d366;
+  display:flex;align-items:center;justify-content:center;box-shadow:0 4px 14px rgba(0,0,0,.28);transition:transform .2s}
+.wa-float:hover{transform:scale(1.08)}
 .oculto{display:none !important}
 @media(max-width:720px){
   .campos{grid-template-columns:1fr}
   .sol-pasos li span{display:none}
-  .sol-head .tel{display:none}
 }
 </style>
 </head>
@@ -122,7 +123,6 @@
 <header class="sol-head">
   <div class="sol-wrap sol-head-in">
     <a class="logo" href="../../">TuWeb<em>Por99</em><span class="eur">€</span></a>
-    <a class="tel" href="tel:+34618794322">¿Dudas? 618 79 43 22</a>
   </div>
 </header>
 
@@ -139,6 +139,14 @@
       <li data-p="4">4. Condiciones <span>Contrato y RGPD</span></li>
       <li data-p="5">5. Pago <span>Con tarjeta</span></li>
     </ol>
+    <div class="retomar" id="retomar">
+      <h3>Tu enlace para volver</h3>
+      <p>Guarda este enlace. Con él retomas la solicitud donde la dejaste, desde cualquier dispositivo. También te lo hemos mandado al correo.</p>
+      <div class="retomar-fila">
+        <input type="text" id="enlace" readonly>
+        <button type="button" id="btn-copiar">Copiar</button>
+      </div>
+    </div>
 
     <div id="aviso" class="aviso malo"></div>
 
@@ -598,18 +606,11 @@
       </div>
     </section>
 
-    <div class="retomar" id="retomar">
-      <h3>Tu enlace para volver</h3>
-      <p>Guarda este enlace. Con él retomas la solicitud donde la dejaste, desde cualquier dispositivo. También te lo hemos mandado al correo.</p>
-      <div class="retomar-fila">
-        <input type="text" id="enlace" readonly>
-        <button type="button" id="btn-copiar">Copiar</button>
-      </div>
-    </div>
-
   </div>
 </div>
 </main>
+
+<a class="wa-float" href="https://wa.me/34618794322?text=IMPORTANTE%3A+Env%C3%ADa+este+mensaje+sin+editarlo+para+hablar+con+nosotros%3A+tuwebpor99.es+%C2%B7+Tratamos+tus+datos+seg%C3%BAn+tuwebpor99.es%2Fpolitica-privacidad" target="_blank" rel="noopener noreferrer" aria-label="Contactar por WhatsApp"><svg viewBox="0 0 24 24" width="30" height="30" fill="#fff" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></a>
 
 <footer style="background:var(--ink);color:#9ca3af;padding:28px 0;font-size:14.5px">
   <div class="sol-wrap" style="display:flex;gap:16px;flex-wrap:wrap;justify-content:space-between">
