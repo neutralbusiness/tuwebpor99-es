@@ -260,3 +260,44 @@ h1{max-width:961px}
    proporción, vengan con las medidas que vengan. Sin esto, una foto más
    estrecha que su hueco dejaba una banda blanca al lado. */
 .hero-img img,.seo-img img{width:100%;height:auto}
+
+/* Comparativa agencia vs TuWebPor99 (precios) */
+.vs-sec{padding:56px 0 40px}
+.vs-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:28px}
+.vs-card{background:#fff;border:1px solid var(--line);border-radius:16px;padding:30px;box-shadow:0 12px 32px -18px rgba(17,24,39,.25);display:flex;flex-direction:column;gap:22px}
+.vs-head h3{font-size:34px;margin-bottom:4px}
+.vs-head p{color:var(--muted);font-size:16px}
+.vs-cols{position:relative;display:grid;grid-template-columns:1fr 1fr;border-radius:12px;overflow:hidden;border:1px solid var(--line)}
+.vs-col{padding:22px 20px;display:flex;flex-direction:column;gap:2px}
+.vs-col--agencia{background:#f3f4f6}
+.vs-col--nos{background:var(--tint);border-left:3px solid var(--accent)}
+.vs-quien{font-family:'Barlow Condensed',sans-serif;font-weight:700;text-transform:uppercase;letter-spacing:.08em;font-size:14px;color:var(--muted)}
+.vs-col--nos .vs-quien{color:var(--accent-dark)}
+.vs-precio{font-family:'Barlow Condensed',sans-serif;font-weight:800;line-height:1;font-size:clamp(30px,3.4vw,44px);color:#9ca3af;margin-top:6px}
+.vs-col--nos .vs-precio{color:#ea580c;font-size:clamp(46px,5vw,68px)}
+.vs-sub{font-size:14px;color:var(--muted)}
+.vs-badge{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:40px;height:40px;border-radius:50%;background:var(--ink);color:#fff;display:grid;place-items:center;font-family:'Barlow Condensed',sans-serif;font-weight:800;text-transform:uppercase;font-size:15px;box-shadow:0 0 0 4px #fff}
+.vs-filas{display:grid}
+.vs-fila{display:grid;grid-template-columns:1.1fr 1fr 1fr;gap:12px;padding:12px 4px;border-top:1px solid var(--line);font-size:15.5px;align-items:center}
+.vs-fila--cab{border-top:none;padding-top:0;font-family:'Barlow Condensed',sans-serif;text-transform:uppercase;letter-spacing:.06em;font-size:13px;color:var(--muted)}
+.vs-fila dt{font-weight:600;color:var(--ink)}
+.vs-a{color:var(--muted)}
+.vs-n{color:var(--ink);font-weight:600;display:flex;gap:8px;align-items:baseline}
+.vs-ok{color:var(--accent);font-weight:800}
+.vs-ahorro{background:#fff7ed;border:1px solid #fed7aa;color:#9a3412;border-radius:10px;padding:12px 16px;font-size:17px;text-align:center}
+.vs-ahorro strong{color:#ea580c;font-size:20px}
+.vs-cta{align-self:flex-start}
+.vs-nota{margin-top:22px;font-size:13.5px;color:var(--muted);max-width:900px}
+@media(max-width:960px){.vs-grid{grid-template-columns:1fr}}
+@media(max-width:600px){
+  .vs-card{padding:22px 18px}
+  .vs-col{padding:18px 14px}
+  .vs-badge{width:32px;height:32px;font-size:13px}
+  .vs-fila{grid-template-columns:1fr 1fr;gap:4px 12px}
+  .vs-fila dt{grid-column:1/-1}
+  .vs-fila--cab dt{display:none}
+  .vs-cta{align-self:stretch;justify-content:center;white-space:normal;text-align:center}
+}
+.vs-col--agencia{padding-right:30px}
+.vs-col--nos{padding-left:30px}
+@media(min-width:961px){.vs-head p{min-height:3.2em}}
