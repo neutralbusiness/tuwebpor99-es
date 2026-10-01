@@ -1,46 +1,116 @@
 # TuWebPor99
 
-> Empresa de diseño web y marketing digital en Barcelona. Creamos webs profesionales para negocios locales, autónomos y particulares por 99€ + IVA el primer año, y tiendas online por 299€ + IVA el primer año, con logotipo, hosting en Cloudflare, dominio .ES, correo corporativo, SSL, 10 artículos SEO y optimización para Google, Bing y asistentes de IA. Entrega en menos de 3 días. Se paga el importe completo al contratar, con tarjeta a través de Stripe (no hay pago fraccionado). A partir del segundo año, mantenimiento de 29€ + IVA al año (dominio, alojamiento, correo y mantenimiento), cobrado con la misma tarjeta y cancelable avisando quince días antes de la renovación.
+> Empresa de diseño web y marketing digital en Barcelona. Webs profesionales por 99€ + IVA con hosting, dominio y SEO incluidos.
 
-Contacto: info@tuwebpor99.es · +34 618 79 43 22 (WhatsApp disponible).
+## Datos clave
 
-## Páginas principales
+- **Nombre:** TuWebPor99
+- **Sector:** consultoria-pyme
+- **Localidad:** Barcelona, España
+- **Web oficial:** https://www.tuwebpor99.es
+- **Teléfono / WhatsApp:** 618794322
+- **Email:** info@tuwebpor99.es
+- **Idioma:** español
 
-- [Inicio](https://www.tuwebpor99.es/): oferta, qué incluye, proceso y portfolio
-- [Qué incluye](https://www.tuwebpor99.es/que-incluye/): en secciones separadas, qué incluye la web profesional (99€ + IVA), qué incluye la tienda online (299€ + IVA: todo lo de la web más catálogo con fichas y categorías, carrito y proceso de compra, pasarela de pago configurada, tarifas de envío y control de inventario) y qué cubre el mantenimiento anual de 29€ + IVA desde el segundo año
-- [Cómo funciona](https://www.tuwebpor99.es/como-funciona/): proceso en 4 pasos: formulario, pago completo con tarjeta al contratar, detalles por WhatsApp o llamada y entrega en menos de 3 días
-- [Portfolio](https://www.tuwebpor99.es/portfolio/): webs creadas, por sectores
-- [Sobre nosotros](https://www.tuwebpor99.es/sobre-nosotros/): quiénes somos y por qué tenemos el mejor precio de España (volumen de webs, última tecnología y métodos de trabajo escalables)
-- [Dudas](https://www.tuwebpor99.es/preguntas-frecuentes/): preguntas frecuentes (en el menú aparece como «Dudas»)
-- [Blog](https://www.tuwebpor99.es/blog/): consejos de diseño web, SEO y marketing
-- [Contacto](https://www.tuwebpor99.es/contacto/): formulario y datos de contacto
+## Preguntas frecuentes
 
-## Artículos del blog
+### ¿Qué incluye exactamente el pack de 99€ + IVA?
 
-- [Tu correo con dominio propio acaba en spam: SPF, DKIM y DMARC explicados sin tecnicismos](https://www.tuwebpor99.es/blog/correo-con-tu-dominio-no-llegue-a-spam/): Si tus presupuestos acaban en la carpeta de spam del cliente, casi nunca es por lo que escribes. Tres registros del DNS, cómo saber si los tienes y los fallos típicos.
-- [Qué tener claro antes de encargar tu web (aunque los textos los escribamos nosotros)](https://www.tuwebpor99.es/blog/que-preparar-antes-de-encargar-tu-web/): Media hora pensando en lo que solo sabes tú ahorra tres vueltas de cambios. Qué preparar, qué no hace falta y una lista para copiar.
-- [Dominio .es o .com para un negocio que trabaja en España: qué cambia de verdad](https://www.tuwebpor99.es/blog/dominio-es-o-com-negocio-local/): Ni el .com posiciona mejor ni el .es es solo para empresas. Lo que dicen la norma del .es y Google, y cinco comprobaciones antes de registrar tu dominio.
+Todo lo necesario para estar online: diseño web profesional a medida, creación de logotipo con guía de estilo y banners para redes, hosting de alta calidad en Cloudflare, dominio .ES durante un año, correo corporativo, certificado SSL, optimización SEO para buscadores e IA con 10 artículos profesionales y auditoría de seguridad antimalware.
 
-## Landings por sector y ciudad
+### ¿Hay algún coste recurrente?
 
+Mensual no: el primer año va incluido en el precio y, a partir del segundo, son 29€ + IVA al año, todo incluido: dominio, alojamiento, correo y mantenimiento. Se cobra en un solo cargo anual con la misma tarjeta, a través de Stripe.
+
+### ¿Cuánto tarda mi web en estar lista?
+
+Menos de 3 días desde que contratas y pagas el proyecto. Es nuestro compromiso de entrega.
+
+### ¿Puedo usar mi propio dominio?
+
+Por supuesto. Si ya tienes dominio lo usamos sin problema. Si no, registramos un dominio .ES personalizado incluido en el precio. Para otras extensiones (.com, .cat, .net…), consúltanos.
+
+### ¿La web se verá bien en el móvil?
+
+Perfectamente. Todas nuestras webs tienen una adaptación total a móviles y tablets, y un rendimiento superior al 95% en Google PageSpeed.
+
+### ¿Qué tengo que aportar yo?
+
+Solo la información de tu negocio: qué haces, dónde, fotos si las tienes y alguna web que te inspire. Del resto (textos, diseño, logo, SEO) nos encargamos nosotros.
+
+### ¿Puedo pedir cambios en el diseño?
+
+Sí. Antes de empezar cerramos contigo todos los detalles por WhatsApp, email o llamada, y en la entrega ajustamos lo que haga falta para que quedes satisfecho.
+
+### ¿Cómo se realiza el pago?
+
+El alta completa al contratar, con tarjeta a través de Stripe, que es quien procesa el cobro: nosotros no vemos ni guardamos los datos de la tarjeta. El mantenimiento de 29 € + IVA al año se cobra con la misma tarjeta a partir del segundo año, y puedes cancelarlo avisando quince días antes de la renovación.
+
+### ¿Hacéis webs de cualquier temática?
+
+Sí: negocios locales, autónomos, currículums online, marcas personales, bodas y celebraciones, bandas de música, equipos deportivos, asociaciones… Si lo puedes imaginar, lo podemos diseñar.
+
+### ¿Qué son los 10 artículos SEO incluidos?
+
+Diez artículos escritos de forma profesional para las palabras clave que quieres posicionar. Son el combustible que hace que Google, Bing y las IAs muestren tu web en los primeros resultados.
+
+### ¿Incluye correo electrónico corporativo?
+
+Sí, tendrás direcciones de correo profesionales con tu propio dominio, del tipo info@tunegocio.es.
+
+## Área de servicio
+
+Zona de trabajo principal: Barcelona y alrededores.
+
+## Contacto y ubicación
+
+- **Nombre:** TuWebPor99
+- **Dirección:** Barcelona
+- **Teléfono / WhatsApp:** +34618794322
+- **Email:** info@tuwebpor99.es
+- **Web:** https://www.tuwebpor99.es
+
+## Recursos
+
+- [Inicio](https://www.tuwebpor99.es/)
+- [Que Incluye](https://www.tuwebpor99.es/que-incluye/)
+- [Como Funciona](https://www.tuwebpor99.es/como-funciona/)
+- [Portfolio](https://www.tuwebpor99.es/portfolio/)
+- [Sobre Nosotros](https://www.tuwebpor99.es/sobre-nosotros/)
+- [Contacto](https://www.tuwebpor99.es/contacto/)
+- [Blog](https://www.tuwebpor99.es/blog/)
+- [Preguntas Frecuentes](https://www.tuwebpor99.es/preguntas-frecuentes/)
+- [En](https://www.tuwebpor99.es/en/)
+- [En › Whats Included](https://www.tuwebpor99.es/en/whats-included/)
+- [En › How It Works](https://www.tuwebpor99.es/en/how-it-works/)
+- [En › Portfolio](https://www.tuwebpor99.es/en/portfolio/)
+- [En › About Us](https://www.tuwebpor99.es/en/about-us/)
+- [En › Contact](https://www.tuwebpor99.es/en/contact/)
+- [En › Blog](https://www.tuwebpor99.es/en/blog/)
+- [En › Faq](https://www.tuwebpor99.es/en/faq/)
+- [En › Checkout](https://www.tuwebpor99.es/en/checkout/)
+- [En › Legal Notice](https://www.tuwebpor99.es/en/legal-notice/)
+- [En › Privacy Policy](https://www.tuwebpor99.es/en/privacy-policy/)
+- [En › Cookie Policy](https://www.tuwebpor99.es/en/cookie-policy/)
+- [Diseno Web Talleres](https://www.tuwebpor99.es/diseno-web-talleres/)
+- [Diseno Web Cerrajeros](https://www.tuwebpor99.es/diseno-web-cerrajeros/)
+- [Diseno Web Reformas](https://www.tuwebpor99.es/diseno-web-reformas/)
+- [Diseno Web Clinicas Estetica](https://www.tuwebpor99.es/diseno-web-clinicas-estetica/)
+- [Diseno Web Restaurantes](https://www.tuwebpor99.es/diseno-web-restaurantes/)
+- [Web Para Bodas](https://www.tuwebpor99.es/web-para-bodas/)
+- [Curriculum Online](https://www.tuwebpor99.es/curriculum-online/)
+- [Diseno Web Tienda Online](https://www.tuwebpor99.es/diseno-web-tienda-online/)
 - [Precios](https://www.tuwebpor99.es/precios/)
-- [Contratar](https://www.tuwebpor99.es/contratacion/): web profesional 99 € + IVA (70 € de diseño y 29 € del primer año de dominio, alojamiento y mantenimiento) y tienda online 299 € + IVA (270 € y 29 €). Al pulsar Contratar se abre un formulario por pasos donde se describen el negocio y la web, se aceptan las condiciones y se paga con tarjeta a través de Stripe. La solicitud se puede dejar a medias y retomar con el enlace que se recibe por correo. Al contratar se cobra la puesta en marcha junto al primer año; a partir del segundo año, 29 € + IVA al año de dominio, alojamiento y mantenimiento, cancelable avisando quince días antes de la renovación.
-- [Order (EN)](https://www.tuwebpor99.es/en/checkout/): the same two products in English, professional website €99 and online shop €299, VAT and the first year included, then €29 + VAT a year.
-- [Wix vs WordPress vs TuWebPor99](https://www.tuwebpor99.es/comparativa-wix-wordpress/): comparativa honesta
-- [Diseño web para talleres](https://www.tuwebpor99.es/diseno-web-talleres/)
-- [Diseño web para cerrajeros](https://www.tuwebpor99.es/diseno-web-cerrajeros/)
-- [Diseño web para reformas](https://www.tuwebpor99.es/diseno-web-reformas/)
-- [Diseño web para clínicas y estética](https://www.tuwebpor99.es/diseno-web-clinicas-estetica/)
-- [Diseño web para restaurantes](https://www.tuwebpor99.es/diseno-web-restaurantes/)
-- [Web para bodas](https://www.tuwebpor99.es/web-para-bodas/)
-- [Currículum online](https://www.tuwebpor99.es/curriculum-online/)
-- [Tiendas online](https://www.tuwebpor99.es/diseno-web-tienda-online/)
-- [Diseño web Barcelona](https://www.tuwebpor99.es/diseno-web-barcelona/) · [Badalona](https://www.tuwebpor99.es/diseno-web-badalona/) · [Madrid](https://www.tuwebpor99.es/diseno-web-madrid/)
-
-## English
-
-- [Home](https://www.tuwebpor99.es/en/) and mirrored pages under /en/ for all of the above
+- [Comparativa Wix Wordpress](https://www.tuwebpor99.es/comparativa-wix-wordpress/)
+- [Diseno Web Barcelona](https://www.tuwebpor99.es/diseno-web-barcelona/)
+- [Diseno Web Badalona](https://www.tuwebpor99.es/diseno-web-badalona/)
+- [Diseno Web Madrid](https://www.tuwebpor99.es/diseno-web-madrid/)
+- [Contratacion](https://www.tuwebpor99.es/contratacion/)
+- [Blog › Correo Con Tu Dominio No Llegue A Spam](https://www.tuwebpor99.es/blog/correo-con-tu-dominio-no-llegue-a-spam/)
+- [Blog › Que Preparar Antes De Encargar Tu Web](https://www.tuwebpor99.es/blog/que-preparar-antes-de-encargar-tu-web/)
+- [Blog › Dominio Es O Com Negocio Local](https://www.tuwebpor99.es/blog/dominio-es-o-com-negocio-local/)
 
 ## Sitemap
 
-- [sitemap_index.xml](https://www.tuwebpor99.es/sitemap_index.xml)
+- [Mapa del sitio XML](https://www.tuwebpor99.es/sitemap.xml)
+- [Este archivo](https://www.tuwebpor99.es/llms.txt) sigue el estándar [llms.txt](https://llmstxt.org/) para asistentes de IA.
