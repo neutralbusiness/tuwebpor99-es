@@ -2,6 +2,8 @@
 
 > Empresa de diseño web y marketing digital en Barcelona. Webs profesionales por 99€ + IVA con hosting, dominio y SEO incluidos.
 
+Cada página de esta web tiene versión en markdown: añade `index.md` a su URL (por ejemplo, https://www.tuwebpor99.es/index.md).
+
 ## Datos clave
 
 - **Nombre:** TuWebPor99
