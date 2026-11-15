@@ -303,11 +303,11 @@ h1{max-width:961px}
 @media(min-width:961px){.vs-head p{min-height:3.2em}}
 
 /* nb-solo-formulario */
-[data-nb-form]{min-height:680px}
+[data-nb-form]{min-height:620px}
 .nb-form-sec{background:var(--tint);border-top:1px solid var(--tint2)}
 .foot-contact li{overflow-wrap:anywhere}
 @media(max-width:600px){
-  [data-nb-form]{min-height:800px}
+  [data-nb-form]{min-height:870px}
   .hero{padding:36px 0 48px}
   .hero .tag{margin-bottom:4px}
   .hero-ctas .btn{flex:1 1 100%;text-align:center}
