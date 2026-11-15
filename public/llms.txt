@@ -4,13 +4,13 @@
 
 Cada página de esta web tiene versión en markdown: añade `index.md` a su URL (por ejemplo, https://www.tuwebpor99.es/index.md).
 
-Contacto: info@tuwebpor99.es · +34 618 79 43 22 (WhatsApp disponible).
+Contacto: formulario de https://www.tuwebpor99.es/contacto/ o info@tuwebpor99.es. No atendemos por teléfono ni por WhatsApp: te contactamos nosotros.
 
 ## Páginas principales
 
 - [Inicio](https://www.tuwebpor99.es/): oferta, qué incluye, proceso y portfolio
 - [Qué incluye](https://www.tuwebpor99.es/que-incluye/): en secciones separadas, qué incluye la web profesional (99€ + IVA), qué incluye la tienda online (299€ + IVA: todo lo de la web más catálogo con fichas y categorías, carrito y proceso de compra, pasarela de pago configurada, tarifas de envío y control de inventario) y qué cubre el mantenimiento anual de 29€ + IVA desde el segundo año
-- [Cómo funciona](https://www.tuwebpor99.es/como-funciona/): proceso en 4 pasos: formulario, pago completo con tarjeta al contratar, detalles por WhatsApp o llamada y entrega en menos de 3 días
+- [Cómo funciona](https://www.tuwebpor99.es/como-funciona/): proceso en 4 pasos: formulario, pago completo con tarjeta al contratar, detalles por email o llamada nuestra y entrega en menos de 3 días
 - [Portfolio](https://www.tuwebpor99.es/portfolio/): webs creadas, por sectores
 - [Sobre nosotros](https://www.tuwebpor99.es/sobre-nosotros/): quiénes somos y por qué tenemos el mejor precio de España (volumen de webs, última tecnología y métodos de trabajo escalables)
 - [Dudas](https://www.tuwebpor99.es/preguntas-frecuentes/): preguntas frecuentes (en el menú aparece como «Dudas»)
@@ -19,6 +19,11 @@ Contacto: info@tuwebpor99.es · +34 618 79 43 22 (WhatsApp disponible).
 
 ## Artículos del blog
 
+- [Presupuesto de página web en Barcelona: cuánto cuesta en 2026 y qué debe incluir](https://www.tuwebpor99.es/blog/presupuesto-pagina-web-barcelona/): Agencia, freelance o constructor: qué cuesta cada opción en Barcelona, qué partidas debe tener un buen presupuesto y las letras pequeñas que encarecen la web al segundo año.
+- [Cómo aparecer en Google Maps con tu negocio: guía del perfil de empresa para Barcelona y Badalona](https://www.tuwebpor99.es/blog/aparecer-en-google-maps-negocio-local/): Relevancia, distancia y prominencia: cómo decide Google qué negocios enseña en el mapa, cómo dar de alta y verificar tu ficha y qué hacer si no apareces en tu barrio.
+- [Cómo conseguir que ChatGPT y otras IA recomienden tu negocio](https://www.tuwebpor99.es/blog/como-aparecer-en-chatgpt-negocio-local/): Las IA no se inventan los negocios que recomiendan: los buscan. Qué rastreadores dejar pasar, qué es el llms.txt y por qué una web clara vale más que cualquier truco.
+- [Página web para autónomos: qué necesita de verdad y cuánto cuesta](https://www.tuwebpor99.es/blog/pagina-web-para-autonomos/): Cinco páginas bien hechas valen más que veinte vacías. Qué necesita la web de un autónomo, qué obliga la ley y cuánto debería costarte al año.
+- [Página web para un taller mecánico: 9 cosas que debe tener para traer clientes](https://www.tuwebpor99.es/blog/pagina-web-taller-mecanico/): Servicios con página propia, zona clara, presupuesto fácil y la garantía que marca la ley. Las nueve piezas que separan la web de un taller que trae coches de una que no.
 - [Tu correo con dominio propio acaba en spam: SPF, DKIM y DMARC explicados sin tecnicismos](https://www.tuwebpor99.es/blog/correo-con-tu-dominio-no-llegue-a-spam/): Si tus presupuestos acaban en la carpeta de spam del cliente, casi nunca es por lo que escribes. Tres registros del DNS, cómo saber si los tienes y los fallos típicos.
 - [Qué tener claro antes de encargar tu web (aunque los textos los escribamos nosotros)](https://www.tuwebpor99.es/blog/que-preparar-antes-de-encargar-tu-web/): Media hora pensando en lo que solo sabes tú ahorra tres vueltas de cambios. Qué preparar, qué no hace falta y una lista para copiar.
 - [Dominio .es o .com para un negocio que trabaja en España: qué cambia de verdad](https://www.tuwebpor99.es/blog/dominio-es-o-com-negocio-local/): Ni el .com posiciona mejor ni el .es es solo para empresas. Lo que dicen la norma del .es y Google, y cinco comprobaciones antes de registrar tu dominio.

@@ -363,7 +363,7 @@
     var wa = ($('input[name="wa"]:checked') || {}).value || "mismo";
     $("#p-wa").closest(".campo").classList.toggle("oculto", wa !== "otro");
 
-    var mat = ($('input[name="mat"]:checked') || {}).value || "whatsapp";
+    var mat = ($('input[name="mat"]:checked') || {}).value || "email";
     $("#x-enlace").closest(".campo").classList.toggle("oculto", mat !== "enlace");
 
     var logo = ($('input[name="logo"]:checked') || {}).value || "tengo";

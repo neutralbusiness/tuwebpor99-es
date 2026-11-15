@@ -1,5 +1,60 @@
 [
   {
+    "slug": "presupuesto-pagina-web-barcelona",
+    "title": "Presupuesto de página web en Barcelona: cuánto cuesta en 2026 y qué debe incluir",
+    "excerpt": "Agencia, freelance o constructor: qué cuesta cada opción en Barcelona, qué partidas debe tener un buen presupuesto y las letras pequeñas que encarecen la web al segundo año.",
+    "category": "Precios",
+    "publishDate": "2026-11-15",
+    "readTime": 4,
+    "image": "/img/blog-presupuesto-pagina-web-barcelona.webp?v=f8887270",
+    "author": "TuWebPor99",
+    "alt": "Escritorio con un monitor que muestra una presentación de marketing digital y un cuaderno con un plan de negocio"
+  },
+  {
+    "slug": "aparecer-en-google-maps-negocio-local",
+    "title": "Cómo aparecer en Google Maps con tu negocio: guía del perfil de empresa para Barcelona y Badalona",
+    "excerpt": "Relevancia, distancia y prominencia: cómo decide Google qué negocios enseña en el mapa, cómo dar de alta y verificar tu ficha y qué hacer si no apareces en tu barrio.",
+    "category": "SEO local",
+    "publishDate": "2026-11-14",
+    "readTime": 4,
+    "image": "/img/blog-aparecer-en-google-maps-negocio-local.webp?v=f031898c",
+    "author": "TuWebPor99",
+    "alt": "Mano clavando banderitas de colores sobre un mapa"
+  },
+  {
+    "slug": "como-aparecer-en-chatgpt-negocio-local",
+    "title": "Cómo conseguir que ChatGPT y otras IA recomienden tu negocio",
+    "excerpt": "Las IA no se inventan los negocios que recomiendan: los buscan. Qué rastreadores dejar pasar, qué es el llms.txt y por qué una web clara vale más que cualquier truco.",
+    "category": "Posicionamiento en IA",
+    "publishDate": "2026-11-13",
+    "readTime": 3,
+    "image": "/img/blog-como-aparecer-en-chatgpt-negocio-local.webp?v=89669b94",
+    "author": "TuWebPor99",
+    "alt": "Teléfono móvil con la pantalla de inicio de ChatGPT junto a un ordenador"
+  },
+  {
+    "slug": "pagina-web-para-autonomos",
+    "title": "Página web para autónomos: qué necesita de verdad y cuánto cuesta",
+    "excerpt": "Cinco páginas bien hechas valen más que veinte vacías. Qué necesita la web de un autónomo, qué obliga la ley y cuánto debería costarte al año.",
+    "category": "Autónomos",
+    "publishDate": "2026-11-12",
+    "readTime": 3,
+    "image": "/img/blog-pagina-web-para-autonomos.webp?v=b246a0a4",
+    "author": "TuWebPor99",
+    "alt": "Mujer trabajando con un portátil en el sofá de su casa"
+  },
+  {
+    "slug": "pagina-web-taller-mecanico",
+    "title": "Página web para un taller mecánico: 9 cosas que debe tener para traer clientes",
+    "excerpt": "Servicios con página propia, zona clara, presupuesto fácil y la garantía que marca la ley. Las nueve piezas que separan la web de un taller que trae coches de una que no.",
+    "category": "Talleres",
+    "publishDate": "2026-11-11",
+    "readTime": 3,
+    "image": "/img/blog-pagina-web-taller-mecanico.webp?v=1966bf22",
+    "author": "TuWebPor99",
+    "alt": "Dos mecánicos revisando las ruedas de un coche subido al elevador"
+  },
+  {
     "slug": "correo-con-tu-dominio-no-llegue-a-spam",
     "title": "Tu correo con dominio propio acaba en spam: SPF, DKIM y DMARC explicados sin tecnicismos",
     "excerpt": "Si tus presupuestos acaban en la carpeta de spam del cliente, casi nunca es por lo que escribes. Tres registros del DNS, cómo saber si los tienes y los fallos típicos.",

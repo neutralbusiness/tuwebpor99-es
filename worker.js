@@ -2,10 +2,25 @@ export default {
   async fetch(request, env) {
     const url = new URL(request.url);
 
-    // Redirect apex -> www
-    if (url.hostname === "tuwebpor99.es") {
+    if (url.hostname !== "www.tuwebpor99.es" && url.hostname !== "localhost" && url.hostname !== "127.0.0.1") {
       url.hostname = "www.tuwebpor99.es";
+      url.protocol = "https:";
+      url.port = "";
       return Response.redirect(url.toString(), 301);
+    }
+
+    const destinoViejo = redireccionAntigua(url.pathname);
+    if (destinoViejo) return Response.redirect(new URL(destinoViejo, url).toString(), 301);
+
+    if ((request.method === "GET" || request.method === "HEAD") && !url.pathname.startsWith("/api/")) {
+      let ruta = url.pathname;
+      if (ruta.endsWith("/index.html")) ruta = ruta.slice(0, -10);
+      if (!/\.[a-z0-9]{1,5}$/i.test(ruta) && !ruta.endsWith("/")) ruta += "/";
+      if (!/\.[a-z0-9]{1,5}$/i.test(ruta)) ruta = ruta.toLowerCase();
+      if (ruta !== url.pathname) {
+        url.pathname = ruta;
+        return Response.redirect(url.toString(), 301);
+      }
     }
 
     // El embudo de contratación habla con el panel a través de aquí. El
@@ -24,6 +39,13 @@ export default {
     return __r;
   },
 };
+
+// URL de la web WordPress anterior que Google aún muestra.
+function redireccionAntigua(ruta) {
+  if (ruta.startsWith("/diseno-y-desarrollo-web/")) return "/diseno-web-barcelona/";
+  if (ruta.startsWith("/category/") || ruta.startsWith("/tag/") || ruta.startsWith("/author/")) return "/blog/";
+  return null;
+}
 
 const PANEL = "https://panel.neutralb.es/api/public/contratacion";
 
