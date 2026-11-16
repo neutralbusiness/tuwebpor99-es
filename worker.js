@@ -44,6 +44,9 @@ export default {
 function redireccionAntigua(ruta) {
   if (ruta.startsWith("/diseno-y-desarrollo-web/")) return "/diseno-web-barcelona/";
   if (ruta.startsWith("/category/") || ruta.startsWith("/tag/") || ruta.startsWith("/author/")) return "/blog/";
+  const legales = { "/privacidad": "/politica-privacidad/", "/politica-de-privacidad": "/politica-privacidad/", "/cookies": "/politica-cookies/", "/politica-de-cookies": "/politica-cookies/", "/legal": "/aviso-legal/" };
+  const sinBarra = ruta.replace(/\/+$/, "");
+  if (legales[sinBarra]) return legales[sinBarra];
   return null;
 }
 
